@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1000 1000">
+    <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/></filter>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="5" cy="6" r="2.2" fill="#2d2723" opacity=".10"/></pattern>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+    </defs><rect width="1000" height="1000" rx="72" fill="#FFE9BD"/><rect width="1000" height="1000" rx="72" fill="url(#dots)" opacity=".45"/>
+    <g filter="url(#s)">
+    <path d="M250 370 L315 150 L430 278 Q500 250 570 278 L685 150 L750 370 C835 438 846 618 772 747 C704 865 606 910 500 912 C394 910 296 865 228 747 C154 618 165 438 250 370Z" fill="#F6A65E" class="o"/>
+    <path d="M315 267 L331 205 L386 275Z M685 267 L669 205 L614 275Z" fill="#FF786B" class="d"/>
+    <path d="M345 473 C345 405 430 405 430 472 C430 537 388 566 388 566 C388 566 345 537 345 473Z M570 473 C570 405 655 405 655 472 C655 537 612 566 612 566 C612 566 570 537 570 473Z" fill="#2d2723"/>
+    <circle cx="374" cy="446" r="15" fill="#fff"/><circle cx="599" cy="446" r="15" fill="#fff"/>
+    <ellipse cx="315" cy="628" rx="67" ry="35" fill="#FF786B" opacity=".82"/><ellipse cx="685" cy="628" rx="67" ry="35" fill="#FF786B" opacity=".82"/>
+    <ellipse cx="452" cy="642" rx="96" ry="70" fill="#FFF1DB"/><ellipse cx="548" cy="642" rx="96" ry="70" fill="#FFF1DB"/>
+    <path d="M500 591 C463 591 455 628 500 646 C545 628 537 591 500 591Z" fill="#2d2723"/><path d="M500 646 Q500 697 452 704 M500 646 Q500 697 548 704" fill="none" class="d"/>
+    <g transform="translate(725 350) rotate(12)"><g class="d" fill="#FF786B"><circle cy="-35" r="31"/><circle cx="34" cy="-5" r="31"/><circle cx="21" cy="36" r="31"/><circle cx="-21" cy="36" r="31"/><circle cx="-34" cy="-5" r="31"/></g><circle r="23" fill="#F4C84D" class="d"/></g>
+    </g>
+    <g transform="translate(55 884)"><rect width="365" height="70" rx="28" fill="#fffdf8" class="d"/><text x="24" y="45" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="900" fill="#2d2723">MOCHI CAT</text></g>
+    </svg>

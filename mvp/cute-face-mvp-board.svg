@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<defs>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#2a201d" flood-opacity=".13"/>
+  </filter>
+  <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#2a201d" flood-opacity=".10"/>
+  </filter>
+  <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+    <circle cx="4" cy="4" r="2.2" fill="#241f1c" opacity=".16"/>
+  </pattern>
+  <pattern id="tinyDots" width="12" height="12" patternUnits="userSpaceOnUse">
+    <circle cx="3" cy="3" r="1.4" fill="#241f1c" opacity=".11"/>
+  </pattern>
+  <style>
+    .ink { stroke:#241f1c; stroke-width:14; stroke-linecap:round; stroke-linejoin:round; }
+    .ink8 { stroke:#241f1c; stroke-width:8; stroke-linecap:round; stroke-linejoin:round; }
+    .ink5 { stroke:#241f1c; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+    .label { font-family:Arial,Helvetica,sans-serif; font-size:20px; font-weight:800; letter-spacing:2px; fill:#241f1c; }
+    .small { font-family:Arial,Helvetica,sans-serif; font-size:16px; font-weight:700; letter-spacing:1.2px; fill:#6b5f58; }
+    .body { font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:500; fill:#554b46; }
+  </style>
+</defs>
+<rect width="1800" height="1200" fill="#F3EBDD"/>
+<rect x="32" y="32" width="1736" height="1136" rx="38" fill="#FBF8F1" stroke="#241f1c" stroke-width="5"/>
+<g transform="translate(88 72)">
+  <text x="0" y="54" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="900" letter-spacing="-2" fill="#241f1c">CUTE FACE LAB</text>
+  <rect x="0" y="76" width="385" height="18" rx="9" fill="#FF786B"/>
+  <text x="0" y="130" class="body">A pre-drawn animal character system — mixed, not generated.</text>
+  <g transform="translate(1392 10)">
+    <rect width="200" height="104" rx="24" fill="#F4C84D" class="ink8"/>
+    <text x="100" y="43" text-anchor="middle" class="label" font-size="18">MVP 01</text>
+    <text x="100" y="73" text-anchor="middle" class="small">AUTHORED PARTS</text>
+  </g>
+</g><g transform="translate(88 250)" filter="url(#shadow)">
+  <rect width="720" height="830" rx="44" fill="#FFEFC8" class="ink"/>
+  <g transform="translate(38 34)">
+    <rect width="182" height="46" rx="23" fill="#FF786B" class="ink8"/>
+    <text x="91" y="31" text-anchor="middle" class="label" font-size="16" fill="#241f1c">HERO RECIPE</text>
+  </g>
+  <text x="54" y="758" font-family="Arial,Helvetica,sans-serif" font-size="44" font-weight="900" fill="#241f1c">MOCHI CAT</text>
+  <text x="54" y="796" class="small">BASE 01 · EARS 02 · EYES 03 · SNOUT 01 · CHEEKS 02</text>
+  <g transform="translate(360 420)">
+    <path d="M-188 -176 L-146 -342 L-40 -220 Q0 -236 40 -220 L146 -342 L188 -176
+             C246 -115 257 49 194 151 C142 236 72 276 0 280
+             C-72 276 -142 236 -194 151 C-257 49 -246 -115 -188 -176Z"
+          fill="#F6A65E" class="ink"/>
+    <path d="M-142 -294 L-118 -211 L-60 -222Z" fill="#FF9FA1" class="ink8"/>
+    <path d="M142 -294 L118 -211 L60 -222Z" fill="#FF9FA1" class="ink8"/>
+    <path d="M-176 -108 Q-72 -176 0 -134 Q72 -176 176 -108" fill="none" class="ink8" opacity=".22"/>
+    <ellipse cx="-88" cy="-30" rx="24" ry="33" fill="#241f1c"/>
+    <ellipse cx="88" cy="-30" rx="24" ry="33" fill="#241f1c"/>
+    <circle cx="-79" cy="-41" r="8" fill="#fff"/>
+    <circle cx="97" cy="-41" r="8" fill="#fff"/>
+    <ellipse cx="-122" cy="62" rx="50" ry="27" fill="#FF786B" opacity=".82"/>
+    <ellipse cx="122" cy="62" rx="50" ry="27" fill="#FF786B" opacity=".82"/>
+    <ellipse cx="-48" cy="60" rx="70" ry="50" fill="#FFF1DB"/>
+    <ellipse cx="48" cy="60" rx="70" ry="50" fill="#FFF1DB"/>
+    <path d="M0 28 C-28 28 -31 56 0 69 C31 56 28 28 0 28Z" fill="#241f1c"/>
+    <path d="M0 69 Q0 104 -34 109 M0 69 Q0 104 34 109" class="ink8" fill="none"/>
+    <path d="M-188 75 Q-266 48 -308 22 M-182 102 Q-266 98 -320 105 M188 75 Q266 48 308 22 M182 102 Q266 98 320 105" class="ink8" fill="none"/>
+    <g opacity=".22">
+      <circle cx="-130" cy="-145" r="8" fill="#241f1c"/><circle cx="-101" cy="-160" r="6" fill="#241f1c"/>
+      <circle cx="138" cy="-130" r="7" fill="#241f1c"/><circle cx="111" cy="-153" r="5" fill="#241f1c"/>
+      <path d="M-165 176 q36 28 72 4 M88 186 q38 20 70 -8" class="ink5" fill="none"/>
+    </g>
+    <path d="M-246 184 Q-194 246 -118 264" fill="none" stroke="#FF786B" stroke-width="18" stroke-linecap="round"/>
+  </g>
+</g><g transform="translate(860 250)" filter="url(#softShadow)"><rect width="390" height="340" rx="32" fill="#E5DCF8" class="ink8"/><text x="28" y="40" class="label" font-size="17">BUNNY</text><circle cx="352" cy="35" r="11" fill="#B896FF" class="ink5"/><ellipse cx="113.0" cy="62.0" rx="47" ry="112" fill="#F5F0FF" class="ink8" transform="rotate(-9 113.0 62.0)"/><ellipse cx="277.0" cy="62.0" rx="47" ry="112" fill="#F5F0FF" class="ink8" transform="rotate(9 277.0 62.0)"/><ellipse cx="113.0" cy="62.0" rx="18" ry="76" fill="#FF9FA1" opacity=".78"/><ellipse cx="277.0" cy="62.0" rx="18" ry="76" fill="#FF9FA1" opacity=".78"/><path d="M63.0 132.0 C80.0 70.0 303.0 70.0 327.0 132.0 C359.0 278.0 297.0 337.0 195.0 343.0 C91.0 337.0 33.0 276.0 63.0 132.0Z" fill="#F5F0FF" class="ink8"/><g transform="translate(195.0 151.0) scale(0.9)"><path d="M-70 -10 C-70 -35 -32 -35 -32 -4 C-32 24 -51 36 -51 36 C-51 36 -70 23 -70 -10Z" fill="#241f1c"/><path d="M32 -10 C32 -35 70 -35 70 -4 C70 24 51 36 51 36 C51 36 32 23 32 -10Z" fill="#241f1c"/><circle cx="-54" cy="-13" r="6" fill="#fff"/><circle cx="48" cy="-13" r="6" fill="#fff"/></g><g transform="translate(195.0 220.0) scale(0.76)" opacity=".82">
+      <ellipse cx="-110" cy="0" rx="38" ry="21" fill="#FF786B"/>
+      <ellipse cx="110" cy="0" rx="38" ry="21" fill="#FF786B"/>
+      <path d="M-133 0 l15 -7 M-110 3 l15 -7 M90 3 l15 -7 M113 0 l15 -7" class="ink5" fill="none" opacity=".33"/>
+    </g><g transform="translate(195.0 220.0) scale(0.7)"><path d="M-12 -12 C-34 -24 -57 -4 -46 20 C-36 42 -12 39 0 25 C12 39 36 42 46 20 C57 -4 34 -24 12 -12Z" fill="#FF9FA1" class="ink8"/><path d="M0 25 Q0 50 -24 53 M0 25 Q0 50 24 53" class="ink8" fill="none"/></g><rect x="22" y="286" width="346" height="30" rx="15" fill="url(#tinyDots)" opacity=".7"/></g><g transform="translate(1286 250)" filter="url(#softShadow)"><rect width="390" height="340" rx="32" fill="#D9EFE5" class="ink8"/><text x="28" y="40" class="label" font-size="17">BEAR</text><circle cx="352" cy="35" r="11" fill="#F4C84D" class="ink5"/><circle cx="90.0" cy="108.0" r="64" fill="#D9A86C" class="ink8"/><circle cx="300.0" cy="108.0" r="64" fill="#D9A86C" class="ink8"/><circle cx="90.0" cy="108.0" r="30" fill="#F4C84D" opacity=".75"/><circle cx="300.0" cy="108.0" r="30" fill="#F4C84D" opacity=".75"/><path d="M60.0 148.0 C50.0 72.0 340.0 72.0 330.0 148.0 C365.0 282.0 288.0 341.0 195.0 346.0 C101.0 341.0 25.0 282.0 60.0 148.0Z" fill="#D9A86C" class="ink8"/><g transform="translate(195.0 154.0) scale(0.95)"><path d="M-78 0 Q-52 20 -27 0" fill="none" class="ink8"/><path d="M27 0 Q52 20 78 0" fill="none" class="ink8"/></g><g transform="translate(195.0 234.0) scale(0.8)" opacity=".82">
+      <ellipse cx="-110" cy="0" rx="38" ry="21" fill="#FF8A75"/>
+      <ellipse cx="110" cy="0" rx="38" ry="21" fill="#FF8A75"/>
+      <path d="M-133 0 l15 -7 M-110 3 l15 -7 M90 3 l15 -7 M113 0 l15 -7" class="ink5" fill="none" opacity=".33"/>
+    </g><g transform="translate(195.0 226.0) scale(0.65)"><ellipse cx="0" cy="12" rx="82" ry="61" fill="#FFF1DB" class="ink8"/><ellipse cx="0" cy="-5" rx="26" ry="19" fill="#241f1c"/><path d="M0 13 Q0 42 -27 45 M0 13 Q0 42 27 45" class="ink8" fill="none"/></g><rect x="22" y="286" width="346" height="30" rx="15" fill="url(#tinyDots)" opacity=".7"/></g><g transform="translate(860 620)" filter="url(#softShadow)"><rect width="390" height="340" rx="32" fill="#D9ECF6" class="ink8"/><text x="28" y="40" class="label" font-size="17">PUPPY</text><circle cx="352" cy="35" r="11" fill="#8ABAD8" class="ink5"/><path d="M75.0 126.0 C-15.0 66.0 -15.0 236.0 61.0 258.0 C105.0 272.0 120.0 220.0 119.0 161.0Z" fill="#8ABAD8" class="ink8"/><path d="M315.0 126.0 C405.0 66.0 405.0 236.0 329.0 258.0 C285.0 272.0 270.0 220.0 271.0 161.0Z" fill="#8ABAD8" class="ink8"/><path d="M58.0 151.0 C65.0 62.0 325.0 62.0 332.0 151.0 C361.0 278.0 287.0 340.0 195.0 344.0 C103.0 340.0 29.0 278.0 58.0 151.0Z" fill="#FFF1DB" class="ink8"/><path d="M155.0 78.0 Q207.0 104.0 233.0 144.0 Q177.0 154.0 131.0 125.0Z" fill="#8ABAD8" opacity=".8"/><g transform="translate(195.0 151.0) scale(0.95)"><ellipse cx="-52" cy="0" rx="16" ry="23" fill="#241f1c"/><path d="M24 4 Q52 25 80 4" fill="none" class="ink8"/><circle cx="-46" cy="-7" r="5" fill="#fff"/></g><g transform="translate(195.0 234.0) scale(0.76)" opacity=".82">
+      <ellipse cx="-110" cy="0" rx="38" ry="21" fill="#FF9C87"/>
+      <ellipse cx="110" cy="0" rx="38" ry="21" fill="#FF9C87"/>
+      <path d="M-133 0 l15 -7 M-110 3 l15 -7 M90 3 l15 -7 M113 0 l15 -7" class="ink5" fill="none" opacity=".33"/>
+    </g><g transform="translate(195.0 228.0) scale(0.62)"><ellipse cx="0" cy="10" rx="92" ry="62" fill="#FFF1DB" class="ink8"/><path d="M0 -12 C-26 -12 -33 18 0 30 C33 18 26 -12 0 -12Z" fill="#241f1c"/><path d="M0 30 Q0 56 -26 56 M0 30 Q0 56 26 56" class="ink8" fill="none"/></g><rect x="22" y="286" width="346" height="30" rx="15" fill="url(#tinyDots)" opacity=".7"/></g><g transform="translate(1286 620)" filter="url(#softShadow)"><rect width="390" height="340" rx="32" fill="#F9DFD4" class="ink8"/><text x="28" y="40" class="label" font-size="17">FOX</text><circle cx="352" cy="35" r="11" fill="#E87552" class="ink5"/><path d="M75.0 114.0 L97.0 1.0 L171.0 82.0Z" fill="#F6A65E" class="ink8"/><path d="M315.0 114.0 L293.0 1.0 L219.0 82.0Z" fill="#F6A65E" class="ink8"/><path d="M97.0 32.0 L111.0 81.0 L150.0 79.0Z" fill="#FF9FA1"/><path d="M293.0 32.0 L279.0 81.0 L240.0 79.0Z" fill="#FF9FA1"/><path d="M59.0 152.0 C69.0 62.0 321.0 62.0 331.0 152.0 C360.0 274.0 277.0 344.0 195.0 350.0 C113.0 344.0 30.0 274.0 59.0 152.0Z" fill="#F6A65E" class="ink8"/><path d="M61.0 230.0 Q130.0 192.0 195.0 238.0 Q260.0 192.0 329.0 230.0 Q291.0 331.0 195.0 350.0 Q99.0 331.0 61.0 230.0Z" fill="#FFF1DB"/><g transform="translate(195.0 154.0) scale(0.92)"><ellipse cx="-52" cy="0" rx="16" ry="23" fill="#241f1c"/><ellipse cx="52" cy="0" rx="16" ry="23" fill="#241f1c"/><circle cx="-46" cy="-7" r="5" fill="#fff"/><circle cx="58" cy="-7" r="5" fill="#fff"/></g><g transform="translate(195.0 231.0) scale(0.75)" opacity=".82">
+      <ellipse cx="-110" cy="0" rx="38" ry="21" fill="#FF776A"/>
+      <ellipse cx="110" cy="0" rx="38" ry="21" fill="#FF776A"/>
+      <path d="M-133 0 l15 -7 M-110 3 l15 -7 M90 3 l15 -7 M113 0 l15 -7" class="ink5" fill="none" opacity=".33"/>
+    </g><g transform="translate(195.0 228.0) scale(0.54)"><ellipse cx="-38" cy="12" rx="58" ry="42" fill="#FFF1DB"/><ellipse cx="38" cy="12" rx="58" ry="42" fill="#FFF1DB"/><path d="M0 -14 C-20 -14 -24 9 0 20 C24 9 20 -14 0 -14Z" fill="#241f1c"/><path d="M0 20 Q0 49 -26 53 M0 20 Q0 49 26 53" class="ink8" fill="none"/></g><rect x="22" y="286" width="346" height="30" rx="15" fill="url(#tinyDots)" opacity=".7"/></g><g transform="translate(860 994)">
+  <rect width="816" height="86" rx="26" fill="#241f1c"/>
+  <g transform="translate(24 18)">
+    <circle cx="24" cy="24" r="22" fill="#FF786B"/>
+    <path d="M14 24 h20 M24 14 v20" class="ink5" fill="none"/>
+    <text x="64" y="22" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="900" fill="#FBF8F1">MVP LIBRARY</text>
+    <text x="64" y="48" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#CFC5B9">5 BASES · 8 EAR SETS · 8 EYES · 6 SNOUTS · 6 CHEEKS · 4 PRINT FINISHES</text>
+  </g>
+</g><g transform="translate(88 1120)">
+  <text x="0" y="0" class="small">DESIGN RULE: EVERY FEATURE IS DRAWN ONCE, THEN SELECTED, PLACED, LAYERED, FLIPPED, AND EXPORTED.</text>
+  <text x="1588" y="0" text-anchor="end" class="small">CUTE / 2026</text>
+</g></svg>

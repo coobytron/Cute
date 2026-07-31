@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1000 1000">
+    <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/></filter>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="5" cy="6" r="2.2" fill="#2d2723" opacity=".10"/></pattern>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+    </defs><rect width="1000" height="1000" rx="72" fill="#EDE3FA"/><rect width="1000" height="1000" rx="72" fill="url(#dots)" opacity=".45"/>
+    <g filter="url(#s)">
+    <ellipse cx="370" cy="200" rx="67" ry="185" transform="rotate(-10 370 200)" fill="#D9C8F4" class="o"/><ellipse cx="630" cy="200" rx="67" ry="185" transform="rotate(10 630 200)" fill="#D9C8F4" class="o"/>
+    <ellipse cx="374" cy="202" rx="25" ry="127" transform="rotate(-10 374 202)" fill="#FF93A5" class="d"/><ellipse cx="626" cy="202" rx="25" ry="127" transform="rotate(10 626 202)" fill="#FF93A5" class="d"/>
+    <path d="M283 386 C250 284 302 218 392 250 Q500 208 608 250 C698 218 750 284 717 386 C804 449 829 603 769 729 C712 850 612 906 500 910 C388 906 288 850 231 729 C171 603 196 449 283 386Z" fill="#D9C8F4" class="o"/>
+    <path d="M345 473 C345 405 430 405 430 472 C430 537 388 566 388 566 C388 566 345 537 345 473Z M570 473 C570 405 655 405 655 472 C655 537 612 566 612 566 C612 566 570 537 570 473Z" fill="#2d2723"/>
+    <circle cx="374" cy="446" r="15" fill="#fff"/><circle cx="599" cy="446" r="15" fill="#fff"/>
+    <ellipse cx="315" cy="628" rx="67" ry="35" fill="#FF93A5" opacity=".82"/><ellipse cx="685" cy="628" rx="67" ry="35" fill="#FF93A5" opacity=".82"/>
+    <path d="M500 598 C467 580 430 605 446 645 C461 683 487 685 500 665 C513 685 539 683 554 645 C570 605 533 580 500 598Z" fill="#FF93A5" class="d"/><path d="M500 665 Q500 709 462 717 M500 665 Q500 709 538 717" fill="none" class="d"/>
+    <path d="M742 294 L765 346 L821 351 L779 388 L791 443 L742 414 L693 443 L705 388 L663 351 L719 346Z" fill="#F4C84D" class="d"/>
+    </g>
+    <g transform="translate(55 884)"><rect width="365" height="70" rx="28" fill="#fffdf8" class="d"/><text x="24" y="45" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="900" fill="#2d2723">MIMI BUNNY</text></g>
+    </svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1000 1000">
+    <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/></filter>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="5" cy="6" r="2.2" fill="#2d2723" opacity=".10"/></pattern>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+    </defs><rect width="1000" height="1000" rx="72" fill="#DCEFE4"/><rect width="1000" height="1000" rx="72" fill="url(#dots)" opacity=".45"/>
+    <g filter="url(#s)">
+    <circle cx="302" cy="310" r="110" fill="#BFE2CF" class="o"/><circle cx="698" cy="310" r="110" fill="#BFE2CF" class="o"/><circle cx="302" cy="310" r="52" fill="#7FC5A2" class="d"/><circle cx="698" cy="310" r="52" fill="#7FC5A2" class="d"/>
+    <path d="M255 386 C198 308 256 220 352 251 Q500 201 648 251 C744 220 802 308 745 386 C828 455 841 617 775 742 C710 864 609 913 500 914 C391 913 290 864 225 742 C159 617 172 455 255 386Z" fill="#BFE2CF" class="o"/>
+    <path d="M410 316 Q468 366 500 302 Q532 366 590 316 Q548 405 500 374 Q452 405 410 316Z" fill="#7FC5A2"/>
+    <path d="M330 488 Q390 542 450 488 M550 488 Q610 542 670 488" fill="none" class="d"/>
+    <circle cx="326" cy="630" r="31" fill="#FF8F91"/><circle cx="674" cy="630" r="31" fill="#FF8F91"/>
+    <ellipse cx="500" cy="650" rx="142" ry="103" fill="#F2FFF8" class="d"/><ellipse cx="500" cy="610" rx="44" ry="32" fill="#2d2723"/><path d="M500 642 Q500 691 452 698 M500 642 Q500 691 548 698" fill="none" class="d"/>
+    <g transform="translate(500 260)"><path d="M0 36 Q-8 -37 -61 -74" class="d" fill="none"/><path d="M-61 -74 Q-9 -88 -12 -34 Q-64 -26 -61 -74Z" fill="#7FC5A2" class="d"/><path d="M-1 -37 Q42 -93 86 -60 Q60 -6 7 6Z" fill="#7FC5A2" class="d"/></g>
+    </g>
+    <g transform="translate(55 884)"><rect width="365" height="70" rx="28" fill="#fffdf8" class="d"/><text x="24" y="45" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="900" fill="#2d2723">PUFF BEAR</text></g>
+    </svg>
