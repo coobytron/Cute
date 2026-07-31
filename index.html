@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6efe4" />
+  <meta name="description" content="A pre-drawn cute animal face generator." />
+  <title>Cute Face Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-grain" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div>
+          <p class="eyebrow">Pre-drawn animal character system</p>
+          <h1>Cute <em>Face Lab</em></h1>
+        </div>
+      </div>
+
+      <p class="header-copy">
+        Build soft little animal faces from authored parts. Every ear, eye, snout,
+        cheek and accessory is drawn once, then mixed with care.
+      </p>
+
+      <div class="header-actions">
+        <button class="button button-ghost" id="resetButton" type="button">Reset</button>
+        <button class="button button-primary" id="shuffleButton" type="button">Shuffle face</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel library-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">01 / Library</p>
+            <h2>Authored parts</h2>
+          </div>
+          <span class="count-pill" id="assetCount">5 recipes</span>
+        </div>
+
+        <div class="mode-tabs" role="tablist" aria-label="Library mode">
+          <button class="mode-tab is-active" data-mode="recipes" type="button">Characters</button>
+          <button class="mode-tab" data-mode="parts" type="button">Build a face</button>
+        </div>
+
+        <div id="recipeLibrary" class="recipe-library"></div>
+
+        <div id="partLibrary" class="part-library" hidden>
+          <div class="category-tabs" id="categoryTabs"></div>
+          <div class="part-grid" id="partGrid"></div>
+        </div>
+
+        <div class="source-rule">
+          <span class="source-icon" aria-hidden="true">✦</span>
+          <p><strong>Source-of-truth rule</strong> The browser selects, layers, mirrors, recolors and exports approved artwork. It never invents animal anatomy.</p>
+        </div>
+      </aside>
+
+      <section class="stage-column">
+        <div class="stage-toolbar">
+          <div>
+            <p class="panel-kicker">02 / Canvas</p>
+            <h2 id="characterTitle">Mochi Cat</h2>
+          </div>
+          <div class="stage-status">
+            <span class="status-dot"></span>
+            <span id="stageStatus">Curated recipe</span>
+          </div>
+        </div>
+
+        <div class="stage" id="stage">
+          <svg id="faceCanvas" viewBox="0 0 1000 1000" role="img" aria-labelledby="faceTitle faceDescription">
+            <title id="faceTitle">Cute animal face</title>
+            <desc id="faceDescription">A cute animal face assembled from pre-drawn vector parts.</desc>
+            <defs>
+              <clipPath id="headClip"><path id="headClipPath"></path></clipPath>
+              <filter id="faceShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14" />
+              </filter>
+              <filter id="stickerShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="12" stdDeviation="7" flood-color="#3d3028" flood-opacity=".18" />
+              </filter>
+              <pattern id="paperDots" width="22" height="22" patternUnits="userSpaceOnUse">
+                <circle cx="5" cy="6" r="2.2" fill="#2d2723" opacity=".11" />
+              </pattern>
+              <pattern id="halftone" width="18" height="18" patternUnits="userSpaceOnUse">
+                <circle cx="5" cy="5" r="3.2" fill="#2d2723" opacity=".16" />
+              </pattern>
+            </defs>
+            <g id="renderRoot"></g>
+          </svg>
+
+          <div class="stage-sticker">100% authored</div>
+          <button class="canvas-action canvas-action-left" id="flipButton" type="button" aria-label="Flip face horizontally">↔</button>
+          <button class="canvas-action canvas-action-right" id="favoriteButton" type="button" aria-label="Favorite this face">♡</button>
+        </div>
+
+        <div class="stage-footer">
+          <div class="recipe-code" id="recipeCode">CAT-01 · EYE-03 · SNOUT-01</div>
+          <button class="button button-dark" id="exportButton" type="button">Export PNG</button>
+        </div>
+      </section>
+
+      <aside class="panel controls-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">03 / Direction</p>
+            <h2>Art controls</h2>
+          </div>
+          <span class="count-pill">Non-destructive</span>
+        </div>
+
+        <section class="control-section">
+          <div class="control-heading">
+            <label for="scaleControl">Face scale</label>
+            <output id="scaleOutput">100%</output>
+          </div>
+          <input id="scaleControl" type="range" min="78" max="116" value="100" />
+        </section>
+
+        <section class="control-section">
+          <div class="control-heading">
+            <label for="rotationControl">Tiny tilt</label>
+            <output id="rotationOutput">0°</output>
+          </div>
+          <input id="rotationControl" type="range" min="-8" max="8" value="0" />
+        </section>
+
+        <section class="control-section">
+          <div class="control-heading stacked">
+            <span>Palette</span>
+            <small>Approved color families</small>
+          </div>
+          <div class="palette-grid" id="paletteGrid"></div>
+        </section>
+
+        <section class="control-section">
+          <div class="control-heading stacked">
+            <span>Surface finish</span>
+            <small>Fixed print treatments</small>
+          </div>
+          <div class="finish-grid" id="finishGrid"></div>
+        </section>
+
+        <section class="control-section">
+          <div class="control-heading stacked">
+            <label for="nameInput">Character name</label>
+            <small>Used in the exported file</small>
+          </div>
+          <input class="text-input" id="nameInput" type="text" maxlength="24" value="Mochi Cat" />
+        </section>
+
+        <button class="button button-primary button-full" id="shuffleSecondary" type="button">Make another cutie</button>
+
+        <p class="control-note">
+          The first MVP locks five hero recipes: cat, bunny, bear, puppy and fox. Parts remain reusable so the library can grow without changing the composer.
+        </p>
+      </aside>
+    </main>
+
+    <section class="saved-strip">
+      <div class="saved-heading">
+        <p class="panel-kicker">Saved / Local</p>
+        <h2>Little friends</h2>
+      </div>
+      <div class="saved-grid" id="savedGrid"></div>
+      <button class="save-card" id="saveButton" type="button">
+        <span class="save-plus">+</span>
+        <span>Save this version</span>
+      </button>
+    </section>
+
+    <footer class="app-footer">
+      <span>CUTE FACE LAB / MVP 01</span>
+      <span>Drawn once. Mixed forever.</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
