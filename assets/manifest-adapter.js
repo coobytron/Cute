@@ -129,6 +129,7 @@
     loadStyle("assets/complete-face.css");
     loadStyle("assets/build-face.css");
     loadStyle("assets/art-direction.css");
+    loadStyle("assets/history-saves.css");
 
     loadScript("complete-face.js")
       .then(() => global.CuteCompleteFaces?.ready)
@@ -137,6 +138,7 @@
       .then(() => loadScript("build-face.js"))
       .then(() => loadScript("art-direction.js"))
       .then(() => loadScript("art-direction-bootstrap.js"))
+      .then(() => loadScript("history-saves.js"))
       .then(() => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-ready")))
       .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-error", { detail: error })));
   }

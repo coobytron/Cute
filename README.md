@@ -34,14 +34,16 @@ Then open `http://localhost:8000` in Safari or Chromium. GitHub Pages also works
 - composition scale, rotation, horizontal flip, compatible shuffle, and recipe reset
 - four fixed finishes: Classic paper, Clean studio, Thermal print, and Sticker
 - authored backgrounds, frames, expression mappings, palette support, captions, and transparent export preview
+- undo and redo across both composer modes with grouped sliders and keyboard shortcuts
+- schema-versioned local saved variations, exact restore, persistent favorites, thumbnails, deletion, and storage-failure recovery
 - 1600 × 1600 PNG export plus 384 px and 576 px thermal review output
-- local favorites and saved-card scaffolding; full history and persistence hardening are tracked in the next roadmap issue
 
-Complete-face, layered-composition, and Art direction state are exposed through:
+The primary browser state APIs are:
 
 - `window.CuteCompleteFaces`
 - `window.CuteBuildFace`
 - `window.CuteArtDirection`
+- `window.CuteHistorySaves`
 
 ## Authored asset system
 
@@ -52,6 +54,7 @@ Authoring and integration documentation:
 - [`docs/ASSET-GUIDE.md`](docs/ASSET-GUIDE.md)
 - [`docs/BUILD-A-FACE.md`](docs/BUILD-A-FACE.md)
 - [`docs/ART-DIRECTION.md`](docs/ART-DIRECTION.md)
+- [`docs/HISTORY-SAVES.md`](docs/HISTORY-SAVES.md)
 
 ## Validation
 
@@ -62,9 +65,10 @@ node scripts/validate-manifest.mjs
 node scripts/validate-complete-faces.mjs
 node scripts/validate-build-face.mjs
 node scripts/validate-art-direction.mjs
+node scripts/validate-history-saves.mjs
 ```
 
-GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing complete-face integration, or incomplete Art direction contracts.
+GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing runtime integration, incomplete Art direction contracts, or history/persistence API regressions.
 
 ## Deterministic review artifacts
 
