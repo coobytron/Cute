@@ -38,6 +38,9 @@ Then open `http://localhost:8000` in Safari or Chromium. GitHub Pages also works
 - schema-versioned local saved variations, exact restore, persistent favorites, thumbnails, deletion, and storage-failure recovery
 - accessible Export menu for opaque 1600 px PNG, transparent PNG, and copied recipe JSON
 - stable filenames, font/image readiness, object URL cleanup, and announced export failures
+- responsive layouts reviewed at 1600, 1280, 1024, 768, and 390 px
+- stage-first phone layout, mobile Assets / Art direction navigation, touch targets, and horizontal saved variations
+- skip link, named regions, keyboard tab behavior, live announcements, reduced motion, forced colors, and hidden-panel focus isolation
 - 384 px and 576 px thermal review output
 
 The primary browser APIs are:
@@ -47,6 +50,7 @@ The primary browser APIs are:
 - `window.CuteArtDirection`
 - `window.CuteHistorySaves`
 - `window.CuteExport`
+- `window.CuteResponsiveA11y`
 
 ## Authored asset system
 
@@ -59,6 +63,7 @@ Authoring and integration documentation:
 - [`docs/ART-DIRECTION.md`](docs/ART-DIRECTION.md)
 - [`docs/HISTORY-SAVES.md`](docs/HISTORY-SAVES.md)
 - [`docs/EXPORT.md`](docs/EXPORT.md)
+- [`docs/RESPONSIVE-A11Y.md`](docs/RESPONSIVE-A11Y.md)
 
 ## Validation
 
@@ -71,9 +76,10 @@ node scripts/validate-build-face.mjs
 node scripts/validate-art-direction.mjs
 node scripts/validate-history-saves.mjs
 node scripts/validate-export.mjs
+node scripts/validate-responsive-a11y.mjs
 ```
 
-GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing runtime integration, incomplete Art direction contracts, history/persistence regressions, or export menu/fixture regressions.
+GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing runtime integration, incomplete Art direction contracts, history/persistence regressions, export regressions, or responsive/accessibility contract regressions.
 
 ## Deterministic review artifacts
 
@@ -81,6 +87,7 @@ GitHub Actions also checks browser-script syntax. Validation fails on missing fi
 - Build-a-face compatibility sheet: [`previews/contact-sheets/build-face-compatibility.html`](previews/contact-sheets/build-face-compatibility.html)
 - Finish and thermal comparison: [`previews/contact-sheets/art-direction-finishes.html`](previews/contact-sheets/art-direction-finishes.html)
 - Export fixture matrix: [`previews/export-fixtures/export-matrix.html`](previews/export-fixtures/export-matrix.html)
+- Responsive viewport review: [`previews/responsive-review.html`](previews/responsive-review.html)
 
 ## Visual direction
 
