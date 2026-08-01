@@ -106,6 +106,29 @@
     return request;
   }
 
+  function loadScript(source) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = source;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error(`Unable to load ${source}.`));
+      document.head.appendChild(script);
+    });
+  }
+
+  function installBuildFace() {
+    loadScript("assets/build-face-manifest.js")
+      .then(() => loadScript("build-face.js"))
+      .then(() => global.dispatchEvent?.(new CustomEvent("cute:build-face-ready")))
+      .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:build-face-error", { detail: error })));
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installBuildFace, { once: true });
+  } else {
+    installBuildFace();
+  }
+
   global.CuteAssetManifest = Object.freeze({
     defaultUrl: DEFAULT_MANIFEST_URL,
     legacyRecipeAliases,
