@@ -4,11 +4,11 @@ The supplied **Cute Face Builder** mockup is the product, interaction, and visua
 
 Repository reference images:
 
-- `docs/reference/cute-face-builder-mvp.png` — approved high-fidelity target when present
+- `docs/reference/cute-face-builder-mvp.svg` — embedded approved high-fidelity target preview
 - `previews/cute-face-mvp-board.png` — earlier working direction board
 - `mvp/cute-face-mvp-board.svg` — editable early direction board
 
-The high-fidelity mockup takes priority when the references disagree.
+The approved mockup takes priority when the references disagree.
 
 ## Product promise
 
