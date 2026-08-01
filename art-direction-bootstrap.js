@@ -3,12 +3,19 @@
 
   if (!global.CuteArtDirection) return;
 
+  const expressionAssets = Object.freeze({
+    happy: { legacy: "sparkle", layered: "eyes-sparkle" },
+    sleepy: { legacy: "sleepy", layered: "eyes-sleepy" },
+    surprised: { legacy: "star", layered: "eyes-star" }
+  });
+
   let activeMode = typeof state !== "undefined" && state.mode === "parts" ? "parts" : "recipes";
   let lastCompleteRecipeId = typeof state !== "undefined" && state.recipeId ? state.recipeId : "mochi-cat";
   let lastLayeredRecipeId = global.CuteBuildFace?.getState().recipeId
     || global.CuteBuildFace?.listRecipes()[0]?.id
     || null;
   let resetSnapshot = null;
+  let applyingRestoredExpression = false;
 
   function inferLegacyExpression() {
     if (typeof state === "undefined") return "happy";
@@ -25,10 +32,43 @@
     return "happy";
   }
 
+  function currentExpression() {
+    return activeMode === "parts"
+      ? inferLayeredExpression(global.CuteBuildFace?.getState())
+      : inferLegacyExpression();
+  }
+
   function syncExpression(expressionId) {
     const current = global.CuteArtDirection.getState();
     if (current.expressionId === expressionId) return;
     global.CuteArtDirection.restore({ ...current, expressionId });
+  }
+
+  function applyRestoredExpression(expressionId) {
+    const mapping = expressionAssets[expressionId];
+    if (!mapping || applyingRestoredExpression || currentExpression() === expressionId) return;
+
+    applyingRestoredExpression = true;
+    try {
+      if (activeMode === "parts" && global.CuteBuildFace) {
+        const next = global.CuteBuildFace.getState();
+        const supported = global.CuteBuildFace
+          .listCompatible("eyes", next.partIds.base)
+          .some((item) => item.id === mapping.layered);
+        if (supported) {
+          next.partIds.eyes = mapping.layered;
+          global.CuteBuildFace.restore({ ...next, recipeId: null });
+        } else {
+          syncExpression(currentExpression());
+        }
+      } else if (typeof state !== "undefined" && typeof eyes !== "undefined" && eyes[mapping.legacy]) {
+        state.eyes = mapping.legacy;
+        state.recipeId = null;
+        renderFace();
+      }
+    } finally {
+      applyingRestoredExpression = false;
+    }
   }
 
   function restoreCompleteFaceLibrary() {
@@ -63,14 +103,16 @@
     syncExpression(inferLayeredExpression(event.detail));
   });
 
+  global.addEventListener("cute:art-direction-change", (event) => {
+    applyRestoredExpression(event.detail?.expressionId);
+  });
+
   document.querySelectorAll(".mode-tab").forEach((button) => {
     button.addEventListener("click", () => {
       activeMode = button.dataset.mode === "parts" ? "parts" : "recipes";
       setTimeout(() => {
         if (activeMode === "recipes") restoreCompleteFaceLibrary();
-        syncExpression(activeMode === "parts"
-          ? inferLayeredExpression(global.CuteBuildFace?.getState())
-          : inferLegacyExpression());
+        syncExpression(currentExpression());
       }, 0);
     });
   });
@@ -104,7 +146,10 @@
       restoreCompleteFaceLibrary();
     }
 
-    global.CuteArtDirection.restore(global.CuteArtDirection.defaults);
+    global.CuteArtDirection.restore({
+      ...global.CuteArtDirection.defaults,
+      expressionId: currentExpression()
+    });
     resetSnapshot = null;
   });
 })(window);
