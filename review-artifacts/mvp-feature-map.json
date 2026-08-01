@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "product": "Cute Face Builder",
+  "target": "Approved high-fidelity MVP mockup",
+  "sourceOfTruth": [
+    "docs/MVP-TARGET.md",
+    "assets/manifest.json",
+    "docs/ASSET-GUIDE.md"
+  ],
+  "features": [
+    {
+      "id": "authored-asset-contract",
+      "mockupRegion": "Product-wide",
+      "status": "implemented",
+      "issue": 2,
+      "implementation": ["assets/manifest.json", "assets/manifest.schema.json", "assets/manifest-adapter.js"]
+    },
+    {
+      "id": "mockup-shell",
+      "mockupRegion": "Header, three-column workspace, saved strip",
+      "status": "implemented",
+      "issue": 3,
+      "implementation": ["index.html", "styles.css"]
+    },
+    {
+      "id": "complete-face-library",
+      "mockupRegion": "Authored assets / Complete faces",
+      "status": "implemented",
+      "issue": 4,
+      "counts": {"approvedFaces": 12, "recipes": 12},
+      "implementation": ["assets/complete-faces", "complete-face.js", "complete-face-state.js"]
+    },
+    {
+      "id": "build-a-face",
+      "mockupRegion": "Authored assets / Build a face",
+      "status": "implemented",
+      "issue": 5,
+      "counts": {"bases": 5, "ears": 8, "eyes": 8, "snouts": 6, "cheeks": 5, "markings": 6, "accessoriesIncludingNone": 7, "curatedRecipes": 12},
+      "implementation": ["assets/build-face-manifest.js", "build-face.js", "docs/BUILD-A-FACE.md"]
+    },
+    {
+      "id": "art-direction",
+      "mockupRegion": "Art direction panel",
+      "status": "implemented",
+      "issue": 6,
+      "counts": {"finishes": 4, "backgrounds": 5, "frames": 3, "expressions": 3, "palettes": 5},
+      "implementation": ["art-direction.js", "art-direction-bootstrap.js", "docs/ART-DIRECTION.md"]
+    },
+    {
+      "id": "history-saved-variations",
+      "mockupRegion": "Stage actions and Saved variations",
+      "status": "implemented",
+      "issue": 7,
+      "implementation": ["history-saves.js", "docs/HISTORY-SAVES.md"]
+    },
+    {
+      "id": "export-menu",
+      "mockupRegion": "Header Export",
+      "status": "implemented",
+      "issue": 8,
+      "formats": ["PNG 1600 opaque", "PNG 1600 transparent", "recipe JSON clipboard"],
+      "implementation": ["export-menu.js", "docs/EXPORT.md"]
+    },
+    {
+      "id": "responsive-accessibility",
+      "mockupRegion": "All regions",
+      "status": "implemented_with_manual_review",
+      "issue": 9,
+      "reviewWidths": [1600, 1280, 1024, 768, 390],
+      "implementation": ["assets/responsive-a11y.css", "responsive-a11y.js", "docs/RESPONSIVE-A11Y.md"]
+    },
+    {
+      "id": "deterministic-qa-release",
+      "mockupRegion": "Release workflow",
+      "status": "implemented_with_manual_review",
+      "issue": 10,
+      "implementation": ["previews/contact-sheets/release-matrix.html", "scripts/validate-release.mjs", "docs/RELEASE-CHECKLIST.md"]
+    }
+  ],
+  "manualReviewRequired": [
+    "Safari visual and download behavior",
+    "Chromium visual and download behavior",
+    "iPhone Safari orientation changes",
+    "VoiceOver workflow basics",
+    "200% browser zoom",
+    "thermal output on physical 384 px and 576 px printers",
+    "art-direction approval of final contact sheets"
+  ]
+}
