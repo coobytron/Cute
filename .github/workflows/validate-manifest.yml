@@ -24,3 +24,6 @@ jobs:
 
       - name: Validate authored asset manifest
         run: node scripts/validate-manifest.mjs
+
+      - name: Validate Build-a-face catalog
+        run: node scripts/validate-build-face.mjs
