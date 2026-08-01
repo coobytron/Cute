@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "canonicalCanvas": {
+    "width": 1000,
+    "height": 1000,
+    "coordinateSystem": "top-left",
+    "normalizedAnchors": true
+  },
+  "supportedFormats": ["svg", "png", "webp"],
+  "supportedBlendModes": [
+    "source-over",
+    "multiply",
+    "screen",
+    "overlay",
+    "soft-light",
+    "hard-light",
+    "color-dodge",
+    "color-burn",
+    "difference",
+    "exclusion",
+    "destination-in",
+    "destination-out"
+  ],
+  "assetFields": {
+    "sourceFile": "Repository-relative path to SVG, PNG, or WebP artwork.",
+    "format": "svg | png | webp",
+    "nativeCanvas": { "width": "positive number", "height": "positive number" },
+    "pixelDensity": "positive number; 1 for vector and standard raster, 2+ for retina raster",
+    "anchor": { "x": "normalized 0..1", "y": "normalized 0..1" },
+    "defaultTransform": {
+      "x": "canonical canvas coordinate",
+      "y": "canonical canvas coordinate",
+      "scale": "positive number",
+      "rotation": "degrees",
+      "flipX": "boolean"
+    },
+    "zOrder": "finite number",
+    "blendMode": "supported Canvas 2D composite operation",
+    "opacity": "0..1",
+    "maskRef": "optional stable asset ID",
+    "tintable": "boolean",
+    "exportBounds": {
+      "left": "canonical canvas coordinate",
+      "top": "canonical canvas coordinate",
+      "right": "canonical canvas coordinate",
+      "bottom": "canonical canvas coordinate"
+    }
+  },
+  "layerRoles": [
+    "base-color",
+    "linework",
+    "shading",
+    "highlight",
+    "texture",
+    "effect-mask"
+  ],
+  "failurePolicy": {
+    "missingSource": "render visible recoverable placeholder and report asset ID/path",
+    "decodeFailure": "render visible recoverable placeholder and preserve remaining layers",
+    "missingMask": "skip masked layer and report maskRef",
+    "unsupportedBlendMode": "fall back to source-over and report warning",
+    "invalidBounds": "block export and report asset ID"
+  },
+  "performanceTiers": {
+    "compact": { "maxPixelRatio": 1.5, "allowLargeTextures": false },
+    "standard": { "maxPixelRatio": 2, "allowLargeTextures": true },
+    "high": { "maxPixelRatio": 3, "allowLargeTextures": true }
+  }
+}
