@@ -125,18 +125,21 @@
     });
   }
 
-  function installBuildFace() {
+  function installCreativeControls() {
     loadStyle("assets/build-face.css");
+    loadStyle("assets/art-direction.css");
     loadScript("assets/build-face-manifest.js")
       .then(() => loadScript("build-face.js"))
-      .then(() => global.dispatchEvent?.(new CustomEvent("cute:build-face-ready")))
-      .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:build-face-error", { detail: error })));
+      .then(() => loadScript("art-direction.js"))
+      .then(() => loadScript("art-direction-bootstrap.js"))
+      .then(() => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-ready")))
+      .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-error", { detail: error })));
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", installBuildFace, { once: true });
+    document.addEventListener("DOMContentLoaded", installCreativeControls, { once: true });
   } else {
-    installBuildFace();
+    installCreativeControls();
   }
 
   global.CuteAssetManifest = Object.freeze({

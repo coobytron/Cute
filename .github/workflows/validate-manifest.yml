@@ -27,3 +27,12 @@ jobs:
 
       - name: Validate Build-a-face catalog
         run: node scripts/validate-build-face.mjs
+
+      - name: Check browser script syntax
+        run: |
+          node --check build-face.js
+          node --check art-direction.js
+          node --check art-direction-bootstrap.js
+
+      - name: Validate art-direction contract
+        run: node scripts/validate-art-direction.mjs
