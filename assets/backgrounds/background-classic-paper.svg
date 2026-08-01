@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <defs>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="12"/><feColorMatrix values="0 0 0 0 0.43 0 0 0 0 0.31 0 0 0 0 0.18 0 0 0 .07 0"/></filter>
+  </defs>
+  <rect width="1000" height="1000" rx="36" fill="#FFF5DF"/>
+  <rect width="1000" height="1000" rx="36" filter="url(#paper)" opacity="0.22"/>
+</svg>
