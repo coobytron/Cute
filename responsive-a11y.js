@@ -16,6 +16,7 @@
   const mobileQuery = global.matchMedia("(max-width: 760px)");
   let activeMobilePanel = "assets";
   let announceTimer = null;
+  let libraryModePanel = null;
 
   function ensureId(element, id) {
     if (!element.id) element.id = id;
@@ -132,14 +133,33 @@
     controlsPanel.setAttribute("aria-hidden", String(showAssets));
   }
 
-  function syncModeTabs() {
+  function installLibraryModePanel() {
+    const recipeLibrary = document.getElementById("recipeLibrary");
+    const partLibrary = document.getElementById("partLibrary");
+    if (!recipeLibrary || !partLibrary || document.getElementById("libraryModeContent")) return;
+
+    libraryModePanel = document.createElement("div");
+    libraryModePanel.id = "libraryModeContent";
+    libraryModePanel.setAttribute("role", "tabpanel");
+    libraryModePanel.tabIndex = 0;
+    recipeLibrary.insertAdjacentElement("beforebegin", libraryModePanel);
+    libraryModePanel.append(recipeLibrary, partLibrary);
+
     modeTabs.forEach((tab) => {
-      const selected = tab.classList.contains("is-active");
+      tab.id = tab.dataset.mode === "parts" ? "buildFaceModeTab" : "completeFacesModeTab";
+    });
+  }
+
+  function syncModeTabs() {
+    const selectedTab = modeTabs.find((tab) => tab.classList.contains("is-active"));
+    modeTabs.forEach((tab) => {
+      const selected = tab === selectedTab;
       tab.setAttribute("role", "tab");
       tab.setAttribute("aria-selected", String(selected));
-      tab.setAttribute("aria-controls", "recipeLibrary partLibrary");
+      tab.setAttribute("aria-controls", "libraryModeContent");
       tab.tabIndex = selected ? 0 : -1;
     });
+    if (libraryModePanel && selectedTab) libraryModePanel.setAttribute("aria-labelledby", selectedTab.id);
   }
 
   function installModeTabKeyboard() {
@@ -173,7 +193,10 @@
   function installControlSemantics() {
     document.querySelectorAll('input[type="range"]').forEach((input) => {
       syncRangeValue(input);
-      input.addEventListener("input", () => syncRangeValue(input));
+      if (!input.dataset.a11yBound) {
+        input.dataset.a11yBound = "true";
+        input.addEventListener("input", () => syncRangeValue(input));
+      }
     });
 
     document.querySelectorAll(".category-tabs").forEach((tabs) => {
@@ -199,6 +222,7 @@
 
   installLandmarks();
   installMobilePanelNavigation();
+  installLibraryModePanel();
   installModeTabKeyboard();
   installControlSemantics();
   syncModeTabs();
