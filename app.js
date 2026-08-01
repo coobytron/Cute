@@ -299,7 +299,8 @@ function renderFace() {
   els.rotationControl.value = state.rotation;
   els.nameInput.value = state.name;
   els.favoriteButton.classList.toggle("is-active", state.favorite);
-  els.favoriteButton.textContent = state.favorite ? "♥" : "♡";
+  els.favoriteButton.setAttribute("aria-pressed", String(state.favorite));
+  els.favoriteButton.textContent = state.favorite ? "♥ Favourite" : "♡ Favourite";
   renderRecipeLibrary();
   renderPartLibrary();
   renderPalettes();
@@ -534,11 +535,30 @@ document.querySelector("#resetButton").addEventListener("click", resetFace);
 document.querySelector("#flipButton").addEventListener("click", () => { state.flipped = !state.flipped; renderFace(); });
 document.querySelector("#favoriteButton").addEventListener("click", () => { state.favorite = !state.favorite; renderFace(); });
 document.querySelector("#saveButton").addEventListener("click", saveCurrent);
+// saveVersionButton mirrors the saved-strip save action from the stage action toolbar
+document.querySelector("#saveVersionButton").addEventListener("click", saveCurrent);
 document.querySelector("#exportButton").addEventListener("click", exportPng);
 els.scaleControl.addEventListener("input", (event) => { state.scale = Number(event.target.value); renderFace(); });
 els.rotationControl.addEventListener("input", (event) => { state.rotation = Number(event.target.value); renderFace(); });
 els.nameInput.addEventListener("input", (event) => { state.name = event.target.value; els.characterTitle.textContent = state.name || "Untitled Cutie"; });
 
+// Expression pill buttons — expression switching is owned by a later issue;
+// only "happy" is active and wired here. Other pills are disabled in HTML.
+document.querySelectorAll(".expression-pills [data-expression]").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".expression-pills [data-expression]").forEach((b) => {
+      b.classList.toggle("is-active", b === button);
+      b.setAttribute("aria-pressed", String(b === button));
+    });
+  });
+});
+
 syncModeTabs();
 renderSaved();
 renderFace();
+
+// Dynamically update the library panel recipe count
+const assetCountEl = document.querySelector("#assetCount");
+if (assetCountEl) {
+  assetCountEl.textContent = `${recipes.length} recipes`;
+}
