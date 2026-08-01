@@ -31,6 +31,16 @@
     global.CuteArtDirection.restore({ ...current, expressionId });
   }
 
+  function restoreCompleteFaceLibrary() {
+    if (typeof renderRecipeLibrary === "function") renderRecipeLibrary();
+    const recipeLibrary = document.getElementById("recipeLibrary");
+    const partLibrary = document.getElementById("partLibrary");
+    const assetCount = document.getElementById("assetCount");
+    if (recipeLibrary) recipeLibrary.hidden = false;
+    if (partLibrary) partLibrary.hidden = true;
+    if (assetCount && typeof recipes !== "undefined") assetCount.textContent = `${recipes.length} recipes`;
+  }
+
   if (typeof renderFace === "function") {
     const previousRenderFace = renderFace;
     renderFace = function coordinatedRenderFace(...args) {
@@ -57,6 +67,7 @@
     button.addEventListener("click", () => {
       activeMode = button.dataset.mode === "parts" ? "parts" : "recipes";
       setTimeout(() => {
+        if (activeMode === "recipes") restoreCompleteFaceLibrary();
         syncExpression(activeMode === "parts"
           ? inferLayeredExpression(global.CuteBuildFace?.getState())
           : inferLegacyExpression());
@@ -90,6 +101,7 @@
     } else if (snapshot.completeRecipeId && typeof applyRecipe === "function") {
       applyRecipe(snapshot.completeRecipeId);
       activeMode = "recipes";
+      restoreCompleteFaceLibrary();
     }
 
     global.CuteArtDirection.restore(global.CuteArtDirection.defaults);
