@@ -35,6 +35,7 @@ jobs:
       - name: Check browser script syntax
         run: |
           node --check complete-face.js
+          node --check complete-face-state.js
           node --check build-face.js
           node --check art-direction.js
           node --check art-direction-bootstrap.js
