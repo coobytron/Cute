@@ -106,6 +106,15 @@
     return request;
   }
 
+  function loadStyle(source) {
+    if (document.querySelector(`link[data-cute-style="${source}"]`)) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = source;
+    link.dataset.cuteStyle = source;
+    document.head.appendChild(link);
+  }
+
   function loadScript(source) {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
@@ -117,6 +126,7 @@
   }
 
   function installBuildFace() {
+    loadStyle("assets/build-face.css");
     loadScript("assets/build-face-manifest.js")
       .then(() => loadScript("build-face.js"))
       .then(() => global.dispatchEvent?.(new CustomEvent("cute:build-face-ready")))
