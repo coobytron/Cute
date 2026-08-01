@@ -358,6 +358,14 @@
     if (event.target.matches('input[type="range"]')) beginSliderEdit();
   }, true);
 
+  document.addEventListener("pointerup", (event) => {
+    if (sliderActive && event.target.matches('input[type="range"]')) finishSliderEdit();
+  }, true);
+
+  document.addEventListener("pointercancel", () => {
+    if (sliderActive) finishSliderEdit();
+  }, true);
+
   document.addEventListener("keydown", (event) => {
     if (event.target.matches('input[type="range"]')) beginSliderEdit();
   }, true);
@@ -416,6 +424,9 @@
     event.shiftKey ? redo() : undo();
   });
 
+  // Replace the legacy renderer so complete-face selections cannot overwrite the
+  // persistent saved-variation strip after this module has initialized.
+  global.renderSaved = renderSaved;
   renderSaved();
   push(capture(), true);
 
@@ -425,6 +436,7 @@
     undo,
     redo,
     saveCurrent,
+    renderSaved,
     getRecords: () => clone(records),
     clear() {
       records = [];
