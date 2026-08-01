@@ -40,9 +40,13 @@ jobs:
           node --check art-direction.js
           node --check art-direction-bootstrap.js
           node --check history-saves.js
+          node --check export-menu.js
 
       - name: Validate art-direction contract
         run: node scripts/validate-art-direction.mjs
 
       - name: Validate history and saved variations
         run: node scripts/validate-history-saves.mjs
+
+      - name: Validate export menu and fixtures
+        run: node scripts/validate-export.mjs
