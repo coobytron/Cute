@@ -1,0 +1,42 @@
+/* Manifest-backed complete-face library and authored stage assets. */
+.recipe-thumb img,
+.saved-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.recipe-card.is-active,
+.recipe-card[aria-pressed="true"] {
+  border-color: #ff6f89;
+  box-shadow: inset 0 0 0 1px #ff6f89;
+}
+
+.recipe-card .recipe-thumb {
+  overflow: hidden;
+}
+
+.complete-face-loading {
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  color: #8a776c;
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+}
+
+.palette-button:disabled,
+.pill-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.34;
+}
+
+.palette-button:disabled::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent 44%, rgba(73, 49, 37, 0.48) 46% 54%, transparent 56%);
+}
