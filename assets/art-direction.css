@@ -1,0 +1,209 @@
+/* Mockup-faithful art-direction controls and non-destructive stage treatments. */
+.stage {
+  --art-stage-background: #ffe9bd;
+  isolation: isolate;
+}
+
+#faceCanvas {
+  position: relative;
+  z-index: 1;
+  transition: filter 160ms ease;
+}
+
+#stageFinishOverlay,
+#stageFrameOverlay,
+#stageCaption {
+  position: absolute;
+  pointer-events: none;
+}
+
+#stageFinishOverlay {
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+#stageFrameOverlay {
+  inset: 24px;
+  z-index: 3;
+  border-radius: 28px;
+  display: none;
+}
+
+#stageCaption {
+  left: 50%;
+  bottom: 28px;
+  z-index: 4;
+  max-width: calc(100% - 120px);
+  transform: translateX(-50%);
+  padding: 9px 16px 10px;
+  border: 1px solid rgba(74, 50, 38, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 252, 245, 0.9);
+  box-shadow: 0 4px 18px rgba(74, 50, 38, 0.1);
+  color: #38261d;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stage.is-transparent-preview {
+  background-color: #fff !important;
+  background-image:
+    linear-gradient(45deg, #eee8df 25%, transparent 25%),
+    linear-gradient(-45deg, #eee8df 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #eee8df 75%),
+    linear-gradient(-45deg, transparent 75%, #eee8df 75%) !important;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0 !important;
+  background-size: 24px 24px !important;
+}
+
+.stage[data-art-finish="classic-paper"] #stageFinishOverlay {
+  opacity: 0.34;
+  background-image:
+    radial-gradient(circle at 14% 18%, rgba(92, 61, 42, 0.12) 0 0.7px, transparent 0.9px),
+    radial-gradient(circle at 72% 64%, rgba(92, 61, 42, 0.09) 0 0.8px, transparent 1px);
+  background-size: 11px 13px, 17px 19px;
+  mix-blend-mode: multiply;
+}
+
+.stage[data-art-finish="clean-studio"] #stageFinishOverlay {
+  opacity: 0;
+}
+
+.stage[data-art-finish="thermal-print"] #faceCanvas {
+  filter: grayscale(1) contrast(1.72) brightness(1.04);
+}
+
+.stage[data-art-finish="thermal-print"] #stageFinishOverlay {
+  opacity: 0.3;
+  background-image: radial-gradient(circle, rgba(45, 39, 35, 0.75) 0 1.1px, transparent 1.3px);
+  background-size: 8px 8px;
+  mix-blend-mode: multiply;
+}
+
+.stage[data-art-finish="sticker"] #renderRoot {
+  filter:
+    drop-shadow(7px 0 0 #fff)
+    drop-shadow(-7px 0 0 #fff)
+    drop-shadow(0 7px 0 #fff)
+    drop-shadow(0 -7px 0 #fff)
+    drop-shadow(0 12px 9px rgba(61, 48, 40, 0.2));
+}
+
+.stage[data-art-frame="soft-rounded"] #stageFrameOverlay {
+  display: block;
+  border: 3px solid rgba(73, 49, 37, 0.64);
+  box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.44);
+}
+
+.stage[data-art-frame="postage"] #stageFrameOverlay {
+  display: block;
+  border: 4px dashed rgba(73, 49, 37, 0.58);
+  border-radius: 18px;
+}
+
+.art-scene-section,
+.art-caption-section {
+  display: grid;
+  gap: 12px;
+}
+
+.art-select-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.art-field {
+  display: grid;
+  gap: 6px;
+  color: #5d4b42;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.art-select,
+.art-caption-input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid rgba(73, 49, 37, 0.17);
+  border-radius: 12px;
+  background: #fffdf8;
+  color: #38261d;
+  font: inherit;
+  padding: 0 12px;
+}
+
+.art-caption-input {
+  padding-block: 10px;
+}
+
+.art-select:focus-visible,
+.art-caption-input:focus-visible,
+.art-finish-card:focus-visible {
+  outline: 3px solid rgba(255, 111, 137, 0.28);
+  outline-offset: 2px;
+}
+
+.finish-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.art-finish-card {
+  min-height: 72px;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  border: 1px solid rgba(73, 49, 37, 0.15);
+  border-radius: 14px;
+  background: #fffdf8;
+  color: #493125;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  padding: 12px;
+}
+
+.art-finish-card strong {
+  font-size: 13px;
+}
+
+.art-finish-card small {
+  color: #8a776c;
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.art-finish-card:hover {
+  border-color: rgba(255, 111, 137, 0.55);
+}
+
+.art-finish-card.is-active {
+  border-color: #ff6f89;
+  box-shadow: inset 0 0 0 1px #ff6f89;
+  background: #fff7f8;
+}
+
+.palette-button[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ff6f89;
+}
+
+@media (max-width: 1100px) {
+  .art-select-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #faceCanvas,
+  #stageFinishOverlay {
+    transition: none;
+  }
+}
