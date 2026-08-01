@@ -42,6 +42,7 @@ jobs:
           node --check history-saves.js
           node --check export-menu.js
           node --check responsive-a11y.js
+          node --check scripts/validate-release.mjs
 
       - name: Validate art-direction contract
         run: node scripts/validate-art-direction.mjs
@@ -54,3 +55,14 @@ jobs:
 
       - name: Validate responsive accessibility contract
         run: node scripts/validate-responsive-a11y.mjs
+
+      - name: Build aggregate MVP release report
+        run: node scripts/validate-release.mjs
+
+      - name: Upload release validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cute-face-builder-release-validation
+          path: review-artifacts/release-validation.json
+          if-no-files-found: warn
