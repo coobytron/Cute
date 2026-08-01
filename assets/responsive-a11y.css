@@ -1,0 +1,472 @@
+/* Content-driven responsive layouts and accessibility reinforcement. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 10px;
+  left: 10px;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  border: 2px solid CanvasText;
+  border-radius: 10px;
+  background: Canvas;
+  color: CanvasText;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+button,
+[role="button"],
+select,
+input,
+textarea,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+[role="button"]:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(255, 120, 107, 0.55);
+  outline-offset: 3px;
+}
+
+.mobile-panel-nav {
+  display: none;
+}
+
+@media (max-width: 1360px) {
+  .app-shell {
+    width: min(100% - 20px, 1760px);
+    margin-block: 10px;
+  }
+
+  .app-header {
+    gap: 20px;
+    padding: 20px 22px;
+  }
+
+  .header-actions {
+    gap: 7px;
+  }
+
+  .header-actions .button {
+    padding-inline: 14px;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(250px, 0.72fr) minmax(470px, 1.4fr) minmax(250px, 0.72fr);
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .stage-column {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .workspace {
+    grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .controls-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .controls-panel .control-section {
+    min-width: 0;
+  }
+
+  .saved-grid {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    padding-bottom: 4px;
+  }
+
+  .saved-grid > * {
+    flex: 0 0 clamp(210px, 25vw, 280px);
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    width: 100%;
+    margin: 0;
+    border-inline: 0;
+    border-radius: 0;
+  }
+
+  .app-header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .brand-lockup {
+    min-width: 0;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .header-actions .button,
+  .header-actions .export-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header-actions .export-control .button {
+    width: 100%;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stage-column {
+    order: -3;
+    min-height: auto;
+  }
+
+  .stage {
+    width: min(100%, 620px);
+  }
+
+  .library-panel {
+    border-right: 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .controls-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .controls-panel .panel-heading,
+  .controls-panel .button-full,
+  .controls-panel .control-note {
+    grid-column: 1 / -1;
+  }
+
+  .saved-strip {
+    grid-template-columns: 140px minmax(0, 1fr) 124px;
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-header {
+    padding: 16px;
+  }
+
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+
+  h1 {
+    font-size: clamp(31px, 9vw, 40px);
+  }
+
+  .header-actions {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 6px;
+    border: 1px solid rgba(45, 39, 35, 0.15);
+    border-radius: 16px;
+    background: rgba(255, 253, 248, 0.94);
+    backdrop-filter: blur(10px);
+  }
+
+  .header-actions .button {
+    min-height: 46px;
+  }
+
+  .stage-column {
+    padding: 16px;
+  }
+
+  .stage-toolbar {
+    align-items: center;
+  }
+
+  .stage-status {
+    max-width: 46%;
+    text-align: right;
+  }
+
+  .stage {
+    margin-top: 16px;
+    border-radius: 24px;
+    box-shadow: 6px 8px 0 rgba(45, 39, 35, 0.11);
+  }
+
+  .stage-sticker {
+    top: 10px;
+    left: 10px;
+    padding: 6px 8px;
+    font-size: 8px;
+  }
+
+  .stage-actions {
+    width: 100%;
+    gap: 3px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+  }
+
+  .stage-btn {
+    min-height: 44px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .mobile-panel-nav {
+    order: -2;
+    position: sticky;
+    top: 6px;
+    z-index: 25;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin: 0 12px 12px;
+    padding: 5px;
+    border: 1.5px solid var(--ink);
+    border-radius: 15px;
+    background: rgba(238, 228, 214, 0.96);
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-panel-tab {
+    min-height: 46px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    font-weight: 850;
+    cursor: pointer;
+  }
+
+  .mobile-panel-tab[aria-selected="true"] {
+    background: var(--panel);
+    box-shadow: 0 2px 8px rgba(50, 38, 30, 0.12);
+  }
+
+  .library-panel,
+  .controls-panel {
+    display: none;
+    border-top: 0;
+    padding: 18px 16px;
+  }
+
+  .workspace.mobile-panel-assets .library-panel,
+  .workspace.mobile-panel-direction .controls-panel {
+    display: block;
+  }
+
+  .recipe-library {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recipe-card {
+    grid-template-columns: 62px minmax(0, 1fr);
+    min-height: 78px;
+  }
+
+  .recipe-arrow {
+    display: none;
+  }
+
+  .part-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .part-card {
+    min-height: 106px;
+  }
+
+  .control-section {
+    padding-block: 15px;
+  }
+
+  .palette-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .pill-button,
+  .art-finish-card,
+  .art-select,
+  .art-caption-input,
+  .toggle-label {
+    min-height: 44px;
+  }
+
+  .saved-strip {
+    display: block;
+    padding: 16px;
+  }
+
+  .saved-heading {
+    margin-bottom: 12px;
+  }
+
+  .saved-grid {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 10px;
+  }
+
+  .saved-grid > * {
+    flex: 0 0 min(78vw, 280px);
+    scroll-snap-align: start;
+  }
+
+  .save-card {
+    width: 100%;
+    min-height: 62px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header,
+  .stage-column {
+    padding-inline: 12px;
+  }
+
+  .brand-lockup {
+    gap: 11px;
+  }
+
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .stage-toolbar h2 {
+    font-size: 20px;
+  }
+
+  .stage-status {
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+
+  .canvas-action {
+    width: 46px;
+    height: 46px;
+  }
+
+  .stage-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .recipe-library {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .part-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel-heading {
+    align-items: center;
+  }
+
+  .count-pill {
+    max-width: 44%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .app-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .app-shell,
+  .panel,
+  .stage,
+  .button,
+  .recipe-card,
+  .part-card,
+  .saved-variation,
+  .mobile-panel-nav,
+  .export-menu {
+    forced-color-adjust: auto;
+    border-color: CanvasText;
+  }
+
+  .status-dot,
+  .palette-button,
+  .toggle-track::after {
+    border: 1px solid CanvasText;
+  }
+
+  [aria-pressed="true"],
+  [aria-selected="true"] {
+    outline: 3px solid Highlight;
+    outline-offset: 1px;
+  }
+}
