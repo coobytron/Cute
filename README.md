@@ -36,14 +36,17 @@ Then open `http://localhost:8000` in Safari or Chromium. GitHub Pages also works
 - authored backgrounds, frames, expression mappings, palette support, captions, and transparent export preview
 - undo and redo across both composer modes with grouped sliders and keyboard shortcuts
 - schema-versioned local saved variations, exact restore, persistent favorites, thumbnails, deletion, and storage-failure recovery
-- 1600 × 1600 PNG export plus 384 px and 576 px thermal review output
+- accessible Export menu for opaque 1600 px PNG, transparent PNG, and copied recipe JSON
+- stable filenames, font/image readiness, object URL cleanup, and announced export failures
+- 384 px and 576 px thermal review output
 
-The primary browser state APIs are:
+The primary browser APIs are:
 
 - `window.CuteCompleteFaces`
 - `window.CuteBuildFace`
 - `window.CuteArtDirection`
 - `window.CuteHistorySaves`
+- `window.CuteExport`
 
 ## Authored asset system
 
@@ -55,6 +58,7 @@ Authoring and integration documentation:
 - [`docs/BUILD-A-FACE.md`](docs/BUILD-A-FACE.md)
 - [`docs/ART-DIRECTION.md`](docs/ART-DIRECTION.md)
 - [`docs/HISTORY-SAVES.md`](docs/HISTORY-SAVES.md)
+- [`docs/EXPORT.md`](docs/EXPORT.md)
 
 ## Validation
 
@@ -66,15 +70,17 @@ node scripts/validate-complete-faces.mjs
 node scripts/validate-build-face.mjs
 node scripts/validate-art-direction.mjs
 node scripts/validate-history-saves.mjs
+node scripts/validate-export.mjs
 ```
 
-GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing runtime integration, incomplete Art direction contracts, or history/persistence API regressions.
+GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing runtime integration, incomplete Art direction contracts, history/persistence regressions, or export menu/fixture regressions.
 
 ## Deterministic review artifacts
 
 - Complete-face contact sheets: [`previews/contact-sheets/`](previews/contact-sheets/)
 - Build-a-face compatibility sheet: [`previews/contact-sheets/build-face-compatibility.html`](previews/contact-sheets/build-face-compatibility.html)
 - Finish and thermal comparison: [`previews/contact-sheets/art-direction-finishes.html`](previews/contact-sheets/art-direction-finishes.html)
+- Export fixture matrix: [`previews/export-fixtures/export-matrix.html`](previews/export-fixtures/export-matrix.html)
 
 ## Visual direction
 
