@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-tora-tiger | Tiger | apricot-day | accessory-anchor: 270,350 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- round ears with inner -->
+    <circle cx="298" cy="298" r="108" fill="#E8882A" class="o"/>
+    <circle cx="702" cy="298" r="108" fill="#E8882A" class="o"/>
+    <circle cx="298" cy="298" r="54" fill="#FF9040" class="d"/>
+    <circle cx="702" cy="298" r="54" fill="#FF9040" class="d"/>
+    <!-- head/body -->
+    <path d="M252 378 C212 292 262 218 354 252 Q500 208 646 252 C738 218 788 292 748 378 C830 452 840 618 774 744 C708 862 608 910 500 912 C392 910 292 862 226 744 C160 618 170 452 252 378Z" fill="#E8882A" class="o"/>
+    <!-- forehead tiger stripes -->
+    <path d="M448 285 Q500 270 552 285" fill="none" stroke="#2d2723" stroke-width="14" stroke-linecap="round"/>
+    <path d="M432 255 Q500 238 568 255" fill="none" stroke="#2d2723" stroke-width="12" stroke-linecap="round"/>
+    <path d="M420 225 Q500 208 580 225" fill="none" stroke="#2d2723" stroke-width="10" stroke-linecap="round"/>
+    <!-- side cheek stripes -->
+    <path d="M246 510 Q294 480 340 508" fill="none" stroke="#2d2723" stroke-width="12" stroke-linecap="round"/>
+    <path d="M250 548 Q300 524 346 546" fill="none" stroke="#2d2723" stroke-width="10" stroke-linecap="round"/>
+    <path d="M754 510 Q706 480 660 508" fill="none" stroke="#2d2723" stroke-width="12" stroke-linecap="round"/>
+    <path d="M750 548 Q700 524 654 546" fill="none" stroke="#2d2723" stroke-width="10" stroke-linecap="round"/>
+    <!-- eyes (large) -->
+    <path d="M348 476 C348 408 433 408 433 476 C433 540 390 568 390 568 C390 568 348 540 348 476Z" fill="#2d2723"/>
+    <path d="M567 476 C567 408 652 408 652 476 C652 540 610 568 610 568 C610 568 567 540 567 476Z" fill="#2d2723"/>
+    <!-- eye highlights -->
+    <circle cx="377" cy="450" r="15" fill="#fff"/>
+    <circle cx="602" cy="450" r="15" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="302" cy="634" rx="68" ry="36" fill="#FF9060" opacity=".80"/>
+    <ellipse cx="698" cy="634" rx="68" ry="36" fill="#FF9060" opacity=".80"/>
+    <!-- white muzzle area -->
+    <ellipse cx="454" cy="654" rx="108" ry="80" fill="#FFFAF2"/>
+    <ellipse cx="546" cy="654" rx="108" ry="80" fill="#FFFAF2"/>
+    <!-- tiger nose -->
+    <path d="M500 596 C464 596 456 634 500 652 C544 634 536 596 500 596Z" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 652 Q500 700 456 706 M500 652 Q500 700 544 706" fill="none" class="d"/>
+    <!-- whiskers -->
+    <line x1="228" y1="644" x2="380" y2="654" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".52"/>
+    <line x1="226" y1="672" x2="378" y2="668" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".52"/>
+    <line x1="620" y1="654" x2="772" y2="644" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".52"/>
+    <line x1="622" y1="668" x2="774" y2="672" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".52"/>
+  </g>
+</svg>

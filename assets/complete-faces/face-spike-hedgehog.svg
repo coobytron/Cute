@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-spike-hedgehog | Hedgehog | butter-sun | accessory-anchor: 680,370 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- spiny silhouette (crown of spines) -->
+    <path d="M318 405 L290 296 L336 370 L320 230 L362 340 L364 186 L400 312 L414 158 L444 302 L464 132 L488 300 L500 120 L512 300 L536 132 L556 302 L586 158 L600 312 L638 186 L636 340 L680 230 L664 370 L710 296 L682 405" fill="#8A6030" class="o" stroke="#2d2723" stroke-width="14" stroke-linejoin="round"/>
+    <!-- small rounded ears -->
+    <circle cx="320" cy="380" r="56" fill="#C4914A" class="o"/>
+    <circle cx="680" cy="380" r="56" fill="#C4914A" class="o"/>
+    <circle cx="320" cy="380" r="28" fill="#E8B070" class="d"/>
+    <circle cx="680" cy="380" r="28" fill="#E8B070" class="d"/>
+    <!-- face / head (lower round section) -->
+    <path d="M278 448 C250 362 302 296 392 318 Q500 284 608 318 C698 296 750 362 722 448 C812 512 824 660 760 776 C698 886 602 928 500 930 C398 928 302 886 240 776 C176 660 188 512 278 448Z" fill="#C4914A" class="o"/>
+    <!-- eyes (small bead) -->
+    <ellipse cx="390" cy="504" rx="32" ry="36" fill="#2d2723"/>
+    <ellipse cx="610" cy="504" rx="32" ry="36" fill="#2d2723"/>
+    <circle cx="403" cy="491" r="11" fill="#fff"/>
+    <circle cx="623" cy="491" r="11" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="305" cy="646" rx="62" ry="32" fill="#E87820" opacity=".72"/>
+    <ellipse cx="695" cy="646" rx="62" ry="32" fill="#E87820" opacity=".72"/>
+    <!-- snout (elongated hedgehog style) -->
+    <ellipse cx="500" cy="668" rx="130" ry="96" fill="#E8B070"/>
+    <!-- pointed nose -->
+    <ellipse cx="500" cy="622" rx="28" ry="20" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 642 Q500 686 462 692 M500 642 Q500 686 538 692" fill="none" class="d"/>
+  </g>
+</svg>
