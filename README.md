@@ -1,101 +1,92 @@
-# Cute Face Lab
+# Cute Face Builder
 
-A pre-drawn animal face generator built around authored character parts: animal bases, ears, eyes, snouts, mouths, cheeks, markings, accessories, and print finishes.
+A deterministic, pre-drawn animal face builder made from authored complete characters and approved reusable parts.
 
 ![Cute Face Lab MVP](previews/cute-face-mvp-board.png)
 
-The project borrows the proven composition workflow from `Monster-Face-Gen`, while establishing its own softer visual language and independent asset library.
-
 ## Approved MVP target
 
-The supplied **Cute Face Builder** mockup is the product and visual source of truth. See [`docs/MVP-TARGET.md`](docs/MVP-TARGET.md) for the canonical layout, controls, behavior, responsive intent, export requirements, and source-of-truth hierarchy.
+The supplied **Cute Face Builder** mockup is the product and visual source of truth. See [`docs/MVP-TARGET.md`](docs/MVP-TARGET.md) for the canonical layout, controls, responsive intent, export requirements, and source-of-truth hierarchy.
 
-The approved contract is authored-only:
+The product contract is authored-only:
 
-- complete faces may be precomposed transparent PNG or SVG artwork
+- complete faces are precomposed transparent SVG artwork
 - Build a face uses authored layers and approved combinations
-- the browser may select, position, layer, clip, mask, mirror, scale, rotate, recolor within declared variants, and export
+- the browser may select, position, layer, clip, mask, mirror, scale, rotate, switch declared variants, apply fixed finishes, save, and export
 - the browser must not infer or generate animal anatomy
 
-Asset IDs, metadata, compatibility hooks, export bounds, and the five current hero recipes now live in [`assets/manifest.json`](assets/manifest.json). Authoring rules are documented in [`docs/ASSET-GUIDE.md`](docs/ASSET-GUIDE.md).
+## Run locally
 
-## Run the current prototype
+The manifest-backed asset library uses browser `fetch`, so serve the repository rather than opening `index.html` directly from the filesystem.
 
-Open `index.html` in a modern browser or publish the repository with GitHub Pages. No build step or external dependency is required for the current browser prototype.
+```bash
+python3 -m http.server 8000
+```
 
-The current browser prototype includes:
+Then open `http://localhost:8000` in Safari or Chromium. GitHub Pages also works. There is no package install, build step, backend, or generative model.
 
-- five locked hero recipes: cat, bunny, bear, puppy, and fox
-- reusable authored bases, ears, eyes, snouts, cheeks, markings, and accessories
-- recipe mode and custom face-building mode
-- approved color palettes and fixed surface finishes
-- shuffle, flip, scale, tilt, naming, favorites, and local saved versions
-- 1600 × 1600 PNG export from the current composition
+## Current browser implementation
 
-The page loads `assets/manifest-adapter.js` before the legacy composer. This creates a stable migration API while preserving the existing no-build workflow.
+- 12 approved complete animal faces: cat, bunny, bear, puppy, fox, raccoon, deer, koala, hamster, lamb, hedgehog, and tiger
+- manifest-driven Complete faces mode with authored thumbnails and shared stage rendering
+- authored Build a face mode with 5 bases, 8 ear sets, 8 eye sets, 6 snouts, 5 cheek treatments, 6 marking sets, 7 accessory choices, and 12 curated layered recipes
+- compatibility allow-lists, fallback behavior, stable IDs, z-order, default transforms, and base-specific overrides
+- composition scale, rotation, horizontal flip, compatible shuffle, and recipe reset
+- four fixed finishes: Classic paper, Clean studio, Thermal print, and Sticker
+- authored backgrounds, frames, expression mappings, palette support, captions, and transparent export preview
+- 1600 × 1600 PNG export plus 384 px and 576 px thermal review output
+- local favorites and saved-card scaffolding; full history and persistence hardening are tracked in the next roadmap issue
 
-## Validate the asset manifest
+Complete-face, layered-composition, and Art direction state are exposed through:
 
-Node.js 18 or newer is sufficient; no package install is required.
+- `window.CuteCompleteFaces`
+- `window.CuteBuildFace`
+- `window.CuteArtDirection`
+
+## Authored asset system
+
+The canonical manifest is [`assets/manifest.json`](assets/manifest.json). It defines stable IDs, asset types, source files, thumbnails, native canvas size, transforms, anchors, z-order, species tags, compatibility, palette support, export bounds, review status, and curated recipes.
+
+Authoring and integration documentation:
+
+- [`docs/ASSET-GUIDE.md`](docs/ASSET-GUIDE.md)
+- [`docs/BUILD-A-FACE.md`](docs/BUILD-A-FACE.md)
+- [`docs/ART-DIRECTION.md`](docs/ART-DIRECTION.md)
+
+## Validation
+
+Node.js 18 or newer is sufficient.
 
 ```bash
 node scripts/validate-manifest.mjs
+node scripts/validate-complete-faces.mjs
+node scripts/validate-build-face.mjs
+node scripts/validate-art-direction.mjs
 ```
 
-Validation fails on duplicate IDs, missing files, unknown asset types, invalid z-order, invalid transforms or bounds, missing compatibility references, unsupported palette references, broken recipe references, or absent required sample categories.
+GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing complete-face integration, or incomplete Art direction contracts.
 
-## MVP visual direction
+## Deterministic review artifacts
 
-- rounded animal silhouettes with thick, slightly imperfect ink
-- warm pastel color families with a small shared palette
-- readable expressions at thumbnail size
-- light print texture so results feel illustrated rather than like emoji clip art
-- stable authored parts that can be selected, placed, layered, mirrored, and exported
-- no procedural anatomy generation
+- Complete-face contact sheets: [`previews/contact-sheets/`](previews/contact-sheets/)
+- Build-a-face compatibility sheet: [`previews/contact-sheets/build-face-compatibility.html`](previews/contact-sheets/build-face-compatibility.html)
+- Finish and thermal comparison: [`previews/contact-sheets/art-direction-finishes.html`](previews/contact-sheets/art-direction-finishes.html)
 
-## Preview pack
+## Visual direction
 
-Ready-to-view PNGs and their editable SVG counterparts live in [`previews/`](previews/).
+- rounded animal silhouettes with warm, slightly imperfect ink
+- large readable eyes and restrained blush
+- coherent species-specific ears, muzzles, markings, wool, fur, antlers, and spines
+- warm cream interface cards with coral, apricot, mint, butter, powder-blue, and lavender accents
+- illustrated paper and fur materiality rather than flat emoji styling
+- stable authored assets selected and composed at runtime, never procedurally drawn
 
-- `mochi-cat`
-- `mimi-bunny`
-- `puff-bear`
-- `biscuit-pup`
-- `yuzu-fox`
-- `cute-face-mvp-board.png`
+## Source-of-truth hierarchy
 
-The full editable early direction board is at [`mvp/cute-face-mvp-board.svg`](mvp/cute-face-mvp-board.svg). It is subordinate to the approved high-fidelity mockup documented in `docs/MVP-TARGET.md`.
-
-## Proposed MVP library
-
-| Family | Initial target |
-|---|---:|
-| Complete animal faces | 12 |
-| Animal bases | 5 |
-| Ear sets | 8 |
-| Eye sets | 8 |
-| Snouts / noses | 6 |
-| Cheek treatments | 6 |
-| Markings | 6 |
-| Accessories | 6 |
-| Print finishes | 4 |
-| Curated recipes | 12 |
-
-Initial complete faces are cat, bunny, bear, puppy, fox, raccoon, deer, koala, hamster, lamb, hedgehog, and tiger.
-
-## Source-of-truth rule
-
-Every visible animal feature originates from an authored asset. The browser may select, position, layer, clip, mask, mirror, recolor within approved palettes, and export those assets. It must not infer or generate new anatomy.
-
-Randomization is selection from approved parts, not drawing.
-
-## Recommended build order
-
-1. Lock the approved mockup and authored asset contract.
-2. Rebuild the application shell around the mockup hierarchy.
-3. Author the polished 12-face complete-character library in parallel with shell work.
-4. Implement manifest-driven Build a face composition and compatibility.
-5. Add art-direction controls, history, saved variations, and reliable export.
-6. Add responsive behavior, accessibility, deterministic contact sheets, and release QA.
+1. approved high-fidelity MVP mockup
+2. [`docs/MVP-TARGET.md`](docs/MVP-TARGET.md)
+3. [`assets/manifest.json`](assets/manifest.json) and the asset guides
+4. deterministic visual QA artifacts
+5. older preview boards
 
 The implementation roadmap is tracked in GitHub Issues beginning with [#1](https://github.com/coobytron/Cute/issues/1).

@@ -10,12 +10,14 @@
   });
 
   let activeMode = typeof state !== "undefined" && state.mode === "parts" ? "parts" : "recipes";
-  let lastCompleteRecipeId = typeof state !== "undefined" && state.recipeId ? state.recipeId : "mochi-cat";
+  let lastCompleteRecipeId = global.CuteCompleteFaces?.getState()?.recipeId
+    || (typeof state !== "undefined" && state.recipeId ? state.recipeId : "mochi-cat");
   let lastLayeredRecipeId = global.CuteBuildFace?.getState().recipeId
     || global.CuteBuildFace?.listRecipes()[0]?.id
     || null;
   let resetSnapshot = null;
   let applyingRestoredExpression = false;
+  let completeSupport = null;
 
   function inferLegacyExpression() {
     if (typeof state === "undefined") return "happy";
@@ -33,9 +35,8 @@
   }
 
   function currentExpression() {
-    return activeMode === "parts"
-      ? inferLayeredExpression(global.CuteBuildFace?.getState())
-      : inferLegacyExpression();
+    if (activeMode === "parts") return inferLayeredExpression(global.CuteBuildFace?.getState());
+    return global.CuteCompleteFaces?.getState()?.expressionId || inferLegacyExpression();
   }
 
   function syncExpression(expressionId) {
@@ -47,6 +48,14 @@
   function applyRestoredExpression(expressionId) {
     const mapping = expressionAssets[expressionId];
     if (!mapping || applyingRestoredExpression || currentExpression() === expressionId) return;
+
+    if (activeMode === "recipes" && global.CuteCompleteFaces?.getState()) {
+      const supported = completeSupport?.supportedExpressions || [currentExpression()];
+      if (!supported.includes(expressionId)) {
+        syncExpression(supported[0] || "happy");
+      }
+      return;
+    }
 
     applyingRestoredExpression = true;
     try {
@@ -71,6 +80,41 @@
     }
   }
 
+  function setVariantControlSupport() {
+    const paletteButtons = document.querySelectorAll("[data-art-palette]");
+    const expressionButtons = document.querySelectorAll("[data-expression]");
+
+    if (activeMode === "parts" || !completeSupport) {
+      paletteButtons.forEach((button) => {
+        button.disabled = false;
+        button.removeAttribute("aria-describedby");
+        button.title = button.getAttribute("aria-label") || "Approved palette";
+      });
+      expressionButtons.forEach((button) => {
+        button.disabled = false;
+        button.removeAttribute("title");
+      });
+      return;
+    }
+
+    const supportedPalettes = new Set(completeSupport.supportedPaletteKeys || []);
+    const supportedExpressions = new Set(completeSupport.supportedExpressions || []);
+
+    paletteButtons.forEach((button) => {
+      const supported = supportedPalettes.has(button.dataset.artPalette);
+      button.disabled = !supported;
+      button.title = supported
+        ? (button.getAttribute("aria-label") || "Approved palette")
+        : "No authored palette variant for this complete face";
+    });
+
+    expressionButtons.forEach((button) => {
+      const supported = supportedExpressions.has(button.dataset.expression);
+      button.disabled = !supported;
+      button.title = supported ? "" : "No authored expression variant for this complete face";
+    });
+  }
+
   function restoreCompleteFaceLibrary() {
     if (typeof renderRecipeLibrary === "function") renderRecipeLibrary();
     const recipeLibrary = document.getElementById("recipeLibrary");
@@ -78,7 +122,13 @@
     const assetCount = document.getElementById("assetCount");
     if (recipeLibrary) recipeLibrary.hidden = false;
     if (partLibrary) partLibrary.hidden = true;
-    if (assetCount && typeof recipes !== "undefined") assetCount.textContent = `${recipes.length} recipes`;
+
+    const completeCount = global.CuteCompleteFaces?.listRecipes().length;
+    if (assetCount) {
+      assetCount.textContent = completeCount
+        ? `${completeCount} complete faces`
+        : `${typeof recipes !== "undefined" ? recipes.length : 0} recipes`;
+    }
   }
 
   if (typeof renderFace === "function") {
@@ -86,9 +136,12 @@
     renderFace = function coordinatedRenderFace(...args) {
       const result = previousRenderFace(...args);
       if (typeof state !== "undefined" && state.recipeId) {
-        lastCompleteRecipeId = state.recipeId;
+        lastCompleteRecipeId = global.CuteCompleteFaces?.getState()?.recipeId || state.recipeId;
       }
-      queueMicrotask(() => syncExpression(inferLegacyExpression()));
+      queueMicrotask(() => {
+        syncExpression(currentExpression());
+        setVariantControlSupport();
+      });
       return result;
     };
 
@@ -97,10 +150,23 @@
     renderFace();
   }
 
+  global.addEventListener("cute:complete-face-change", (event) => {
+    activeMode = "recipes";
+    lastCompleteRecipeId = event.detail?.recipeId || lastCompleteRecipeId;
+    completeSupport = {
+      supportedPaletteKeys: [...(event.detail?.supportedPaletteKeys || [])],
+      supportedExpressions: [...(event.detail?.supportedExpressions || ["happy"])]
+    };
+    syncExpression(event.detail?.expressionId || "happy");
+    setTimeout(setVariantControlSupport, 0);
+  });
+
   global.addEventListener("cute:composition-change", (event) => {
     activeMode = "parts";
+    completeSupport = null;
     if (event.detail?.recipeId) lastLayeredRecipeId = event.detail.recipeId;
     syncExpression(inferLayeredExpression(event.detail));
+    setTimeout(setVariantControlSupport, 0);
   });
 
   global.addEventListener("cute:art-direction-change", (event) => {
@@ -111,8 +177,20 @@
     button.addEventListener("click", () => {
       activeMode = button.dataset.mode === "parts" ? "parts" : "recipes";
       setTimeout(() => {
-        if (activeMode === "recipes") restoreCompleteFaceLibrary();
+        if (activeMode === "recipes") {
+          restoreCompleteFaceLibrary();
+          const asset = global.CuteCompleteFaces?.getActiveAsset();
+          completeSupport = asset ? {
+            supportedPaletteKeys: (asset.supportedPalettes || [])
+              .map((id) => global.CuteCompleteFaces.manifestPaletteToLegacy[id])
+              .filter(Boolean),
+            supportedExpressions: [asset.defaultExpression || "happy"]
+          } : null;
+        } else {
+          completeSupport = null;
+        }
         syncExpression(currentExpression());
+        setVariantControlSupport();
       }, 0);
     });
   });
@@ -140,6 +218,7 @@
     if (snapshot.activeMode === "parts" && snapshot.layeredRecipeId && global.CuteBuildFace) {
       global.CuteBuildFace.applyRecipe(snapshot.layeredRecipeId);
       activeMode = "parts";
+      completeSupport = null;
     } else if (snapshot.completeRecipeId && typeof applyRecipe === "function") {
       applyRecipe(snapshot.completeRecipeId);
       activeMode = "recipes";
@@ -150,6 +229,18 @@
       ...global.CuteArtDirection.defaults,
       expressionId: currentExpression()
     });
+    setVariantControlSupport();
     resetSnapshot = null;
   });
+
+  const initialAsset = global.CuteCompleteFaces?.getActiveAsset();
+  if (initialAsset) {
+    completeSupport = {
+      supportedPaletteKeys: (initialAsset.supportedPalettes || [])
+        .map((id) => global.CuteCompleteFaces.manifestPaletteToLegacy[id])
+        .filter(Boolean),
+      supportedExpressions: [initialAsset.defaultExpression || "happy"]
+    };
+    setVariantControlSupport();
+  }
 })(window);

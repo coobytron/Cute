@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - "agent/**"
+      - "fix/**"
 
 permissions:
   contents: read
@@ -25,11 +26,16 @@ jobs:
       - name: Validate authored asset manifest
         run: node scripts/validate-manifest.mjs
 
+      - name: Validate complete-face library
+        run: node scripts/validate-complete-faces.mjs
+
       - name: Validate Build-a-face catalog
         run: node scripts/validate-build-face.mjs
 
       - name: Check browser script syntax
         run: |
+          node --check complete-face.js
+          node --check complete-face-state.js
           node --check build-face.js
           node --check art-direction.js
           node --check art-direction-bootstrap.js

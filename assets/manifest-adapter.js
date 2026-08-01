@@ -126,9 +126,14 @@
   }
 
   function installCreativeControls() {
+    loadStyle("assets/complete-face.css");
     loadStyle("assets/build-face.css");
     loadStyle("assets/art-direction.css");
-    loadScript("assets/build-face-manifest.js")
+
+    loadScript("complete-face.js")
+      .then(() => global.CuteCompleteFaces?.ready)
+      .then(() => loadScript("complete-face-state.js"))
+      .then(() => loadScript("assets/build-face-manifest.js"))
       .then(() => loadScript("build-face.js"))
       .then(() => loadScript("art-direction.js"))
       .then(() => loadScript("art-direction-bootstrap.js"))
