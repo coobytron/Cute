@@ -132,6 +132,7 @@
 
     loadScript("complete-face.js")
       .then(() => global.CuteCompleteFaces?.ready)
+      .then(() => loadScript("complete-face-state.js"))
       .then(() => loadScript("assets/build-face-manifest.js"))
       .then(() => loadScript("build-face.js"))
       .then(() => loadScript("art-direction.js"))
