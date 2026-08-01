@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "assets/manifest.json"), "utf8"));
 const runtime = fs.readFileSync(path.join(root, "complete-face.js"), "utf8");
+const stateGuard = fs.readFileSync(path.join(root, "complete-face-state.js"), "utf8");
 const adapter = fs.readFileSync(path.join(root, "assets/manifest-adapter.js"), "utf8");
 const coordination = fs.readFileSync(path.join(root, "art-direction-bootstrap.js"), "utf8");
 const errors = [];
@@ -54,8 +55,13 @@ for (const marker of [
   if (!runtime.includes(marker)) errors.push(`Complete-face runtime is missing ${marker}.`);
 }
 
+for (const marker of ["completeSnapshot", "cute:composition-change", "restoreCompleteSnapshotForLayeredMode"]) {
+  if (!stateGuard.includes(marker)) errors.push(`Complete-face state guard is missing ${marker}.`);
+}
+
 if (!adapter.includes('loadScript("complete-face.js")')) errors.push("Manifest adapter does not load the complete-face runtime.");
 if (!adapter.includes("CuteCompleteFaces?.ready")) errors.push("Manifest adapter does not wait for complete-face assets before other controls.");
+if (!adapter.includes('loadScript("complete-face-state.js")')) errors.push("Manifest adapter does not load the complete-face state guard.");
 if (!coordination.includes("setVariantControlSupport")) errors.push("Art direction does not lock unsupported complete-face variants.");
 if (!coordination.includes("CuteCompleteFaces?.listRecipes")) errors.push("Complete-face library count is not manifest-driven.");
 
@@ -65,4 +71,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Complete-face runtime valid: 12 approved assets and 12 selectable recipes.");
+console.log("Complete-face runtime valid: 12 approved assets and 12 selectable recipes with isolated layered state.");
