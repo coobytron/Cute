@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cute Face Builder — MVP release review</title>
+  <style>
+    *{box-sizing:border-box} :root{font-family:Arial,Helvetica,sans-serif;color:#38261d;background:#f1e8dd} body{margin:0;padding:28px} header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start;margin-bottom:24px} h1{margin:0 0 7px;font-size:32px} h2{margin:0 0 7px;font-size:17px} p{margin:0;color:#75645a;line-height:1.5}.badge{padding:9px 12px;border:1.5px solid #38261d;border-radius:999px;background:#cfead8;font-size:12px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px}.card{display:grid;gap:10px;padding:17px;border:1px solid #d9cabc;border-radius:18px;background:#fffaf2;box-shadow:0 7px 20px rgba(56,38,29,.07)}.card a{justify-self:start;padding:8px 11px;border:1.5px solid #38261d;border-radius:10px;background:#fff;color:inherit;font-weight:800;text-decoration:none}.card a:focus-visible{outline:3px solid #ff786b;outline-offset:2px}.app{margin-top:20px;border:2px solid #38261d;border-radius:18px;overflow:hidden;background:#fff}.app iframe{display:block;width:100%;height:min(920px,80vh);border:0}.counts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.count{padding:6px 9px;border-radius:999px;background:#eadff5;font-size:11px;font-weight:800}.error{color:#913f36}@media(max-width:650px){body{padding:15px}header{grid-template-columns:1fr}.badge{justify-self:start}.app iframe{height:760px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Cute Face Builder MVP review</h1>
+      <p>One place to open the shipped application, deterministic contact sheets, feature mapping, responsive review, and release checklist.</p>
+      <div class="counts" id="counts"><span class="count">Loading feature map…</span></div>
+    </div>
+    <span class="badge">Automated validation + manual approval</span>
+  </header>
+
+  <main>
+    <section class="grid" aria-label="Release review resources">
+      <article class="card"><div><h2>Full release matrix</h2><p>All complete faces and layered recipes, flips, finishes, palettes, backgrounds, frames, captions, and transparency.</p></div><a href="contact-sheets/release-matrix.html">Open release matrix</a></article>
+      <article class="card"><div><h2>Build compatibility</h2><p>Every approved category × compatible-base pairing with stable asset IDs.</p></div><a href="contact-sheets/build-face-compatibility.html">Open compatibility sheet</a></article>
+      <article class="card"><div><h2>Export fixtures</h2><p>Complete and layered export baselines through four finishes and transparent output.</p></div><a href="export-fixtures/export-matrix.html">Open export matrix</a></article>
+      <article class="card"><div><h2>Responsive review</h2><p>Switch deterministically between 1600, 1280, 1024, 768, and 390 px viewports.</p></div><a href="responsive-review.html">Open viewport review</a></article>
+      <article class="card"><div><h2>Feature mapping</h2><p>Direct mapping from mockup regions to shipped files and review artifacts.</p></div><a href="../docs/MVP-FEATURE-MAP.md">Open feature map</a></article>
+      <article class="card"><div><h2>Release checklist</h2><p>Automated requirements plus explicit Safari, Chromium, iPhone, VoiceOver, zoom, persistence, and thermal checks.</p></div><a href="../docs/RELEASE-CHECKLIST.md">Open checklist</a></article>
+      <article class="card"><div><h2>Known limitations</h2><p>Intentional client-side, authored-only, export, storage, and manual-review boundaries.</p></div><a href="../docs/KNOWN-LIMITATIONS.md">Open limitations</a></article>
+    </section>
+
+    <section class="app" aria-label="Live Cute Face Builder">
+      <iframe src="../index.html" title="Live Cute Face Builder application"></iframe>
+    </section>
+  </main>
+
+  <script>
+    fetch('../review-artifacts/mvp-feature-map.json').then(response=>{if(!response.ok)throw new Error('Feature map unavailable');return response.json()}).then(map=>{
+      const implemented=map.features.filter(feature=>feature.status==='implemented').length;
+      const manual=map.features.filter(feature=>feature.status==='implemented_with_manual_review').length;
+      document.getElementById('counts').innerHTML=`<span class="count">${map.features.length} mapped feature groups</span><span class="count">${implemented} implemented</span><span class="count">${manual} implemented + manual review</span><span class="count">${map.manualReviewRequired.length} manual checks</span>`;
+    }).catch(error=>{document.getElementById('counts').innerHTML=`<span class="count error">${error.message}</span>`});
+  </script>
+</body>
+</html>
