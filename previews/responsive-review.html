@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cute Face Builder — Responsive review</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { font-family: Arial, Helvetica, sans-serif; color: #38261d; background: #efe6da; }
+    body { margin: 0; padding: 22px; }
+    header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+    h1 { margin:0; font-size:24px; }
+    p { margin:4px 0 0; color:#75645a; font-size:13px; }
+    .sizes { display:flex; flex-wrap:wrap; gap:7px; }
+    button { min-height:42px; padding:0 13px; border:1.5px solid #38261d; border-radius:11px; background:#fffaf2; color:inherit; font-weight:800; cursor:pointer; }
+    button[aria-pressed="true"] { background:#ffb1a8; box-shadow:inset 0 0 0 1px #38261d; }
+    button:focus-visible { outline:3px solid #ff786b; outline-offset:2px; }
+    .review-shell { overflow:auto; border:2px solid #38261d; border-radius:18px; background:#d7cbbd; min-height:720px; padding:20px; }
+    .viewport-wrap { position:relative; margin:0 auto; transform-origin:top left; }
+    iframe { display:block; border:0; background:#fff; box-shadow:0 12px 32px rgba(56,38,29,.18); }
+    .meta { display:flex; justify-content:space-between; gap:12px; margin-top:12px; font-size:12px; color:#66564d; }
+    code { background:#fffaf2; border-radius:6px; padding:2px 6px; }
+    @media (max-width:700px) { body { padding:12px; } .review-shell { padding:10px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Responsive viewport review</h1>
+      <p>Serve the repository locally, then inspect the same app at the five MVP target widths.</p>
+    </div>
+    <div class="sizes" role="group" aria-label="Viewport width">
+      <button type="button" data-width="1600">1600</button>
+      <button type="button" data-width="1280">1280</button>
+      <button type="button" data-width="1024">1024</button>
+      <button type="button" data-width="768">768</button>
+      <button type="button" data-width="390" aria-pressed="true">390</button>
+    </div>
+  </header>
+
+  <main class="review-shell" id="reviewShell">
+    <div class="viewport-wrap" id="viewportWrap">
+      <iframe id="appFrame" title="Cute Face Builder responsive preview" src="../index.html" width="390" height="844"></iframe>
+    </div>
+  </main>
+
+  <div class="meta">
+    <span>Current viewport: <strong id="currentSize">390 × 844</strong></span>
+    <span>Manual checks: body overflow · stage order · touch targets · panel tabs · saved scroller · focus</span>
+  </div>
+
+  <script>
+    const heights = { 1600: 1000, 1280: 950, 1024: 1000, 768: 1024, 390: 844 };
+    const shell = document.getElementById('reviewShell');
+    const wrap = document.getElementById('viewportWrap');
+    const frame = document.getElementById('appFrame');
+    const current = document.getElementById('currentSize');
+    const buttons = [...document.querySelectorAll('[data-width]')];
+
+    function scaleFrame(width) {
+      const height = heights[width];
+      const available = Math.max(280, shell.clientWidth - 40);
+      const scale = Math.min(1, available / width);
+      frame.width = width;
+      frame.height = height;
+      wrap.style.width = `${width}px`;
+      wrap.style.height = `${height * scale}px`;
+      wrap.style.transform = `scale(${scale})`;
+      current.textContent = `${width} × ${height} · ${Math.round(scale * 100)}% preview scale`;
+      buttons.forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.width) === width)));
+    }
+
+    buttons.forEach((button) => button.addEventListener('click', () => scaleFrame(Number(button.dataset.width))));
+    window.addEventListener('resize', () => {
+      const active = buttons.find((button) => button.getAttribute('aria-pressed') === 'true');
+      scaleFrame(Number(active?.dataset.width || 390));
+    });
+    scaleFrame(390);
+  </script>
+</body>
+</html>
