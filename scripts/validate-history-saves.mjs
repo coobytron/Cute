@@ -25,6 +25,8 @@ const requiredSource = [
   "cute:art-direction-change",
   "cute:storage-error",
   "stopImmediatePropagation",
+  "global.renderSaved = renderSaved",
+  'document.addEventListener("pointerup"',
   "MAX_HISTORY",
   "MAX_SAVES",
   "CuteHistorySaves"
@@ -61,4 +63,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("History and saved variations valid: both composers, grouped edits, local persistence, and favorites.");
+console.log("History and saved variations valid: both composers, grouped edits, persistent rendering, local storage, and favorites.");
