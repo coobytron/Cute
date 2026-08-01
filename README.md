@@ -25,7 +25,12 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000` in Safari or Chromium. GitHub Pages also works. There is no package install, build step, backend, or generative model.
 
-## Current browser implementation
+For the consolidated review workflow, open:
+
+- `http://localhost:8000/previews/mvp-release-review.html`
+- `http://localhost:8000/previews/contact-sheets/release-matrix.html`
+
+## Shipped MVP
 
 - 12 approved complete animal faces: cat, bunny, bear, puppy, fox, raccoon, deer, koala, hamster, lamb, hedgehog, and tiger
 - manifest-driven Complete faces mode with authored thumbnails and shared stage rendering
@@ -38,9 +43,10 @@ Then open `http://localhost:8000` in Safari or Chromium. GitHub Pages also works
 - schema-versioned local saved variations, exact restore, persistent favorites, thumbnails, deletion, and storage-failure recovery
 - accessible Export menu for opaque 1600 px PNG, transparent PNG, and copied recipe JSON
 - stable filenames, font/image readiness, object URL cleanup, and announced export failures
-- responsive layouts reviewed at 1600, 1280, 1024, 768, and 390 px
+- responsive layouts at 1600, 1280, 1024, 768, and 390 px
 - stage-first phone layout, mobile Assets / Art direction navigation, touch targets, and horizontal saved variations
 - skip link, named regions, keyboard tab behavior, live announcements, reduced motion, forced colors, and hidden-panel focus isolation
+- deterministic release matrix and machine-readable validation report
 - 384 px and 576 px thermal review output
 
 The primary browser APIs are:
@@ -65,9 +71,26 @@ Authoring and integration documentation:
 - [`docs/EXPORT.md`](docs/EXPORT.md)
 - [`docs/RESPONSIVE-A11Y.md`](docs/RESPONSIVE-A11Y.md)
 
+Release documentation:
+
+- [`docs/MVP-FEATURE-MAP.md`](docs/MVP-FEATURE-MAP.md)
+- [`review-artifacts/mvp-feature-map.json`](review-artifacts/mvp-feature-map.json)
+- [`docs/RELEASE-CHECKLIST.md`](docs/RELEASE-CHECKLIST.md)
+- [`docs/KNOWN-LIMITATIONS.md`](docs/KNOWN-LIMITATIONS.md)
+
 ## Validation
 
 Node.js 18 or newer is sufficient.
+
+Run the complete release validation:
+
+```bash
+node scripts/validate-release.mjs
+```
+
+This runs all focused validators, checks the release matrix and feature map, exits non-zero on automated failures, and writes `review-artifacts/release-validation.json`. GitHub Actions uploads that report as `cute-face-builder-release-validation`.
+
+Focused validators remain available:
 
 ```bash
 node scripts/validate-manifest.mjs
@@ -79,10 +102,12 @@ node scripts/validate-export.mjs
 node scripts/validate-responsive-a11y.mjs
 ```
 
-GitHub Actions also checks browser-script syntax. Validation fails on missing files, duplicate IDs, invalid transforms or bounds, broken recipe references, unsupported compatibility, incomplete category counts, missing runtime integration, incomplete Art direction contracts, history/persistence regressions, export regressions, or responsive/accessibility contract regressions.
+Automated validation does not replace live Safari, Chromium, iPhone, VoiceOver, 200% zoom, physical thermal-printer, or human art-direction review. Those checks remain explicit in the release checklist.
 
 ## Deterministic review artifacts
 
+- Consolidated dashboard: [`previews/mvp-release-review.html`](previews/mvp-release-review.html)
+- Full MVP release matrix: [`previews/contact-sheets/release-matrix.html`](previews/contact-sheets/release-matrix.html)
 - Complete-face contact sheets: [`previews/contact-sheets/`](previews/contact-sheets/)
 - Build-a-face compatibility sheet: [`previews/contact-sheets/build-face-compatibility.html`](previews/contact-sheets/build-face-compatibility.html)
 - Finish and thermal comparison: [`previews/contact-sheets/art-direction-finishes.html`](previews/contact-sheets/art-direction-finishes.html)
@@ -106,4 +131,4 @@ GitHub Actions also checks browser-script syntax. Validation fails on missing fi
 4. deterministic visual QA artifacts
 5. older preview boards
 
-The implementation roadmap is tracked in GitHub Issues beginning with [#1](https://github.com/coobytron/Cute/issues/1).
+The implementation roadmap and final acceptance are tracked in GitHub Issues beginning with [#1](https://github.com/coobytron/Cute/issues/1).
