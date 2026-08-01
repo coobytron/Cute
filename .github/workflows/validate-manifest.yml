@@ -41,6 +41,7 @@ jobs:
           node --check art-direction-bootstrap.js
           node --check history-saves.js
           node --check export-menu.js
+          node --check responsive-a11y.js
 
       - name: Validate art-direction contract
         run: node scripts/validate-art-direction.mjs
@@ -50,3 +51,6 @@ jobs:
 
       - name: Validate export menu and fixtures
         run: node scripts/validate-export.mjs
+
+      - name: Validate responsive accessibility contract
+        run: node scripts/validate-responsive-a11y.mjs
