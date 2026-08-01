@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "defaultSeed": 260801,
+  "performanceTiers": {
+    "compact": { "textureScale": 0.5, "particleLimit": 36, "pixelRatioCap": 1.5 },
+    "standard": { "textureScale": 1, "particleLimit": 84, "pixelRatioCap": 2 },
+    "high": { "textureScale": 1.5, "particleLimit": 160, "pixelRatioCap": 3 }
+  },
+  "effects": [
+    { "id": "paper-grain", "label": "Paper grain", "category": "surface", "target": "composite", "defaults": { "intensity": 0.22, "scale": 1 } },
+    { "id": "halftone", "label": "Halftone", "category": "surface", "target": "composite", "defaults": { "intensity": 0.2, "dotSize": 4, "spacing": 10 } },
+    { "id": "plush-fibers", "label": "Plush fibers", "category": "surface", "target": "character", "defaults": { "intensity": 0.18, "length": 7 } },
+    { "id": "blush-bloom", "label": "Blush bloom", "category": "lighting", "target": "character", "defaults": { "intensity": 0.32, "radius": 90 } },
+    { "id": "rim-light", "label": "Rim light", "category": "lighting", "target": "character", "defaults": { "intensity": 0.28, "width": 12 } },
+    { "id": "sticker-edge", "label": "Sticker edge", "category": "lighting", "target": "character", "defaults": { "intensity": 0.7, "width": 14, "shadow": 0.16 } },
+    { "id": "chromatic-offset", "label": "Chromatic offset", "category": "graphic", "target": "character", "defaults": { "intensity": 0.18, "distance": 4 } },
+    { "id": "sparkle-field", "label": "Sparkle field", "category": "graphic", "target": "composite", "defaults": { "intensity": 0.32, "count": 48 } },
+    { "id": "pixel-dither", "label": "Pixel dither", "category": "graphic", "target": "composite", "defaults": { "intensity": 0.35, "pixelSize": 5, "levels": 5 } },
+    { "id": "vignette", "label": "Vignette", "category": "scene", "target": "background", "defaults": { "intensity": 0.2, "radius": 0.72 } },
+    { "id": "dream-halo", "label": "Dream halo", "category": "scene", "target": "background", "defaults": { "intensity": 0.34, "radius": 0.46 } },
+    { "id": "floating-particles", "label": "Floating particles", "category": "scene", "target": "composite", "defaults": { "intensity": 0.24, "count": 42 } }
+  ],
+  "presets": [
+    {
+      "id": "soft-plush",
+      "label": "Soft Plush",
+      "effects": [
+        { "id": "plush-fibers", "intensity": 0.24 },
+        { "id": "blush-bloom", "intensity": 0.28 },
+        { "id": "vignette", "intensity": 0.12 }
+      ]
+    },
+    {
+      "id": "candy-gloss",
+      "label": "Candy Gloss",
+      "effects": [
+        { "id": "rim-light", "intensity": 0.42 },
+        { "id": "blush-bloom", "intensity": 0.3 },
+        { "id": "sparkle-field", "intensity": 0.22 }
+      ]
+    },
+    {
+      "id": "riso-friend",
+      "label": "Riso Friend",
+      "effects": [
+        { "id": "halftone", "intensity": 0.3 },
+        { "id": "chromatic-offset", "intensity": 0.26 },
+        { "id": "paper-grain", "intensity": 0.24 }
+      ]
+    },
+    {
+      "id": "paper-sticker",
+      "label": "Paper Sticker",
+      "effects": [
+        { "id": "sticker-edge", "intensity": 0.78 },
+        { "id": "paper-grain", "intensity": 0.18 },
+        { "id": "vignette", "intensity": 0.1 }
+      ]
+    },
+    {
+      "id": "dream-glow",
+      "label": "Dream Glow",
+      "effects": [
+        { "id": "dream-halo", "intensity": 0.46 },
+        { "id": "floating-particles", "intensity": 0.34 },
+        { "id": "rim-light", "intensity": 0.2 }
+      ]
+    },
+    {
+      "id": "pixel-pet",
+      "label": "Pixel Pet",
+      "effects": [
+        { "id": "pixel-dither", "intensity": 0.52 },
+        { "id": "chromatic-offset", "intensity": 0.16 },
+        { "id": "vignette", "intensity": 0.16 }
+      ]
+    }
+  ]
+}
