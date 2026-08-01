@@ -39,6 +39,10 @@ jobs:
           node --check build-face.js
           node --check art-direction.js
           node --check art-direction-bootstrap.js
+          node --check history-saves.js
 
       - name: Validate art-direction contract
         run: node scripts/validate-art-direction.mjs
+
+      - name: Validate history and saved variations
+        run: node scripts/validate-history-saves.mjs
