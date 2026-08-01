@@ -3,6 +3,8 @@ import fs from "node:fs";
 const root = new URL("../", import.meta.url);
 const read = (path) => fs.readFileSync(new URL(path, root), "utf8");
 const source = read("art-direction.js");
+const coordination = read("art-direction-bootstrap.js");
+const adapter = read("assets/manifest-adapter.js");
 const styles = read("assets/art-direction.css");
 const review = read("previews/contact-sheets/art-direction-finishes.html");
 const docs = read("docs/ART-DIRECTION.md");
@@ -43,10 +45,17 @@ if (!source.includes("cute:art-direction-change")) errors.push("Missing art-dire
 if (!source.includes("transparentExport")) errors.push("Missing transparent export state.");
 if (!source.includes("artThermal") || !source.includes("artSticker")) errors.push("Missing authored export filters.");
 
+for (const marker of ["lastCompleteRecipeId", "lastLayeredRecipeId", "inferLegacyExpression", "inferLayeredExpression", "resetSnapshot"]) {
+  if (!coordination.includes(marker)) errors.push(`Missing art-direction coordination marker ${marker}.`);
+}
+
+if (!coordination.includes("renderFace();")) errors.push("Initial legacy composition is not re-rendered through Art direction.");
+if (!adapter.includes('loadScript("art-direction-bootstrap.js")')) errors.push("Art-direction coordination script is not loaded by the adapter.");
+
 if (errors.length) {
   console.error(`Art-direction validation failed with ${errors.length} error(s):`);
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
 
-console.log("Art-direction contract valid: 4 finishes, 5 backgrounds, 3 frames, 3 expressions.");
+console.log("Art-direction contract valid: 4 finishes, 5 backgrounds, 3 frames, 3 expressions, coordinated recipe reset.");
