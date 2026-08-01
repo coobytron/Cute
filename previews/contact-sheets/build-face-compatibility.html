@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cute Build-a-face compatibility sheet</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#2d2723;background:#f6efe4}body{margin:0;padding:32px}header{max-width:900px;margin:0 auto 32px}h1{margin:0 0 8px}.sheet{display:grid;gap:28px;max-width:1500px;margin:auto}.base{background:#fffaf3;border:1px solid #d9cbbd;border-radius:20px;padding:18px}.base h2{margin:0 0 14px}.category{margin-top:18px}.category h3{font-size:13px;text-transform:uppercase;letter-spacing:.08em}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.card{background:white;border:1px solid #e2d8ce;border-radius:14px;padding:8px}.card svg{width:100%;aspect-ratio:1;background:#fff4e8;border-radius:10px}.card p{font-size:12px;margin:7px 2px 2px;overflow-wrap:anywhere}.face-ink{stroke:#2d2723;stroke-width:18;stroke-linejoin:round;stroke-linecap:round}.detail-ink{stroke:#2d2723;stroke-width:12;stroke-linejoin:round;stroke-linecap:round}.detail-line{stroke:#2d2723;stroke-width:18;stroke-linejoin:round;stroke-linecap:round}</style>
+</head>
+<body>
+<header><h1>Build-a-face compatibility</h1><p>Deterministic authored-part review. Each row shows only parts approved for the named base. Asset IDs are printed beneath every cell.</p></header>
+<main class="sheet" id="sheet"></main>
+<script src="../../assets/build-face-manifest.js"></script>
+<script>
+const m=window.CuteBuildFaceManifest;
+const colors='--head:#f6a65e;--secondary:#e77b4c;--muzzle:#fff1db;--blush:#ff786b';
+const bases=m.assets.filter(a=>a.type==='base');
+const types=m.categories.slice(1);
+const sheet=document.getElementById('sheet');
+for(const base of bases){
+ const section=document.createElement('section');section.className='base';section.innerHTML=`<h2>${base.label} <small>· ${base.id}</small></h2>`;
+ for(const type of types){
+  const items=m.assets.filter(a=>a.type===type&&a.compatibleBases.includes(base.id));
+  const row=document.createElement('div');row.className='category';row.innerHTML=`<h3>${type} · ${items.length} approved</h3><div class="grid"></div>`;
+  const grid=row.querySelector('.grid');
+  for(const item of items){const o=item.overrides?.[base.id]||{};const card=document.createElement('article');card.className='card';card.innerHTML=`<svg viewBox="0 0 1000 1000"><g style="${colors}">${base.markup}</g><g style="${colors}" transform="translate(${o.x||0} ${o.y||0}) rotate(${o.rotation||0} 500 500) scale(${o.scale||1})">${item.markup}</g></svg><p>${item.id}</p>`;grid.append(card)}
+  section.append(row);
+ }
+ sheet.append(section);
+}
+</script>
+</body>
+</html>
