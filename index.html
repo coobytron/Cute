@@ -30,6 +30,8 @@
 
       <div class="header-actions">
         <button class="button button-ghost" id="resetButton" type="button">Reset</button>
+        <button class="button button-ghost" id="favoriteButton" type="button" aria-pressed="false" aria-label="Favorite this face">♡ Favourite</button>
+        <button class="button button-ghost" id="exportButton" type="button">Export PNG</button>
         <button class="button button-primary" id="shuffleButton" type="button">Shuffle face</button>
       </div>
     </header>
@@ -97,13 +99,21 @@
           </svg>
 
           <div class="stage-sticker">100% authored</div>
-          <button class="canvas-action canvas-action-left" id="flipButton" type="button" aria-label="Flip face horizontally">↔</button>
-          <button class="canvas-action canvas-action-right" id="favoriteButton" type="button" aria-label="Favorite this face">♡</button>
+        </div>
+
+        <div class="stage-actions" role="toolbar" aria-label="Canvas actions">
+          <button class="stage-btn" id="undoButton" type="button" aria-label="Undo" title="Undo — coming in a future update" disabled>↩ Undo</button>
+          <button class="stage-btn" id="redoButton" type="button" aria-label="Redo" title="Redo — coming in a future update" disabled>↪ Redo</button>
+          <span class="stage-sep" role="separator" aria-hidden="true"></span>
+          <button class="stage-btn" id="flipButton" type="button" aria-label="Flip face horizontally">↔ Flip</button>
+          <button class="stage-btn" id="fitButton" type="button" aria-label="Fit to stage" title="Fit — coming in a future update" disabled>⊡ Fit</button>
+          <span class="stage-sep" role="separator" aria-hidden="true"></span>
+          <button class="stage-btn" id="saveVersionButton" type="button" aria-label="Save this version">＋ Save</button>
+          <button class="stage-btn" id="bgToggleButton" type="button" aria-label="Background options" title="Background options — coming in a future update" disabled>□ Background</button>
         </div>
 
         <div class="stage-footer">
           <div class="recipe-code" id="recipeCode">CAT-01 · EYE-03 · SNOUT-01</div>
-          <button class="button button-dark" id="exportButton" type="button">Export PNG</button>
         </div>
       </section>
 
@@ -150,10 +160,39 @@
 
         <section class="control-section">
           <div class="control-heading stacked">
+            <span>Expression</span>
+            <small>Authored expression sets</small>
+          </div>
+          <div class="expression-pills" id="expressionPills" role="group" aria-label="Expression">
+            <button class="pill-button is-active" data-expression="happy" type="button" aria-pressed="true">Happy</button>
+            <button class="pill-button" data-expression="sleepy" type="button" aria-pressed="false" disabled title="Coming in a future update">Sleepy</button>
+            <button class="pill-button" data-expression="surprised" type="button" aria-pressed="false" disabled title="Coming in a future update">Surprised</button>
+          </div>
+        </section>
+
+        <section class="control-section">
+          <div class="control-heading stacked">
             <label for="nameInput">Character name</label>
             <small>Used in the exported file</small>
           </div>
           <input class="text-input" id="nameInput" type="text" maxlength="24" value="Mochi Cat" />
+        </section>
+
+        <section class="control-section">
+          <div class="control-heading stacked">
+            <span>Export options</span>
+            <small>One-time render settings</small>
+          </div>
+          <label class="toggle-label">
+            <input class="toggle-input" id="showCaptionToggle" type="checkbox" />
+            <span class="toggle-track" aria-hidden="true"></span>
+            Show caption
+          </label>
+          <label class="toggle-label">
+            <input class="toggle-input" id="transparentBgToggle" type="checkbox" />
+            <span class="toggle-track" aria-hidden="true"></span>
+            Transparent background
+          </label>
         </section>
 
         <button class="button button-primary button-full" id="shuffleSecondary" type="button">Make another cutie</button>
