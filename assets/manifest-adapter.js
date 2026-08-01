@@ -131,6 +131,7 @@
     loadScript("assets/build-face-manifest.js")
       .then(() => loadScript("build-face.js"))
       .then(() => loadScript("art-direction.js"))
+      .then(() => loadScript("art-direction-bootstrap.js"))
       .then(() => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-ready")))
       .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-error", { detail: error })));
   }
