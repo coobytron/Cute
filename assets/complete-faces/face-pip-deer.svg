@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-pip-deer | Deer | butter-sun | accessory-anchor: 500,190 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- small antler nubs (Y-shape) -->
+    <path d="M360 255 L360 170 M360 170 L318 105 M360 170 L398 105" fill="none" stroke="#C48A5A" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M640 255 L640 170 M640 170 L602 105 M640 170 L682 105" fill="none" stroke="#C48A5A" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- small round ears -->
+    <ellipse cx="300" cy="315" rx="75" ry="68" fill="#EACCA0" class="o"/>
+    <ellipse cx="700" cy="315" rx="75" ry="68" fill="#EACCA0" class="o"/>
+    <ellipse cx="300" cy="315" rx="38" ry="36" fill="#FFAA88" class="d"/>
+    <ellipse cx="700" cy="315" rx="38" ry="36" fill="#FFAA88" class="d"/>
+    <!-- head/body -->
+    <path d="M258 374 C230 278 296 216 390 248 Q500 208 610 248 C704 216 770 278 742 374 C824 450 836 616 768 742 C702 862 605 908 500 910 C395 908 298 862 232 742 C164 616 176 450 258 374Z" fill="#EACCA0" class="o"/>
+    <!-- forehead spots -->
+    <circle cx="460" cy="350" r="18" fill="#C48A5A" opacity=".60"/>
+    <circle cx="540" cy="330" r="13" fill="#C48A5A" opacity=".50"/>
+    <circle cx="500" cy="370" r="11" fill="#C48A5A" opacity=".45"/>
+    <!-- eyes (large teardrop) -->
+    <path d="M343 476 C343 408 428 408 428 475 C428 540 386 568 386 568 C386 568 343 540 343 476Z" fill="#2d2723"/>
+    <path d="M572 476 C572 408 657 408 657 475 C657 540 614 568 614 568 C614 568 572 540 572 476Z" fill="#2d2723"/>
+    <!-- eye highlights -->
+    <circle cx="372" cy="450" r="15" fill="#fff"/>
+    <circle cx="597" cy="450" r="15" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="308" cy="630" rx="64" ry="34" fill="#FF9060" opacity=".78"/>
+    <ellipse cx="692" cy="630" rx="64" ry="34" fill="#FF9060" opacity=".78"/>
+    <!-- muzzle -->
+    <ellipse cx="500" cy="656" rx="138" ry="100" fill="#FFF4DE"/>
+    <!-- nose (small heart) -->
+    <path d="M487 608 C487 594 500 590 500 600 C500 590 513 594 513 608 C513 626 500 636 500 636 C500 636 487 626 487 608Z" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 636 Q500 682 460 688 M500 636 Q500 682 540 688" fill="none" class="d"/>
+  </g>
+</svg>

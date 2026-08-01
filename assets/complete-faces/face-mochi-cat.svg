@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-mochi-cat | Cat | apricot-day | accessory-anchor: 725,350 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- head/body -->
+    <path d="M250 370 L315 150 L430 278 Q500 250 570 278 L685 150 L750 370 C835 438 846 618 772 747 C704 865 606 910 500 912 C394 910 296 865 228 747 C154 618 165 438 250 370Z" fill="#F6A65E" class="o"/>
+    <!-- inner ear marks -->
+    <path d="M315 267 L331 205 L386 275Z M685 267 L669 205 L614 275Z" fill="#FF786B" class="d"/>
+    <!-- tabby forehead marks -->
+    <path d="M448 320 Q500 308 552 320" fill="none" stroke="#D4743A" stroke-width="9" stroke-linecap="round"/>
+    <path d="M460 300 Q500 290 540 300" fill="none" stroke="#D4743A" stroke-width="8" stroke-linecap="round"/>
+    <!-- eyes (glossy teardrop) -->
+    <path d="M345 473 C345 405 430 405 430 472 C430 537 388 566 388 566 C388 566 345 537 345 473Z M570 473 C570 405 655 405 655 472 C655 537 612 566 612 566 C612 566 570 537 570 473Z" fill="#2d2723"/>
+    <!-- eye highlights -->
+    <circle cx="374" cy="446" r="15" fill="#fff"/>
+    <circle cx="599" cy="446" r="15" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="315" cy="628" rx="67" ry="35" fill="#FF786B" opacity=".82"/>
+    <ellipse cx="685" cy="628" rx="67" ry="35" fill="#FF786B" opacity=".82"/>
+    <!-- muzzle -->
+    <ellipse cx="452" cy="642" rx="96" ry="70" fill="#FFF1DB"/>
+    <ellipse cx="548" cy="642" rx="96" ry="70" fill="#FFF1DB"/>
+    <!-- nose -->
+    <path d="M500 591 C463 591 455 628 500 646 C545 628 537 591 500 591Z" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 646 Q500 697 452 704 M500 646 Q500 697 548 704" fill="none" class="d"/>
+    <!-- whiskers -->
+    <line x1="235" y1="618" x2="380" y2="640" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+    <line x1="232" y1="648" x2="378" y2="652" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+    <line x1="622" y1="640" x2="765" y2="618" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+    <line x1="622" y1="652" x2="768" y2="648" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+    <!-- flower accessory at anchor -->
+    <g transform="translate(725 350) rotate(12)">
+      <g class="d" fill="#FF786B">
+        <circle cy="-35" r="31"/>
+        <circle cx="34" cy="-5" r="31"/>
+        <circle cx="21" cy="36" r="31"/>
+        <circle cx="-21" cy="36" r="31"/>
+        <circle cx="-34" cy="-5" r="31"/>
+      </g>
+      <circle r="23" fill="#F4C84D" class="d"/>
+    </g>
+  </g>
+</svg>

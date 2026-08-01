@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-mochi-hamster | Hamster | apricot-day | accessory-anchor: 740,340 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- small rounded ears -->
+    <circle cx="332" cy="330" r="80" fill="#FFCBA4" class="o"/>
+    <circle cx="668" cy="330" r="80" fill="#FFCBA4" class="o"/>
+    <circle cx="332" cy="330" r="40" fill="#FFA888" class="d"/>
+    <circle cx="668" cy="330" r="40" fill="#FFA888" class="d"/>
+    <!-- very round/chubby head with big cheek pouches -->
+    <path d="M252 402 C228 296 296 218 392 252 Q500 212 608 252 C704 218 772 296 748 402 C826 472 828 620 764 742 C700 858 604 906 500 908 C396 906 300 858 236 742 C172 620 174 472 252 402Z" fill="#FFCBA4" class="o"/>
+    <!-- cheek pouches (filled/puffy) -->
+    <ellipse cx="244" cy="620" rx="88" ry="72" fill="#FFCBA4" class="o"/>
+    <ellipse cx="756" cy="620" rx="88" ry="72" fill="#FFCBA4" class="o"/>
+    <!-- eyes (small and bright) -->
+    <ellipse cx="390" cy="486" rx="34" ry="38" fill="#2d2723"/>
+    <ellipse cx="610" cy="486" rx="34" ry="38" fill="#2d2723"/>
+    <circle cx="402" cy="472" r="12" fill="#fff"/>
+    <circle cx="622" cy="472" r="12" fill="#fff"/>
+    <!-- blush cheeks (over pouches) -->
+    <ellipse cx="270" cy="606" rx="58" ry="38" fill="#FF9060" opacity=".75"/>
+    <ellipse cx="730" cy="606" rx="58" ry="38" fill="#FF9060" opacity=".75"/>
+    <!-- muzzle -->
+    <ellipse cx="500" cy="650" rx="125" ry="88" fill="#FFE4C4"/>
+    <!-- tiny nose -->
+    <ellipse cx="500" cy="600" rx="22" ry="16" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 616 Q500 662 464 668 M500 616 Q500 662 536 668" fill="none" class="d"/>
+    <!-- whiskers -->
+    <line x1="222" y1="622" x2="366" y2="630" stroke="#2d2723" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+    <line x1="222" y1="648" x2="364" y2="645" stroke="#2d2723" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+    <line x1="634" y1="630" x2="778" y2="622" stroke="#2d2723" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+    <line x1="636" y1="645" x2="778" y2="648" stroke="#2d2723" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+  </g>
+</svg>

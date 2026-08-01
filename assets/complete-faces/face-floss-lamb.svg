@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-floss-lamb | Lamb | mint-tea | accessory-anchor: 500,200 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- fluffy wool around top/sides (bumpy silhouette) -->
+    <circle cx="265" cy="420" r="95" fill="#EFF4E8" class="o"/>
+    <circle cx="320" cy="340" r="88" fill="#EFF4E8" class="o"/>
+    <circle cx="395" cy="285" r="82" fill="#EFF4E8" class="o"/>
+    <circle cx="480" cy="262" r="80" fill="#EFF4E8" class="o"/>
+    <circle cx="520" cy="262" r="80" fill="#EFF4E8" class="o"/>
+    <circle cx="605" cy="285" r="82" fill="#EFF4E8" class="o"/>
+    <circle cx="680" cy="340" r="88" fill="#EFF4E8" class="o"/>
+    <circle cx="735" cy="420" r="95" fill="#EFF4E8" class="o"/>
+    <!-- small curved horns -->
+    <path d="M388 300 C360 270 342 230 358 200 C368 176 392 172 402 196" fill="none" stroke="#C8B898" stroke-width="20" stroke-linecap="round"/>
+    <path d="M612 300 C640 270 658 230 642 200 C632 176 608 172 598 196" fill="none" stroke="#C8B898" stroke-width="20" stroke-linecap="round"/>
+    <!-- head/body (rounder) -->
+    <ellipse cx="500" cy="636" rx="272" ry="292" fill="#EFF4E8" class="o"/>
+    <!-- eyes (gentle oval) -->
+    <path d="M352 480 C352 412 437 412 437 480 C437 545 394 572 394 572 C394 572 352 545 352 480Z" fill="#2d2723"/>
+    <path d="M563 480 C563 412 648 412 648 480 C648 545 606 572 606 572 C606 572 563 545 563 480Z" fill="#2d2723"/>
+    <!-- eye highlights -->
+    <circle cx="381" cy="454" r="14" fill="#fff"/>
+    <circle cx="606" cy="454" r="14" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="306" cy="630" rx="66" ry="34" fill="#AADE9A" opacity=".82"/>
+    <ellipse cx="694" cy="630" rx="66" ry="34" fill="#AADE9A" opacity=".82"/>
+    <!-- muzzle -->
+    <ellipse cx="500" cy="664" rx="138" ry="98" fill="#FFFDF5"/>
+    <!-- small pink nose -->
+    <ellipse cx="500" cy="610" rx="28" ry="20" fill="#D4A0B0"/>
+    <!-- mouth -->
+    <path d="M500 630 Q500 676 462 682 M500 630 Q500 676 538 682" fill="none" class="d"/>
+  </g>
+</svg>

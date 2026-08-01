@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-kiwi-koala | Koala | lavender-dream | accessory-anchor: 718,360 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- very large round fluffy ears (koala signature) -->
+    <circle cx="268" cy="318" r="138" fill="#B5C5D8" class="o"/>
+    <circle cx="732" cy="318" r="138" fill="#B5C5D8" class="o"/>
+    <!-- ear inner fur texture (lighter rings) -->
+    <circle cx="268" cy="318" r="100" fill="#CDD8E8" class="d"/>
+    <circle cx="732" cy="318" r="100" fill="#CDD8E8" class="d"/>
+    <circle cx="268" cy="318" r="64" fill="#E0E8F4" class="d"/>
+    <circle cx="732" cy="318" r="64" fill="#E0E8F4" class="d"/>
+    <!-- head/body -->
+    <path d="M248 395 C205 310 262 222 358 255 Q500 208 642 255 C738 222 795 310 752 395 C832 464 844 622 778 748 C714 864 614 912 500 914 C386 912 286 864 222 748 C156 622 168 464 248 395Z" fill="#B5C5D8" class="o"/>
+    <!-- eyes (round, deep-set) -->
+    <ellipse cx="388" cy="492" rx="42" ry="48" fill="#2d2723"/>
+    <ellipse cx="612" cy="492" rx="42" ry="48" fill="#2d2723"/>
+    <circle cx="404" cy="474" r="14" fill="#fff"/>
+    <circle cx="628" cy="474" r="14" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="302" cy="636" rx="65" ry="34" fill="#C8B4E0" opacity=".80"/>
+    <ellipse cx="698" cy="636" rx="65" ry="34" fill="#C8B4E0" opacity=".80"/>
+    <!-- large koala nose (prominent oval) -->
+    <ellipse cx="500" cy="614" rx="64" ry="48" fill="#4A4A5A" class="d"/>
+    <!-- nose highlight -->
+    <ellipse cx="486" cy="601" rx="18" ry="12" fill="#7A7A9A" opacity=".55"/>
+    <!-- muzzle -->
+    <ellipse cx="500" cy="668" rx="130" ry="86" fill="#CDD8E8"/>
+    <!-- mouth -->
+    <path d="M500 662 Q500 706 460 712 M500 662 Q500 706 540 712" fill="none" class="d"/>
+  </g>
+</svg>

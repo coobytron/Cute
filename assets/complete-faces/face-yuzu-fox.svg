@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-yuzu-fox | Fox | butter-sun | accessory-anchor: 740,180 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- pointed ears -->
+    <path d="M275 345 L326 135 L445 292Z M725 345 L674 135 L555 292Z" fill="#F4C84D" class="o"/>
+    <!-- inner ear marks -->
+    <path d="M319 278 L337 196 L399 281Z M681 278 L663 196 L601 281Z" fill="#FF806F" class="d"/>
+    <!-- head/body -->
+    <path d="M248 371 L324 148 L430 272 Q500 244 570 272 L676 148 L752 371 C833 446 842 616 770 746 C700 871 603 920 500 921 C397 920 300 871 230 746 C158 616 167 446 248 371Z" fill="#F4C84D" class="o"/>
+    <!-- cheek shading / fox mask -->
+    <path d="M254 520 Q370 398 500 492 Q630 398 746 520 Q667 590 585 568 Q500 550 415 568 Q333 590 254 520Z" fill="#D8A63B" opacity=".34"/>
+    <!-- eyes -->
+    <ellipse cx="390" cy="486" rx="28" ry="38" fill="#2d2723"/>
+    <ellipse cx="610" cy="486" rx="28" ry="38" fill="#2d2723"/>
+    <circle cx="401" cy="473" r="9" fill="#fff"/>
+    <circle cx="621" cy="473" r="9" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="315" cy="628" rx="67" ry="35" fill="#FF806F" opacity=".82"/>
+    <ellipse cx="685" cy="628" rx="67" ry="35" fill="#FF806F" opacity=".82"/>
+    <!-- muzzle -->
+    <path d="M324 620 Q410 556 500 630 Q590 556 676 620 Q642 770 500 802 Q358 770 324 620Z" fill="#FFF4D3"/>
+    <!-- nose -->
+    <path d="M500 596 C463 596 455 631 500 648 C545 631 537 596 500 596Z" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 648 Q500 697 456 704 M500 648 Q500 697 544 704" fill="none" class="d"/>
+    <!-- whiskers -->
+    <line x1="230" y1="635" x2="380" y2="648" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".48"/>
+    <line x1="230" y1="662" x2="378" y2="664" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".48"/>
+    <line x1="620" y1="648" x2="770" y2="635" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".48"/>
+    <line x1="622" y1="664" x2="770" y2="662" stroke="#2d2723" stroke-width="7" stroke-linecap="round" opacity=".48"/>
+  </g>
+</svg>

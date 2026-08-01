@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- face-biscuit-pup | Puppy | powder-sky | accessory-anchor: 786,922 -->
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#3d3028" flood-opacity=".14"/>
+    </filter>
+    <style>.o{stroke:#2d2723;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.d{stroke:#2d2723;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <g filter="url(#s)">
+    <!-- floppy ears (behind head) -->
+    <path d="M287 326 C156 252 105 389 168 509 C205 579 295 551 333 462 L361 366Z" fill="#7FB5D2" class="o"/>
+    <path d="M713 326 C844 252 895 389 832 509 C795 579 705 551 667 462 L639 366Z" fill="#7FB5D2" class="o"/>
+    <!-- head/body -->
+    <path d="M254 382 C240 267 348 222 440 263 Q500 241 560 263 C652 222 760 267 746 382 C823 452 837 617 772 744 C709 865 610 913 500 914 C390 913 291 865 228 744 C163 617 177 452 254 382Z" fill="#BFDDED" class="o"/>
+    <!-- eye patch shading left -->
+    <path d="M326 380 Q436 331 493 392 Q432 457 350 472 Q307 444 326 380Z" fill="#7FB5D2" opacity=".82"/>
+    <!-- eyes -->
+    <ellipse cx="390" cy="486" rx="28" ry="38" fill="#2d2723"/>
+    <ellipse cx="610" cy="486" rx="28" ry="38" fill="#2d2723"/>
+    <circle cx="401" cy="473" r="9" fill="#fff"/>
+    <circle cx="621" cy="473" r="9" fill="#fff"/>
+    <!-- blush cheeks -->
+    <ellipse cx="315" cy="628" rx="67" ry="35" fill="#FF8E88" opacity=".82"/>
+    <ellipse cx="685" cy="628" rx="67" ry="35" fill="#FF8E88" opacity=".82"/>
+    <!-- muzzle -->
+    <ellipse cx="500" cy="650" rx="150" ry="100" fill="#F4FBFF" class="d"/>
+    <!-- dog nose -->
+    <path d="M500 588 C457 588 447 635 500 654 C553 635 543 588 500 588Z" fill="#2d2723"/>
+    <!-- mouth -->
+    <path d="M500 654 Q500 697 456 706 M500 654 Q500 697 544 706" fill="none" class="d"/>
+    <!-- tongue peek -->
+    <path d="M485 706 Q500 745 515 706" fill="#FF8E88" class="d"/>
+    <!-- collar/bandana at neck -->
+    <path d="M270 780 Q500 872 730 780 L682 888 Q500 954 318 888Z" fill="#FF8E88" class="o"/>
+    <!-- dog tag -->
+    <path d="M665 853 L786 922 L700 771Z" fill="#7FB5D2" class="d"/>
+  </g>
+</svg>

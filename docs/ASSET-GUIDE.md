@@ -13,6 +13,86 @@ Cute Face Builder composes approved artwork. Every visible feature must be trace
 
 Assets may use a different intrinsic pixel size, but their declared view box or native canvas must map predictably into the canonical canvas.
 
+## Art guide for complete-face characters
+
+### Canvas and safe area
+
+Every complete-face asset uses:
+
+- Artboard: `1000 × 1000` SVG viewBox, transparent background
+- **Character safe zone**: `x: 120–880`, `y: 80–940` (all silhouette details stay inside)
+- Ears, antlers, wool, and spines may extend as high as `y: 80` but must stay above `y: 0`
+- Whiskers and cheek pouches may reach as wide as `x: 80–920` but must not clip
+- Export bounds in the manifest must fully contain every silhouette feature without cropping
+
+### Line treatment
+
+- **Outer contour** (class `.o`): `stroke-width: 18`, round cap and join, color `#2d2723`
+- **Interior detail** (class `.d`): `stroke-width: 12`, round cap and join, color `#2d2723`
+- Fine whiskers or forehead marks may use explicit `stroke-width` values of `6–10`
+- All strokes use `stroke-linecap: round` and `stroke-linejoin: round`
+- No hairlines below `stroke-width: 5` in production artwork
+
+### Texture
+
+- A subtle dot pattern is optional at the SVG level (`<pattern>` with 2.2 r circles, 10% opacity)
+- The Classic Paper finish overlay provides global paper texture at the application layer
+- Do not bake coarse textures into the character body; keep fills clean and let the finish layer do its job
+
+### Eye construction
+
+All 12 characters share the same glossy-eye recipe:
+
+1. **Iris / pupil**: teardrop or soft oval, filled `#2d2723`
+   - Teardrop: cubic bézier pointing downward — e.g. `C 345 405 430 405 430 472 C 430 537 388 566 388 566`
+   - Oval: `<ellipse rx="28–42" ry="38–48"/>`
+2. **Specular highlight**: white circle `r: 9–15`, offset toward the 10 o'clock position of the iris
+3. **Eye separation**: left iris centered near `x: 375–395`, right iris near `x: 605–625`
+4. Both eyes must match in size and highlight placement for mirror-ready export
+
+Eye scale governs perceived expression weight. Keep iris short axis ≥ 56 px at 1000-px canvas.
+
+### Blush
+
+- Two soft ellipses flanking the nose, set to `opacity: 0.75–0.82`
+- Typical size: `rx: 60–70, ry: 30–38`
+- Color: species-appropriate warm pink or accent hue (e.g. `#FF786B`, `#FF93A5`, `#FF9060`)
+- Center placement: approximately `(308, 630)` and `(692, 630)` — adjust ±20 px per species
+- Blush must not overpower the iris or obscure the muzzle
+
+### Palette limits
+
+- Each complete-face asset declares one or more supported palette IDs
+- The base body color maps to one palette token — changing palette means supplying an alternate authored variant, not a CSS filter
+- Blush, inner-ear, and muzzle accents are authored directly as specific hex values; they do not vary by palette unless a separate variant is supplied
+- Maximum 6 distinct named hex values per character (body, inner-ear/marking, muzzle, blush, outline `#2d2723`, and one optional accent)
+
+### Thumbnail rules
+
+- Square, transparent background
+- The production SVG file may serve as its own thumbnail (the `thumbnail` field may equal `sourceFile`)
+- Character is centered consistently within the 1000 × 1000 viewport — no random offsets per character
+- All details must remain readable at 96 px rendered size (icons, selection cards)
+- No labels, version marks, or selection halos baked into the artwork
+- Contact-sheet review at 280 × 280 px per cell is the primary thumbnail QA surface
+
+### Accessory anchor
+
+Each complete-face asset declares an `accessoryAnchor` object in the manifest:
+
+```json
+"accessoryAnchor": { "x": 725, "y": 350 }
+```
+
+This point is the default attachment origin for a front accessory in canonical canvas coordinates. Common placements:
+
+- Ear top-right: ~`(720, 310–370)`
+- Ear top-left: ~`(280, 310–370)`
+- Crown center: ~`(500, 190–260)`
+- Collar/tag: ~`(680–800, 850–930)`
+
+The anchor is documentation for designers; the application may use it as a default `accessory.defaultTransform` offset.
+
 ## Folder contract
 
 ```text
