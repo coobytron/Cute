@@ -32,6 +32,7 @@ jobs:
         run: |
           node --check build-face.js
           node --check art-direction.js
+          node --check art-direction-bootstrap.js
 
       - name: Validate art-direction contract
         run: node scripts/validate-art-direction.mjs
