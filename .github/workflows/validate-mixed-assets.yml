@@ -1,0 +1,38 @@
+name: Validate mixed assets
+
+on:
+  pull_request:
+    paths:
+      - "assets/mixed/**"
+      - "assets/mixed-asset-fixtures.json"
+      - "mixed-asset-v2.js"
+      - "mixed-asset-integration.js"
+      - "mixed-asset-export.js"
+      - "assets/manifest-adapter.js"
+      - "scripts/validate-mixed-assets.mjs"
+      - "docs/MIXED-ASSET-PIPELINE.md"
+      - "previews/mixed-asset-review.html"
+      - ".github/workflows/validate-mixed-assets.yml"
+  push:
+    branches: [main]
+    paths:
+      - "assets/mixed/**"
+      - "assets/mixed-asset-fixtures.json"
+      - "mixed-asset-v2.js"
+      - "mixed-asset-integration.js"
+      - "mixed-asset-export.js"
+      - "assets/manifest-adapter.js"
+      - "scripts/validate-mixed-assets.mjs"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --check mixed-asset-v2.js
+      - run: node --check mixed-asset-integration.js
+      - run: node --check mixed-asset-export.js
+      - run: node scripts/validate-mixed-assets.mjs

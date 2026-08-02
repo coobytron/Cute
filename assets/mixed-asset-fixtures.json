@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "product": "Cute Face Builder",
+  "canonicalCanvas": {
+    "width": 1000,
+    "height": 1000,
+    "coordinateSystem": "top-left",
+    "normalizedAnchors": true
+  },
+  "fixtures": [
+    {
+      "id": "fixture-raster-mallow-cat",
+      "label": "Raster Mallow Cat",
+      "mediaMode": "raster",
+      "speciesTags": ["cat"],
+      "paletteId": "apricot-day",
+      "personalityCue": "A soft paper-and-pastel nap expert.",
+      "previewFile": "assets/mixed/raster-mallow-cat-base.png",
+      "exportBounds": { "left": 160, "top": 80, "right": 840, "bottom": 900 },
+      "layers": [
+        {
+          "id": "raster-mallow-cat-base",
+          "sourceFile": "assets/mixed/raster-mallow-cat-base.png",
+          "format": "png",
+          "layerRole": "base-color",
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 10,
+          "blendMode": "source-over",
+          "opacity": 1,
+          "tintable": false
+        },
+        {
+          "id": "raster-mallow-cat-mask",
+          "sourceFile": "assets/mixed/raster-mallow-cat-mask.png",
+          "format": "png",
+          "layerRole": "effect-mask",
+          "visible": false,
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 20,
+          "blendMode": "source-over",
+          "opacity": 1,
+          "tintable": false
+        },
+        {
+          "id": "raster-mallow-cat-grain",
+          "sourceFile": "assets/mixed/raster-mallow-cat-grain.webp",
+          "format": "webp",
+          "layerRole": "texture",
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 30,
+          "blendMode": "multiply",
+          "opacity": 0.82,
+          "maskRef": "raster-mallow-cat-mask",
+          "tintable": false
+        }
+      ]
+    },
+    {
+      "id": "fixture-mixed-berry-fox",
+      "label": "Mixed Berry Fox",
+      "mediaMode": "mixed",
+      "speciesTags": ["fox"],
+      "paletteId": "lavender-dream",
+      "personalityCue": "A berry-patch scout with polished ink lines.",
+      "previewFile": "assets/mixed/mixed-berry-fox-base.svg",
+      "exportBounds": { "left": 135, "top": 70, "right": 865, "bottom": 950 },
+      "layers": [
+        {
+          "id": "mixed-berry-fox-base",
+          "sourceFile": "assets/mixed/mixed-berry-fox-base.svg",
+          "format": "svg",
+          "layerRole": "base-color",
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 10,
+          "blendMode": "source-over",
+          "opacity": 1,
+          "tintable": true
+        },
+        {
+          "id": "mixed-berry-fox-mask",
+          "sourceFile": "assets/mixed/mixed-berry-fox-mask.svg",
+          "format": "svg",
+          "layerRole": "effect-mask",
+          "visible": false,
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 20,
+          "blendMode": "source-over",
+          "opacity": 1,
+          "tintable": false
+        },
+        {
+          "id": "mixed-berry-fox-shading",
+          "sourceFile": "assets/mixed/mixed-berry-fox-shading.png",
+          "format": "png",
+          "layerRole": "shading",
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 30,
+          "blendMode": "multiply",
+          "opacity": 0.76,
+          "maskRef": "mixed-berry-fox-mask",
+          "tintable": false
+        },
+        {
+          "id": "mixed-berry-fox-highlights",
+          "sourceFile": "assets/mixed/mixed-berry-fox-highlights.svg",
+          "format": "svg",
+          "layerRole": "highlight",
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 40,
+          "blendMode": "screen",
+          "opacity": 0.9,
+          "maskRef": "mixed-berry-fox-mask",
+          "tintable": false
+        },
+        {
+          "id": "mixed-berry-fox-linework",
+          "sourceFile": "assets/mixed/mixed-berry-fox-linework.svg",
+          "format": "svg",
+          "layerRole": "linework",
+          "nativeCanvas": { "width": 1000, "height": 1000 },
+          "pixelDensity": 1,
+          "anchor": { "x": 0.5, "y": 0.5 },
+          "defaultTransform": { "x": 500, "y": 500, "scale": 1, "rotation": 0, "flipX": false },
+          "zOrder": 50,
+          "blendMode": "source-over",
+          "opacity": 1,
+          "tintable": false
+        }
+      ]
+    }
+  ]
+}
