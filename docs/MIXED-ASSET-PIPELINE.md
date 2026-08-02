@@ -63,10 +63,10 @@ A mixed-format character using:
 
 - SVG base color
 - transparent PNG shading
-- transparent PNG mask
-- lossless WebP highlights
+- SVG mask
+- SVG highlights
 - SVG linework
-- `multiply` and `screen` compositing
+- masked `multiply` and `screen` compositing
 
 Both fixtures appear under **Mixed media references** in the Characters library. They support scale, tilt, horizontal flip, opaque PNG export, transparent PNG export, and recipe JSON export.
 
