@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cute mixed-asset review</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { font-family: Arial, Helvetica, sans-serif; color:#392a24; background:#efe7dc; }
+    body { margin:0; padding:24px; }
+    header { display:grid; gap:8px; margin-bottom:20px; }
+    h1,p { margin:0; }
+    main { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+    article { background:#fffaf3; border:1px solid #d6c7b8; border-radius:20px; padding:14px; }
+    canvas { width:100%; aspect-ratio:1; display:block; border-radius:16px; background:linear-gradient(135deg,#ffe6bd,#eadcff); }
+    .meta { display:grid; gap:4px; padding:12px 2px 2px; }
+    code,small { color:#755f54; overflow-wrap:anywhere; }
+    .status { padding:8px 10px; border-radius:10px; background:#f4eee5; }
+    .is-error { color:#9d332e; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mixed asset review</h1>
+    <p>Real PNG, WebP, SVG, masking, blend-mode, alpha, and deterministic ordering fixtures.</p>
+    <p class="status" id="summary">Loading fixtures…</p>
+  </header>
+  <main id="grid"></main>
+  <script src="../mixed-asset-v2.js"></script>
+  <script>
+    const grid = document.getElementById("grid");
+    const summary = document.getElementById("summary");
+
+    fetch("../assets/mixed-asset-fixtures.json", { cache: "no-cache" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Fixture request failed (${response.status}).`);
+        return response.json();
+      })
+      .then(async (config) => {
+        let failureCount = 0;
+        for (const fixture of config.fixtures) {
+          const article = document.createElement("article");
+          const canvas = document.createElement("canvas");
+          const meta = document.createElement("div");
+          meta.className = "meta";
+          meta.innerHTML = `<strong>${fixture.label}</strong><span>${fixture.mediaMode}</span><code>${fixture.id}</code><small>${fixture.layers.length} declared layers</small>`;
+          article.append(canvas, meta);
+          grid.append(article);
+          const result = await window.CuteMixedAssets.compose(canvas, fixture.layers, {
+            width: 1000,
+            height: 1000,
+            pixelRatio: 1,
+            maxPixelRatio: 1,
+            canonicalCanvas: config.canonicalCanvas
+          });
+          failureCount += result.errors.length;
+          if (result.errors.length) article.classList.add("is-error");
+          meta.insertAdjacentHTML("beforeend", `<small>${result.visibleAssetCount} visible · ${result.errors.length} errors · ${result.warnings.length} warnings</small>`);
+        }
+        summary.textContent = `${config.fixtures.length} fixtures rendered · ${failureCount} recoverable errors`;
+        summary.classList.toggle("is-error", failureCount > 0);
+      })
+      .catch((error) => {
+        summary.textContent = error.message;
+        summary.classList.add("is-error");
+      });
+  </script>
+</body>
+</html>

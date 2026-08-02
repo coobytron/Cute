@@ -206,15 +206,19 @@
     loadStyle("assets/export-menu.css");
     loadStyle("assets/responsive-a11y.css");
 
-    loadScript("complete-face.js")
+    loadScript("mixed-asset-v2.js")
+      .then(() => loadScript("complete-face.js"))
       .then(() => global.CuteCompleteFaces?.ready)
       .then(() => loadScript("complete-face-state.js"))
+      .then(() => loadScript("mixed-asset-integration.js"))
+      .then(() => global.CuteMixedAssetIntegration?.ready)
       .then(() => loadScript("assets/build-face-manifest.js"))
       .then(() => loadScript("build-face.js"))
       .then(() => loadScript("art-direction.js"))
       .then(() => loadScript("art-direction-bootstrap.js"))
       .then(() => loadScript("history-saves.js"))
       .then(() => loadScript("export-menu.js"))
+      .then(() => loadScript("mixed-asset-export.js"))
       .then(() => loadScript("responsive-a11y.js"))
       .then(() => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-ready")))
       .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-error", { detail: error })));
