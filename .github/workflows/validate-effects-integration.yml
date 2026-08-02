@@ -1,0 +1,42 @@
+name: Validate effects integration
+on:
+  pull_request:
+    paths:
+      - "effects.js"
+      - "effects-controller.js"
+      - "effects-export-integration.js"
+      - "assets/effects-presets.json"
+      - "assets/effects.css"
+      - "mixed-asset-export.js"
+      - "scripts/validate-effects-integration.mjs"
+      - "docs/EFFECTS.md"
+      - "previews/effects-review.html"
+      - ".github/workflows/validate-effects-integration.yml"
+  push:
+    branches: [main]
+    paths:
+      - "effects.js"
+      - "effects-controller.js"
+      - "effects-export-integration.js"
+      - "assets/effects-presets.json"
+      - "assets/effects.css"
+      - "mixed-asset-export.js"
+      - "scripts/validate-effects-integration.mjs"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --check effects.js
+      - run: node --check effects-controller.js
+      - run: node --check effects-export-integration.js
+      - run: node --check mixed-asset-export.js
+      - run: node scripts/validate-effects-integration.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cute-effects-integration-validation
+          path: review-artifacts/effects-integration-validation.json
