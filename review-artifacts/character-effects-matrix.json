@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "generatedBy": "scripts/generate-character-effect-matrix.mjs",
+  "deterministicSeed": 260801,
+  "dependencies": {
+    "manifest": "assets/manifest.json",
+    "roster": "assets/roster-expansion.json",
+    "mixed": "assets/mixed-asset-fixtures.json",
+    "effects": "assets/effects-presets.json",
+    "compatibility": "assets/effect-compatibility.json"
+  },
+  "counts": {
+    "characters": 38,
+    "canonicalAndExpandedCharacters": 36,
+    "mixedFixtures": 2,
+    "presets": 6,
+    "cases": 494,
+    "fullResolutionCases": 266,
+    "mobileCases": 228
+  },
+  "artifactStatus": "Committed browser-rendered matrix. Re-run the generator to refresh structural failures, warnings, and expanded case records.",
+  "htmlArtifact": "previews/contact-sheets/character-effects-matrix.html",
+  "manualReviewRequired": true
+}

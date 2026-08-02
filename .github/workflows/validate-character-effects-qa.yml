@@ -1,0 +1,40 @@
+name: Validate character effects QA
+on:
+  pull_request:
+    paths:
+      - "assets/manifest.json"
+      - "assets/roster-expansion.json"
+      - "assets/mixed-asset-fixtures.json"
+      - "assets/effects-presets.json"
+      - "assets/effect-compatibility.json"
+      - "effects.js"
+      - "mixed-asset-v2.js"
+      - "scripts/generate-character-effect-matrix.mjs"
+      - "previews/contact-sheets/character-effects-matrix.html"
+      - "review-artifacts/character-effects-matrix.json"
+      - "docs/ART-DIRECTION-SIGNOFF.md"
+      - ".github/workflows/validate-character-effects-qa.yml"
+  push:
+    branches: [main]
+    paths:
+      - "assets/**"
+      - "effects.js"
+      - "mixed-asset-v2.js"
+      - "scripts/generate-character-effect-matrix.mjs"
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --check scripts/generate-character-effect-matrix.mjs
+      - run: node scripts/generate-character-effect-matrix.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: character-effects-qa
+          path: |
+            previews/contact-sheets/character-effects-matrix.html
+            review-artifacts/character-effects-matrix.json
