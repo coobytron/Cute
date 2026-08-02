@@ -1,0 +1,377 @@
+/* iOS and touch-first experience layer.
+   Loaded after every other authored stylesheet so it can correct WebKit behaviour
+   without changing the approved desktop art direction. */
+
+:root {
+  --ios-safe-top: env(safe-area-inset-top, 0px);
+  --ios-safe-right: env(safe-area-inset-right, 0px);
+  --ios-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ios-safe-left: env(safe-area-inset-left, 0px);
+  --ios-sticky-offset: 0px;
+  --ios-tap-target: 44px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* iOS reports 100vh as the tallest possible viewport, so the toolbar overlaps
+   the last row of content until the dynamic unit is used. */
+@supports (min-height: 100dvh) {
+  body {
+    min-height: 100dvh;
+  }
+}
+
+/* Safe areas: the shell is full-bleed below 900px, so notches, the Dynamic
+   Island and the home indicator would otherwise clip authored content. */
+@media (max-width: 900px) {
+  .app-shell {
+    padding-left: var(--ios-safe-left);
+    padding-right: var(--ios-safe-right);
+  }
+
+  .app-footer {
+    padding-bottom: calc(10px + var(--ios-safe-bottom));
+  }
+}
+
+.ios-standalone .app-shell {
+  padding-top: var(--ios-safe-top);
+}
+
+@media (max-width: 760px) {
+  .header-actions {
+    top: var(--ios-safe-top);
+  }
+
+  .mobile-panel-nav {
+    top: calc(var(--ios-safe-top) + 6px);
+  }
+}
+
+/* Sticky bars must not cover an element that was just focused or scrolled to. */
+.stage-column,
+.library-panel,
+.controls-panel,
+.saved-strip,
+.control-section,
+.part-card,
+.recipe-card {
+  scroll-margin-top: calc(var(--ios-sticky-offset) + 14px);
+}
+
+/* Safari only supports the prefixed backdrop filter before 18; without it the
+   sticky bars render fully transparent and authored text becomes unreadable. */
+.header-actions,
+.mobile-panel-nav,
+.export-menu {
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@supports not ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+  .header-actions {
+    background: #fffdf8;
+  }
+
+  .mobile-panel-nav {
+    background: #eee4d6;
+  }
+}
+
+/* Momentum scrolling and contained rubber-banding for the horizontal rails. */
+.category-tabs,
+.saved-grid,
+.stage-actions,
+.cute-effects-grid,
+.export-menu {
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-tabs,
+.stage-actions,
+.cute-effects-grid {
+  overscroll-behavior-inline: contain;
+  scroll-padding-inline: 12px;
+}
+
+/* Remove the 300ms double-tap delay and the double-tap zoom on controls. */
+button,
+[role="button"],
+[role="tab"],
+[role="menuitem"],
+a,
+label,
+select,
+summary,
+.recipe-card,
+.part-card,
+.saved-card,
+.save-card,
+.palette-button {
+  touch-action: manipulation;
+}
+
+/* Long-pressing an authored control should not raise the callout menu or start
+   a text selection drag. */
+button,
+[role="button"],
+[role="tab"],
+[role="menuitem"],
+.mode-tab,
+.recipe-card,
+.part-card,
+.saved-card,
+.save-card,
+.toggle-label,
+.stage-sticker,
+.count-pill {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (pointer: coarse) {
+  /* iOS zooms the whole page when a focused field is under 16px. */
+  input[type="text"],
+  input[type="search"],
+  input[type="number"],
+  input[type="email"],
+  select,
+  textarea,
+  .text-input,
+  .art-caption-input,
+  .cute-effects-seed-row input {
+    font-size: max(16px, 1rem);
+  }
+
+  .text-input,
+  .art-caption-input,
+  .art-select {
+    min-height: var(--ios-tap-target);
+  }
+
+  /* The native range thumb is a ~14px target; authored sliders are the primary
+     art-direction control on phones. */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: var(--ios-tap-target);
+    background: transparent;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    border: 1px solid rgba(45, 39, 35, 0.35);
+    border-radius: 999px;
+    background: var(--line);
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    margin-top: -12px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 2px 6px rgba(45, 39, 35, 0.25);
+  }
+
+  input[type="range"]:focus-visible::-webkit-slider-thumb {
+    outline: 3px solid rgba(255, 120, 107, 0.45);
+    outline-offset: 2px;
+  }
+
+  .stage-btn,
+  .category-button,
+  .finish-button,
+  .mode-tab,
+  .export-menu-item {
+    min-height: var(--ios-tap-target);
+  }
+
+  .canvas-action {
+    width: var(--ios-tap-target);
+    height: var(--ios-tap-target);
+  }
+}
+
+/* WebKit keeps :hover applied after a tap until another element is touched, so
+   pointer-only affordances are neutralised on touch devices. */
+@media (hover: none) {
+  .button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .recipe-card:hover:not(.is-active) {
+    transform: none;
+    border-color: var(--line);
+  }
+
+  .part-card:hover:not(.is-active) {
+    border-color: var(--line);
+    background: rgba(255, 255, 255, 0.48);
+  }
+
+  .pill-button:hover:not(.is-active):not([aria-pressed="true"]) {
+    border-color: var(--line);
+  }
+
+  .stage-btn:hover:not(:disabled) {
+    background: transparent;
+  }
+
+  .canvas-action:hover {
+    background: #fffdf8;
+  }
+
+  .save-card:hover {
+    background: #fffdf8;
+  }
+
+  .art-finish-card:hover:not(.is-active) {
+    transform: none;
+  }
+
+  .cute-effect-card:hover:not(.is-active) {
+    transform: none;
+  }
+
+  .export-menu-item:hover {
+    background: transparent;
+  }
+}
+
+/* Touch needs its own press feedback once hover is gone. */
+@media (pointer: coarse) {
+  .button:active:not(:disabled),
+  .stage-btn:active:not(:disabled),
+  .mode-tab:active,
+  .mobile-panel-tab:active,
+  .recipe-card:active,
+  .part-card:active,
+  .saved-card:active,
+  .save-card:active,
+  .finish-button:active,
+  .category-button:active,
+  .pill-button:active:not(:disabled),
+  .export-menu-item:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .palette-button:active {
+    filter: brightness(0.96);
+  }
+}
+
+/* Stage gestures: one finger still scrolls the page, two fingers scale and tilt
+   the authored composition instead of zooming Safari. */
+.is-touch .stage {
+  touch-action: pan-y;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.stage.is-gesturing {
+  touch-action: none;
+}
+
+.ios-gesture-readout {
+  position: absolute;
+  z-index: 4;
+  right: 12px;
+  bottom: 12px;
+  display: none;
+  padding: 7px 11px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.94);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-size: 11px;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.stage.is-gesturing .ios-gesture-readout {
+  display: block;
+}
+
+.ios-gesture-hint {
+  position: absolute;
+  z-index: 4;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.ios-gesture-hint[hidden] {
+  display: none;
+}
+
+.ios-gesture-hint.is-fading {
+  opacity: 0;
+}
+
+.stage.is-gesturing .ios-gesture-hint {
+  opacity: 0;
+}
+
+/* The software keyboard resizes the visual viewport only, which leaves sticky
+   bars floating over the middle of the screen on iOS. */
+.ios-keyboard-open .header-actions,
+.ios-keyboard-open .mobile-panel-nav {
+  position: static;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ios-gesture-hint {
+    transition: none;
+  }
+
+  .button:active:not(:disabled),
+  .stage-btn:active:not(:disabled),
+  .mode-tab:active,
+  .mobile-panel-tab:active,
+  .recipe-card:active,
+  .part-card:active,
+  .saved-card:active,
+  .save-card:active,
+  .finish-button:active,
+  .category-button:active,
+  .pill-button:active:not(:disabled),
+  .export-menu-item:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .ios-gesture-readout,
+  .ios-gesture-hint {
+    border-color: CanvasText;
+    background: Canvas;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
