@@ -336,6 +336,125 @@ button,
   opacity: 0;
 }
 
+/* Panels scroll inside themselves on phones. Stacking the whole authored
+   library into the page made the document seven screens tall and pushed the
+   stage far out of reach behind the list. */
+@media (max-width: 760px) {
+  #libraryModeContent,
+  .workspace.mobile-panel-direction .controls-panel {
+    max-height: 62vh;
+    max-height: min(64svh, 620px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-block: 10px;
+
+    /* Scroll shadows: the local layers pin to the content and the scroll layers
+       pin to the frame, so a shadow only shows where content continues. */
+    background:
+      linear-gradient(#fffdf8 32%, rgba(255, 253, 248, 0)) center top,
+      linear-gradient(rgba(255, 253, 248, 0), #fffdf8 68%) center bottom,
+      radial-gradient(farthest-side at 50% 0, rgba(45, 39, 35, 0.3), rgba(45, 39, 35, 0)) center top,
+      radial-gradient(farthest-side at 50% 100%, rgba(45, 39, 35, 0.3), rgba(45, 39, 35, 0)) center bottom,
+      #fffdf8;
+    background-repeat: no-repeat;
+    background-size: 100% 34px, 100% 34px, 100% 17px, 100% 17px, auto;
+    background-attachment: local, local, scroll, scroll, local;
+  }
+
+  #libraryModeContent {
+    padding-right: 2px;
+  }
+
+  .workspace.mobile-panel-direction .controls-panel {
+    padding-right: 14px;
+  }
+
+  /* The category rail has to stay reachable while the parts grid scrolls. */
+  .part-library .category-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 10px;
+    padding-top: 4px;
+    background: linear-gradient(180deg, #fffdf8 78%, rgba(255, 253, 248, 0));
+  }
+}
+
+/* Scroll cost: a fixed, multiply-blended grain layer and two blurred backdrops
+   repaint the whole screen every frame on WebKit. */
+@media (pointer: coarse) {
+  body {
+    position: relative;
+  }
+
+  .page-grain {
+    position: absolute;
+  }
+
+  .header-actions,
+  .mobile-panel-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .header-actions {
+    background: #fffdf8;
+  }
+
+  .mobile-panel-nav {
+    background: #eee4d6;
+  }
+
+  .recipe-card,
+  .part-card,
+  .saved-card {
+    content-visibility: auto;
+  }
+
+  .recipe-card {
+    contain-intrinsic-size: auto 82px;
+  }
+
+  .part-card {
+    contain-intrinsic-size: auto 106px;
+  }
+
+  .saved-card {
+    contain-intrinsic-size: auto 108px;
+  }
+}
+
+/* Returning to the composition should never mean scrolling back by hand. */
+.ios-stage-return {
+  position: fixed;
+  z-index: 40;
+  right: max(14px, var(--ios-safe-right));
+  bottom: calc(14px + var(--ios-safe-bottom));
+  display: none;
+  align-items: center;
+  gap: 7px;
+  min-height: var(--ios-tap-target);
+  padding: 0 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--coral);
+  box-shadow: 0 6px 18px rgba(45, 39, 35, 0.28);
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.ios-stage-return[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .ios-stage-return:not([hidden]) {
+    display: inline-flex;
+  }
+}
+
 /* The software keyboard resizes the visual viewport only, which leaves sticky
    bars floating over the middle of the screen on iOS. */
 .ios-keyboard-open .header-actions,
@@ -343,6 +462,10 @@ button,
   position: static;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+.ios-keyboard-open .ios-stage-return {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

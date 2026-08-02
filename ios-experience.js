@@ -432,6 +432,41 @@
     });
   }
 
+  function scrollBehavior() {
+    return global.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  }
+
+  function scrollToElement(element) {
+    if (!element) return;
+    const offset = syncStickyOffset() + 12;
+    const top = element.getBoundingClientRect().top + global.scrollY - offset;
+    global.scrollTo({ top: Math.max(0, top), behavior: scrollBehavior() });
+  }
+
+  /* The authored library is long. Once it is scrolled past, the composition it
+     edits is off screen, so a phone needs a way back to it. */
+  function installStageReturn() {
+    if (!stage || !global.IntersectionObserver) return;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "ios-stage-return";
+    button.hidden = true;
+    button.textContent = "↑ Back to face";
+    button.setAttribute("aria-label", "Scroll back to the character stage");
+    document.body.appendChild(button);
+
+    button.addEventListener("click", () => {
+      scrollToElement(document.getElementById("currentCharacter") || stage);
+    });
+
+    const observer = new IntersectionObserver(([entry]) => {
+      const phone = global.matchMedia?.("(max-width: 760px)").matches === true;
+      button.hidden = !phone || entry.intersectionRatio > 0.2;
+    }, { threshold: [0, 0.2, 0.5] });
+    observer.observe(stage);
+  }
+
   /* Mobile panel tabs swap the panel below the stage; without this the newly
      revealed panel can open scrolled off screen behind the sticky bars. */
   function installPanelScroll() {
@@ -440,11 +475,7 @@
       if (!tab || !global.matchMedia?.("(max-width: 760px)").matches) return;
       const panel = document.getElementById(tab.getAttribute("aria-controls") || "");
       if (!panel) return;
-      global.requestAnimationFrame(() => {
-        const offset = syncStickyOffset() + 12;
-        const top = panel.getBoundingClientRect().top + global.scrollY - offset;
-        global.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-      });
+      global.requestAnimationFrame(() => scrollToElement(panel));
     });
   }
 
@@ -469,6 +500,7 @@
   applyPlatformClasses();
   ensureStageOverlays();
   installStageGestures();
+  installStageReturn();
   installPanelScroll();
   installKeyboardDismiss();
   document.addEventListener("click", interceptExportMenu, true);

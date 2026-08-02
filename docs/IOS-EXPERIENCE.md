@@ -43,6 +43,34 @@ The preview reproduces viewport sizes only. Safe areas, the share sheet, the sof
 - range thumbs become 28 px targets inside a 44 px row on coarse pointers
 - horizontal rails keep momentum scrolling and contain their rubber-banding
 
+## Scroll length and scroll cost
+
+Stacking every authored panel into the document made the phone layout punishing: the page ran to seven screens and the composition sat thousands of pixels above the library that edits it.
+
+Page length on a 664 px viewport:
+
+| Panel | Before | After |
+|---|---|---|
+| Complete faces | 4884 px (7.4 screens) | 1837 px (2.8 screens) |
+| Build a face | 3157 px (4.8 screens) | 1837 px (2.8 screens) |
+| Art direction | 3094 px (4.7 screens) | 1552 px (2.3 screens) |
+
+- below 760 px the library content and the Art direction panel become bounded regions of `min(64svh, 620px)` that scroll inside themselves, so the document stays short and the stage stays one screen away
+- `svh` is used rather than `vh` so Safari's collapsing toolbar does not resize the panel mid-scroll, with a `vh` fallback first in the cascade
+- `overscroll-behavior: contain` stops an inner scroll from chaining into the page
+- CSS scroll shadows mark the bounded edges, so a cut-off row reads as more content rather than as the end
+- the part-category rail stays pinned while its grid scrolls
+- a **Back to face** control appears on phones once the stage leaves the viewport, and returns to it clear of the sticky bars
+- the authored card layouts are untouched; nothing was compressed to buy the space
+
+Scroll cost on coarse pointers:
+
+- the full-screen grain layer stops being `position: fixed`, so WebKit no longer re-composites a multiply-blended layer over the whole viewport on every frame
+- the two sticky bars drop `backdrop-filter` for a solid background; a per-frame backdrop blur is the most expensive thing on a scrolling page
+- long card lists use `content-visibility: auto` with `contain-intrinsic-size`, so off-screen authored cards are not laid out or painted
+
+Desktop keeps the fixed grain, the blurred bars, and the unbounded panels.
+
 ## Stage gestures
 
 On touch devices the stage takes over the pinch gesture rather than zooming Safari:

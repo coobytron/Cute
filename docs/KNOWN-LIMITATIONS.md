@@ -48,6 +48,9 @@ These are deliberate product boundaries or manual-review gaps, not hidden future
 - Taking over the pinch gesture on the stage means Safari page zoom must be started outside the stage; page zoom is never disabled.
 - Add to Home Screen provides a standalone shell only. There is no service worker, so the app is not offline-capable.
 - No iOS splash screens are declared; iOS renders the background color while launching.
+- Phone panels scroll inside themselves below 760 px. That keeps the page short, but it is a nested scroll region, and the panel heading scrolls with its content.
+- The grain layer scrolls with the document on touch devices instead of staying fixed to the viewport. This is a deliberate trade of an unnoticeable difference in a noise texture for smooth scrolling.
+- `content-visibility` and `svh` are progressive enhancements; older iOS falls back to full rendering and `vh` sizing.
 - The iOS review page reproduces viewport sizes only. Safe areas, the share sheet, the software keyboard, and gesture feel require hardware.
 
 ## Visual fidelity

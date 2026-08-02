@@ -50,7 +50,13 @@ for (const token of [
   "::-webkit-slider-thumb",
   ".ios-gesture-readout",
   ".ios-gesture-hint",
+  ".ios-stage-return",
   ".ios-keyboard-open",
+  "overscroll-behavior: contain",
+  "background-attachment: local",
+  "content-visibility: auto",
+  "contain-intrinsic-size",
+  "svh",
   "prefers-reduced-motion",
   "forced-colors: active"
 ]) {
@@ -75,6 +81,9 @@ for (const token of [
   "data-export-action",
   "stopImmediatePropagation",
   "setPointerCapture",
+  "IntersectionObserver",
+  "ios-stage-return",
+  "prefers-reduced-motion",
   "pointerdown",
   "pointermove",
   "passive: false",
