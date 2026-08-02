@@ -192,6 +192,7 @@
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src = source;
+      script.dataset.cuteScript = source;
       script.onload = resolve;
       script.onerror = () => reject(new Error(`Unable to load ${source}.`));
       document.head.appendChild(script);
@@ -204,9 +205,10 @@
     loadStyle("assets/art-direction.css");
     loadStyle("assets/history-saves.css");
     loadStyle("assets/export-menu.css");
+    loadStyle("assets/effects.css");
     loadStyle("assets/responsive-a11y.css");
 
-    loadScript("mixed-asset-v2.js")
+    const artDirectionReady = loadScript("mixed-asset-v2.js")
       .then(() => loadScript("complete-face.js"))
       .then(() => global.CuteCompleteFaces?.ready)
       .then(() => loadScript("complete-face-state.js"))
@@ -215,12 +217,36 @@
       .then(() => loadScript("assets/build-face-manifest.js"))
       .then(() => loadScript("build-face.js"))
       .then(() => loadScript("art-direction.js"))
-      .then(() => loadScript("art-direction-bootstrap.js"))
+      .then(() => loadScript("art-direction-bootstrap.js"));
+
+    const coreReady = artDirectionReady
       .then(() => loadScript("history-saves.js"))
       .then(() => loadScript("export-menu.js"))
       .then(() => loadScript("mixed-asset-export.js"))
-      .then(() => loadScript("responsive-a11y.js"))
-      .then(() => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-ready")))
+      .then(() => loadScript("responsive-a11y.js"));
+
+    const effectsReady = artDirectionReady
+      .then(() => loadScript("effects.js"))
+      .then(() => loadScript("effects-controller.js"))
+      .then(() => global.CuteEffectsController?.ready)
+      .then(() => coreReady)
+      .then(() => loadScript("effects-export-integration.js"))
+      .then(() => {
+        global.dispatchEvent?.(new CustomEvent("cute:effects-bootstrap-ready"));
+        return true;
+      })
+      .catch((error) => {
+        console.error(error);
+        global.dispatchEvent?.(new CustomEvent("cute:effects-bootstrap-error", { detail: error }));
+        return false;
+      });
+
+    Promise.all([coreReady, effectsReady])
+      .then(([, effectsAvailable]) => {
+        global.dispatchEvent?.(new CustomEvent("cute:creative-controls-ready", {
+          detail: { effectsAvailable }
+        }));
+      })
       .catch((error) => global.dispatchEvent?.(new CustomEvent("cute:creative-controls-error", { detail: error })));
   }
 
