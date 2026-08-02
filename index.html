@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f6efe4" />
-  <meta name="description" content="A pre-drawn cute animal face generator." />
+  <meta name="description" content="A deterministic pre-drawn animal character builder with mixed-media layers and seeded finishing effects." />
   <title>Cute Face Lab</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -24,8 +24,8 @@
       </div>
 
       <p class="header-copy">
-        Build soft little animal faces from authored parts. Every ear, eye, snout,
-        cheek and accessory is drawn once, then mixed with care.
+        Mix authored animal characters, reusable parts, mixed-media layers, and seeded
+        finishing effects. Every visible feature is drawn first, then composed with care.
       </p>
 
       <div class="header-actions">
@@ -43,7 +43,7 @@
             <p class="panel-kicker">01 / Library</p>
             <h2>Authored parts</h2>
           </div>
-          <span class="count-pill" id="assetCount">5 recipes</span>
+          <span class="count-pill" id="assetCount">Loading library</span>
         </div>
 
         <div class="mode-tabs" role="tablist" aria-label="Library mode">
@@ -60,7 +60,7 @@
 
         <div class="source-rule">
           <span class="source-icon" aria-hidden="true">✦</span>
-          <p><strong>Source-of-truth rule</strong> The browser selects, layers, mirrors, recolors and exports approved artwork. It never invents animal anatomy.</p>
+          <p><strong>Source-of-truth rule</strong> The browser selects, layers, mirrors, recolors, finishes and exports approved artwork. It never invents animal anatomy.</p>
         </div>
       </aside>
 
@@ -79,7 +79,7 @@
         <div class="stage" id="stage">
           <svg id="faceCanvas" viewBox="0 0 1000 1000" role="img" aria-labelledby="faceTitle faceDescription">
             <title id="faceTitle">Cute animal face</title>
-            <desc id="faceDescription">A cute animal face assembled from pre-drawn vector parts.</desc>
+            <desc id="faceDescription">A cute animal character composed from authored artwork.</desc>
             <defs>
               <clipPath id="headClip"><path id="headClipPath"></path></clipPath>
               <filter id="faceShadow" x="-30%" y="-30%" width="160%" height="160%">
@@ -198,7 +198,7 @@
         <button class="button button-primary button-full" id="shuffleSecondary" type="button">Make another cutie</button>
 
         <p class="control-note">
-          The first MVP locks five hero recipes: cat, bunny, bear, puppy and fox. Parts remain reusable so the library can grow without changing the composer.
+          V2 includes 36 approved complete faces, two mixed-media references, reusable authored parts, and six seeded effects presets.
         </p>
       </aside>
     </main>
@@ -216,7 +216,7 @@
     </section>
 
     <footer class="app-footer">
-      <span>CUTE FACE LAB / MVP 01</span>
+      <span>CUTE FACE LAB / V2</span>
       <span>Drawn once. Mixed forever.</span>
     </footer>
   </div>
