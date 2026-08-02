@@ -1,0 +1,52 @@
+name: Validate effects bootstrap
+
+on:
+  pull_request:
+    paths:
+      - "assets/manifest-adapter.js"
+      - "assets/effects.css"
+      - "effects.js"
+      - "effects-controller.js"
+      - "effects-export-integration.js"
+      - "scripts/validate-effects-bootstrap.mjs"
+      - ".github/workflows/validate-effects-bootstrap.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "assets/manifest-adapter.js"
+      - "assets/effects.css"
+      - "effects.js"
+      - "effects-controller.js"
+      - "effects-export-integration.js"
+      - "scripts/validate-effects-bootstrap.mjs"
+      - ".github/workflows/validate-effects-bootstrap.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check bootstrap syntax
+        run: node --check assets/manifest-adapter.js
+
+      - name: Validate effects production bootstrap
+        run: node scripts/validate-effects-bootstrap.mjs
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cute-effects-bootstrap-validation
+          path: review-artifacts/effects-bootstrap-validation.json
+          if-no-files-found: error
