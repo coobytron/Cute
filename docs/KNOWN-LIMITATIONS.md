@@ -39,6 +39,20 @@ These are deliberate product boundaries or manual-review gaps, not hidden future
 - Safari, Chromium, iPhone orientation, VoiceOver, forced colors, reduced motion, and 200% zoom require manual release review.
 - The deterministic responsive page is a review aid, not a screenshot-diff system.
 
+## iOS
+
+- The iOS layer corrects and extends the same application; there is no native app and no separate iOS codebase.
+- Share-sheet export needs `navigator.share` with file support (iOS 15+); older iOS falls back to the existing download.
+- If the 1600 px PNG takes longer to render than the user-activation window, iOS refuses the share sheet and the same file is downloaded instead.
+- Stage gestures require two fingers and drive the authored scale and tilt ranges only; free placement is still outside the MVP.
+- Taking over the pinch gesture on the stage means Safari page zoom must be started outside the stage; page zoom is never disabled.
+- Add to Home Screen provides a standalone shell only. There is no service worker, so the app is not offline-capable.
+- No iOS splash screens are declared; iOS renders the background color while launching.
+- Phone panels scroll inside themselves below 760 px. That keeps the page short, but it is a nested scroll region, and the panel heading scrolls with its content.
+- The grain layer scrolls with the document on touch devices instead of staying fixed to the viewport. This is a deliberate trade of an unnoticeable difference in a noise texture for smooth scrolling.
+- `content-visibility` and `svh` are progressive enhancements; older iOS falls back to full rendering and `vh` sizing.
+- The iOS review page reproduces viewport sizes only. Safe areas, the share sheet, the software keyboard, and gesture feel require hardware.
+
 ## Visual fidelity
 
 - The approved mockup defines hierarchy and art direction, not literal pixel tracing.

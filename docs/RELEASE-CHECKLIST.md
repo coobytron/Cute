@@ -66,6 +66,28 @@ Automated coverage:
 - [ ] Confirm stage tools, categories, and saved variations scroll locally.
 - [ ] Confirm there is no horizontal body overflow.
 
+## iOS hardware pass
+
+Review with [`previews/ios-review.html`](../previews/ios-review.html) first, then on a device. See [`IOS-EXPERIENCE.md`](IOS-EXPERIENCE.md).
+
+- [ ] Confirm safe-area padding on a notched iPhone in portrait and landscape.
+- [ ] Confirm the page is roughly two to three screens tall in each phone panel.
+- [ ] Scroll the bounded library and Art direction panels; confirm the inner scroll does not drag the page.
+- [ ] Confirm the scroll shadows read as "more content" at both bounded edges.
+- [ ] Confirm the part-category rail stays pinned while the parts grid scrolls.
+- [ ] Scroll past the stage, confirm Back to face appears, and confirm it returns clear of the sticky bars.
+- [ ] Confirm scrolling stays smooth while the grain layer and sticky bars are on screen.
+- [ ] Confirm the Safari toolbar never covers the last row of content.
+- [ ] Confirm focusing the character name field does not zoom the page.
+- [ ] Confirm tapped cards and buttons do not keep a stuck hover state.
+- [ ] Pinch the stage to scale, twist to tilt, and double-tap to reset.
+- [ ] Confirm one-finger scrolling over the stage still scrolls the page.
+- [ ] Export PNG and transparent PNG through the share sheet, then Save to Photos and Save to Files.
+- [ ] Cancel the share sheet and confirm it reports cancelled rather than failed.
+- [ ] Confirm Copy recipe JSON still reaches the clipboard.
+- [ ] Open the keyboard and confirm sticky bars do not float over the composition.
+- [ ] Add to Home Screen, confirm the icon and title, then relaunch in standalone mode.
+
 ## Accessibility
 
 - [ ] Use the skip link.

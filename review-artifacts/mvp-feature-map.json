@@ -70,6 +70,21 @@
       "implementation": ["assets/responsive-a11y.css", "responsive-a11y.js", "docs/RESPONSIVE-A11Y.md"]
     },
     {
+      "id": "ios-experience",
+      "mockupRegion": "All regions on iPhone and iPad",
+      "status": "implemented_with_manual_review",
+      "reviewWidths": [375, 390, 393, 430, 744, 1024],
+      "capabilities": [
+        "safe-area layout",
+        "touch target and hover correction",
+        "stage pinch and twist gestures",
+        "share-sheet PNG export",
+        "software keyboard handling",
+        "Add to Home Screen"
+      ],
+      "implementation": ["assets/ios-experience.css", "ios-experience.js", "site.webmanifest", "scripts/generate-ios-icons.mjs", "docs/IOS-EXPERIENCE.md"]
+    },
+    {
       "id": "deterministic-qa-release",
       "mockupRegion": "Release workflow",
       "status": "implemented_with_manual_review",
@@ -81,6 +96,7 @@
     "Safari visual and download behavior",
     "Chromium visual and download behavior",
     "iPhone Safari orientation changes",
+    "iOS share sheet, Add to Home Screen, and stage gestures on hardware",
     "VoiceOver workflow basics",
     "200% browser zoom",
     "thermal output on physical 384 px and 576 px printers",

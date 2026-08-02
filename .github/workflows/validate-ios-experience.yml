@@ -1,0 +1,40 @@
+name: Validate iOS experience
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "ios-experience.js"
+      - "assets/ios-experience.css"
+      - "assets/manifest-adapter.js"
+      - "assets/icons/**"
+      - "site.webmanifest"
+      - "scripts/validate-ios-experience.mjs"
+      - "scripts/generate-ios-icons.mjs"
+      - "docs/IOS-EXPERIENCE.md"
+      - "previews/ios-review.html"
+      - ".github/workflows/validate-ios-experience.yml"
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "ios-experience.js"
+      - "assets/ios-experience.css"
+      - "assets/manifest-adapter.js"
+      - "assets/icons/**"
+      - "site.webmanifest"
+      - "scripts/validate-ios-experience.mjs"
+      - "scripts/generate-ios-icons.mjs"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --check ios-experience.js
+      - run: node scripts/validate-ios-experience.mjs
+      - name: Home screen icons are reproducible
+        run: |
+          node scripts/generate-ios-icons.mjs
+          git diff --exit-code -- assets/icons

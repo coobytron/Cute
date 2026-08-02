@@ -207,6 +207,7 @@
     loadStyle("assets/export-menu.css");
     loadStyle("assets/effects.css");
     loadStyle("assets/responsive-a11y.css");
+    loadStyle("assets/ios-experience.css");
 
     const artDirectionReady = loadScript("mixed-asset-v2.js")
       .then(() => loadScript("complete-face.js"))
@@ -222,6 +223,7 @@
     const coreReady = artDirectionReady
       .then(() => loadScript("history-saves.js"))
       .then(() => loadScript("export-menu.js"))
+      .then(() => loadScript("ios-experience.js"))
       .then(() => loadScript("mixed-asset-export.js"))
       .then(() => loadScript("responsive-a11y.js"));
 

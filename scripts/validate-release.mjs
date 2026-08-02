@@ -15,7 +15,8 @@ const validators = [
   ["art-direction", "scripts/validate-art-direction.mjs"],
   ["history-saves", "scripts/validate-history-saves.mjs"],
   ["export", "scripts/validate-export.mjs"],
-  ["responsive-a11y", "scripts/validate-responsive-a11y.mjs"]
+  ["responsive-a11y", "scripts/validate-responsive-a11y.mjs"],
+  ["ios-experience", "scripts/validate-ios-experience.mjs"]
 ];
 
 const requiredFiles = [
@@ -25,6 +26,10 @@ const requiredFiles = [
   "previews/contact-sheets/art-direction-finishes.html",
   "previews/export-fixtures/export-matrix.html",
   "previews/responsive-review.html",
+  "previews/ios-review.html",
+  "docs/IOS-EXPERIENCE.md",
+  "site.webmanifest",
+  "assets/icons/apple-touch-icon-180.png",
   "review-artifacts/mvp-feature-map.json",
   "docs/MVP-FEATURE-MAP.md",
   "docs/RELEASE-CHECKLIST.md",
