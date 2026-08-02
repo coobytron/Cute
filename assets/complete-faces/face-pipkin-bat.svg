@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Pipkin Bat">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"><polygon points="235,430 180,70 420,330" fill="#554569"/><polygon points="765,430 820,70 580,330" fill="#554569"/></g>
+  <g fill="#554569"><path d="M500 855C335 785 190 665 205 455C218 275 385 250 500 390C615 250 782 275 795 455C810 665 665 785 500 855Z"/></g>
+  <g stroke="none"></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="500" cy="680" rx="142" ry="105" fill="#C9A5D8" opacity=".9"/><path d="M455 640Q500 605 545 640Q535 690 500 700Q465 690 455 640Z" fill="#4A3632"/><path d="M500 700Q500 760 440 755M500 700Q500 760 560 755" fill="none" stroke="#4A3632" stroke-width="18" stroke-linecap="round"/><path d="M355 670L150 620M350 710L125 720M645 670L850 620M650 710L875 720" fill="none" stroke="#4A3632" stroke-width="12" stroke-linecap="round" opacity=".72"/></g>
+</g>
+</svg>

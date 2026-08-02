@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Puddle Duckling">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"><path d="M470 300Q430 150 500 95Q570 150 530 300" fill="#F3CF4E"/><path d="M430 315Q330 205 390 145" fill="none" stroke="#F3CF4E" stroke-width="55" stroke-linecap="round"/><path d="M570 315Q670 205 610 145" fill="none" stroke="#F3CF4E" stroke-width="55" stroke-linecap="round"/></g>
+  <g fill="#F3CF4E"><ellipse cx="500" cy="535" rx="330" ry="315"/></g>
+  <g stroke="none"><ellipse cx="500" cy="675" rx="145" ry="82" fill="#F08B35"/></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/></g>
+</g>
+</svg>

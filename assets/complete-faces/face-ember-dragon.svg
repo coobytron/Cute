@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Ember Dragon">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"><path d="M355 350L270 105L450 320Z" fill="#F1D2A3"/><path d="M645 350L730 105L550 320Z" fill="#F1D2A3"/><path d="M500 300L455 155L545 155Z" fill="#F1D2A3"/><path d="M255 515L120 430L240 625Z" fill="#F1D2A3"/><path d="M745 515L880 430L760 625Z" fill="#F1D2A3"/></g>
+  <g fill="#77BFA3"><ellipse cx="500" cy="535" rx="330" ry="315"/></g>
+  <g stroke="none"><circle cx="320" cy="500" r="26" fill="#F1D2A3"/><circle cx="680" cy="500" r="26" fill="#F1D2A3"/><path d="M415 370L455 330L490 380L530 330L580 390" fill="none" stroke="#F1D2A3" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="500" cy="680" rx="142" ry="105" fill="#F1D2A3" opacity=".9"/><path d="M455 640Q500 605 545 640Q535 690 500 700Q465 690 455 640Z" fill="#4A3632"/><path d="M500 700Q500 760 440 755M500 700Q500 760 560 755" fill="none" stroke="#4A3632" stroke-width="18" stroke-linecap="round"/></g>
+</g>
+</svg>

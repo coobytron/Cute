@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Truffle Piglet">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"><polygon points="255,440 160,210 430,330" fill="#F1A8B1"/><polygon points="745,440 840,210 570,330" fill="#F1A8B1"/></g>
+  <g fill="#F1A8B1"><ellipse cx="500" cy="555" rx="370" ry="285"/></g>
+  <g stroke="none"><ellipse cx="500" cy="690" rx="150" ry="105" fill="#D97182"/><ellipse cx="450" cy="690" rx="18" ry="32" fill="#8D4A57"/><ellipse cx="550" cy="690" rx="18" ry="32" fill="#8D4A57"/></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/></g>
+</g>
+</svg>
