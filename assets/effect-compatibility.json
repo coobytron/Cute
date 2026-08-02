@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "defaultAction": "allow",
+  "rules": [
+    {
+      "characterId": "fixture-raster-mallow-cat",
+      "reduce": ["pixel-pet"],
+      "replace": { "riso-friend": "paper-sticker" },
+      "note": "Protect the soft raster grain and alpha edge from aggressive channel separation."
+    },
+    {
+      "characterId": "fixture-mixed-berry-fox",
+      "reduce": ["riso-friend"],
+      "block": ["pixel-pet"],
+      "note": "Preserve authored SVG linework and masked PNG shading."
+    },
+    {
+      "characterId": "face-bubble-axolotl",
+      "reduce": ["soft-plush"],
+      "note": "Keep external gills crisp at thumbnail size."
+    },
+    {
+      "characterId": "face-sprout-frog",
+      "replace": { "soft-plush": "candy-gloss" },
+      "note": "Gloss supports the amphibian surface better than fibers."
+    },
+    {
+      "characterId": "face-sundae-seal",
+      "replace": { "soft-plush": "candy-gloss" },
+      "note": "Gloss preserves the smooth marine silhouette."
+    }
+  ]
+}
