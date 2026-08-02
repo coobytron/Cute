@@ -7,7 +7,17 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const exists = (file) => fs.existsSync(path.join(root, file));
 const failures = [];
 const warnings = [];
-const required = ["effects.js", "effects-controller.js", "effects-export-integration.js", "assets/effects.css", "assets/effects-presets.json", "mixed-asset-export.js", "previews/effects-review.html", "docs/EFFECTS.md"];
+const required = [
+  "effects.js",
+  "effects-controller.js",
+  "effects-export-integration.js",
+  "assets/effects.css",
+  "assets/effects-presets.json",
+  "assets/manifest-adapter.js",
+  "mixed-asset-export.js",
+  "previews/effects-review.html",
+  "docs/EFFECTS.md"
+];
 for (const file of required) if (!exists(file)) failures.push({ code: "missing-file", file });
 
 const config = JSON.parse(read("assets/effects-presets.json"));
@@ -22,12 +32,18 @@ for (const preset of config.presets) for (const entry of preset.effects) if (!id
 const engine = read("effects.js");
 const controller = read("effects-controller.js");
 const exportIntegration = read("effects-export-integration.js");
-const loader = read("mixed-asset-export.js");
+const bootstrap = read("assets/manifest-adapter.js");
+const mixedExport = read("mixed-asset-export.js");
 for (const token of ["createRandom", "resolvePreset", "apply", "reset"]) if (!engine.includes(token)) failures.push({ code: "engine-contract", token });
 for (const token of ["CuteEffectsController", "serialize", "deserialize", "cuteEffectsIntensity", "cuteEffectsSeed", "performanceTier", "interceptExportMenu"]) if (!controller.includes(token)) failures.push({ code: "controller-contract", token });
 for (const token of ["applyToBlob", "renderPngBlob", "effects: controller.getState()", "CuteExportEffects"]) if (!exportIntegration.includes(token)) failures.push({ code: "export-contract", token });
-for (const token of ["assets/effects.css", "effects.js", "effects-controller.js", "effects-export-integration.js", "installEffectsFinishingEngine"]) if (!loader.includes(token)) failures.push({ code: "loader-contract", token });
-for (const token of ["CuteExportEffects?.isEnabled", "installEffectsFinishingEngine()", "cute:effects-stack-ready"]) if (!loader.includes(token)) failures.push({ code: "mixed-export-contract", token });
+for (const token of ["assets/effects.css", "effects.js", "effects-controller.js", "effects-export-integration.js", "CuteEffectsController?.ready", "cute:effects-bootstrap-ready", "cute:effects-bootstrap-error"]) {
+  if (!bootstrap.includes(token)) failures.push({ code: "bootstrap-contract", token });
+}
+for (const token of ["CuteExportEffects?.isEnabled", "cute:mixed-export-ready"]) if (!mixedExport.includes(token)) failures.push({ code: "mixed-export-contract", token });
+for (const forbidden of ["installEffectsFinishingEngine", 'loadScript("effects.js")', 'loadScript("effects-controller.js")', 'loadScript("effects-export-integration.js")']) {
+  if (mixedExport.includes(forbidden)) failures.push({ code: "duplicate-effects-loader", token: forbidden });
+}
 
 const extractRandom = (seed) => {
   let state = (() => { const text = String(seed); let hash = 2166136261; for (let i = 0; i < text.length; i += 1) { hash ^= text.charCodeAt(i); hash = Math.imul(hash, 16777619); } return hash >>> 0; })() || 0x9e3779b9;
@@ -38,7 +54,20 @@ const probeA = Array.from({ length: 16 }, () => a()); const probeB = Array.from(
 if (JSON.stringify(probeA) !== JSON.stringify(probeB)) failures.push({ code: "seed-repeatability" });
 if (!config.effects.some((effect) => effect.target === "background")) warnings.push({ code: "no-background-scope" });
 
-const report = { schemaVersion: 1, generatedAt: new Date().toISOString(), summary: { passed: failures.length === 0, effects: ids.size, presets: config.presets.length, categories: [...categories].sort(), seed: config.defaultSeed }, failures, warnings };
+const report = {
+  schemaVersion: 2,
+  generatedAt: new Date().toISOString(),
+  summary: {
+    passed: failures.length === 0,
+    effects: ids.size,
+    presets: config.presets.length,
+    categories: [...categories].sort(),
+    seed: config.defaultSeed,
+    bootstrapOwner: "assets/manifest-adapter.js"
+  },
+  failures,
+  warnings
+};
 fs.mkdirSync(path.join(root, "review-artifacts"), { recursive: true });
 fs.writeFileSync(path.join(root, "review-artifacts/effects-integration-validation.json"), `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report.summary));
