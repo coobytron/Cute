@@ -107,6 +107,7 @@
 
   async function interceptMenuAction(event) {
     if (!integration()?.isActive?.()) return;
+    if (global.CuteExportEffects?.isEnabled?.()) return;
     const item = event.target.closest?.("[data-export-action]");
     if (!item) return;
     event.preventDefault();
@@ -134,6 +135,45 @@
     }
   }
 
+  function loadStyle(source) {
+    if (document.querySelector(`link[data-cute-style="${source}"]`)) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = source;
+    link.dataset.cuteStyle = source;
+    document.head.appendChild(link);
+  }
+
+  function loadScript(source) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[data-cute-script="${source}"]`);
+      if (existing) {
+        if (existing.dataset.loaded === "true") resolve();
+        else {
+          existing.addEventListener("load", resolve, { once: true });
+          existing.addEventListener("error", reject, { once: true });
+        }
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = source;
+      script.dataset.cuteScript = source;
+      script.onload = () => { script.dataset.loaded = "true"; resolve(); };
+      script.onerror = () => reject(new Error(`Unable to load ${source}.`));
+      document.head.appendChild(script);
+    });
+  }
+
+  function installEffectsFinishingEngine() {
+    loadStyle("assets/effects.css");
+    loadScript("effects.js")
+      .then(() => loadScript("effects-controller.js"))
+      .then(() => global.CuteEffectsController?.ready)
+      .then(() => loadScript("effects-export-integration.js"))
+      .then(() => global.dispatchEvent(new CustomEvent("cute:effects-stack-ready")))
+      .catch((error) => global.dispatchEvent(new CustomEvent("cute:effects-error", { detail: error })));
+  }
+
   function install() {
     originalExport = global.CuteExport;
     if (!originalExport) return;
@@ -148,6 +188,7 @@
       copyRecipeJson
     });
     global.dispatchEvent(new CustomEvent("cute:mixed-export-ready"));
+    installEffectsFinishingEngine();
   }
 
   if (global.CuteExport) install();
