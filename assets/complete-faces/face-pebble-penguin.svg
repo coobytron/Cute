@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Pebble Penguin">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"></g>
+  <g fill="#34383F"><ellipse cx="500" cy="520" rx="285" ry="365"/></g>
+  <g stroke="none"><path d="M500 270C610 305 690 405 675 525C655 680 585 760 500 820C415 760 345 680 325 525C310 405 390 305 500 270Z" fill="#F8F4E9"/></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/></g>
+</g>
+</svg>

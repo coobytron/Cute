@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Button Quokka">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"><polygon points="300,430 205,135 445,330" fill="#A97958"/><polygon points="700,430 795,135 555,330" fill="#A97958"/></g>
+  <g fill="#A97958"><ellipse cx="500" cy="535" rx="330" ry="315"/></g>
+  <g stroke="none"></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="500" cy="675" rx="150" ry="105" fill="#E6C09B" opacity=".9"/><path d="M430 650Q500 735 570 650" fill="none" stroke="#4A3632" stroke-width="24" stroke-linecap="round"/></g>
+</g>
+</svg>

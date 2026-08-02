@@ -9,6 +9,7 @@ const reportPath = path.join(root, "review-artifacts", "release-validation.json"
 
 const validators = [
   ["authored-manifest", "scripts/validate-manifest.mjs"],
+  ["roster-expansion", "scripts/validate-roster-expansion.mjs"],
   ["complete-faces", "scripts/validate-complete-faces.mjs"],
   ["build-a-face", "scripts/validate-build-face.mjs"],
   ["art-direction", "scripts/validate-art-direction.mjs"],
@@ -18,6 +19,7 @@ const validators = [
 ];
 
 const requiredFiles = [
+  "previews/contact-sheets/character-roster-36.html",
   "previews/contact-sheets/release-matrix.html",
   "previews/contact-sheets/build-face-compatibility.html",
   "previews/contact-sheets/art-direction-finishes.html",
@@ -26,7 +28,8 @@ const requiredFiles = [
   "review-artifacts/mvp-feature-map.json",
   "docs/MVP-FEATURE-MAP.md",
   "docs/RELEASE-CHECKLIST.md",
-  "docs/KNOWN-LIMITATIONS.md"
+  "docs/KNOWN-LIMITATIONS.md",
+  "docs/CHARACTER-ROSTER.md"
 ];
 
 function runValidator(id, relativePath) {
@@ -54,7 +57,6 @@ function loadBuildManifest() {
 
 const checks = [];
 const failures = [];
-
 function check(id, condition, detail) {
   const status = condition ? "passed" : "failed";
   checks.push({ id, status, detail });
@@ -71,16 +73,21 @@ for (const relativePath of requiredFiles) {
 }
 
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "assets/manifest.json"), "utf8"));
+const expansion = JSON.parse(fs.readFileSync(path.join(root, "assets/roster-expansion.json"), "utf8"));
 const buildManifest = loadBuildManifest();
 const featureMap = JSON.parse(fs.readFileSync(path.join(root, "review-artifacts/mvp-feature-map.json"), "utf8"));
 const releaseMatrix = fs.readFileSync(path.join(root, "previews/contact-sheets/release-matrix.html"), "utf8");
 const checklist = fs.readFileSync(path.join(root, "docs/RELEASE-CHECKLIST.md"), "utf8");
 const limitations = fs.readFileSync(path.join(root, "docs/KNOWN-LIMITATIONS.md"), "utf8");
 
-const completeAssets = manifest.assets.filter((asset) => asset.type === "complete-face" && asset.reviewStatus === "approved");
-const completeRecipes = manifest.recipes.filter((recipe) => recipe.mode === "complete-face");
-check("count:complete-assets", completeAssets.length === 12, `Expected 12 approved complete faces; found ${completeAssets.length}`);
-check("count:complete-recipes", completeRecipes.length === 12, `Expected 12 complete-face recipes; found ${completeRecipes.length}`);
+const baseCompleteAssets = manifest.assets.filter((asset) => asset.type === "complete-face" && asset.reviewStatus === "approved");
+const baseCompleteRecipes = manifest.recipes.filter((recipe) => recipe.mode === "complete-face");
+const expandedAssets = (expansion.characters || []).filter((asset) => asset.reviewStatus === "approved");
+const approvedCompleteFaces = baseCompleteAssets.length + expandedAssets.length;
+const completeFaceRecipes = baseCompleteRecipes.length + expandedAssets.length;
+
+check("count:complete-assets", approvedCompleteFaces === expansion.targetCount, `Expected ${expansion.targetCount} approved complete faces; found ${approvedCompleteFaces}`);
+check("count:complete-recipes", completeFaceRecipes === expansion.targetCount, `Expected ${expansion.targetCount} complete-face recipes; found ${completeFaceRecipes}`);
 check("count:layered-recipes", buildManifest.recipes.length === 12, `Expected 12 layered recipes; found ${buildManifest.recipes.length}`);
 
 const releaseMarkers = [
@@ -119,8 +126,8 @@ const report = {
   validatorResults,
   releaseChecks: checks,
   counts: {
-    approvedCompleteFaces: completeAssets.length,
-    completeFaceRecipes: completeRecipes.length,
+    approvedCompleteFaces,
+    completeFaceRecipes,
     layeredRecipes: buildManifest.recipes.length,
     mappedFeatureGroups: featureMap.features.length
   },

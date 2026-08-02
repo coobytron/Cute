@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Bubble Axolotl">
+<g stroke="#3A302C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="none"><path d="M330 290 Q170 220 170 350" fill="none" stroke="#E86F9A" stroke-width="58" stroke-linecap="round"/><path d="M670 290 Q830 220 830 350" fill="none" stroke="#E86F9A" stroke-width="58" stroke-linecap="round"/><path d="M330 390 Q130 320 130 450" fill="none" stroke="#E86F9A" stroke-width="58" stroke-linecap="round"/><path d="M670 390 Q870 320 870 450" fill="none" stroke="#E86F9A" stroke-width="58" stroke-linecap="round"/><path d="M330 500 Q115 430 115 560" fill="none" stroke="#E86F9A" stroke-width="58" stroke-linecap="round"/><path d="M670 500 Q885 430 885 560" fill="none" stroke="#E86F9A" stroke-width="58" stroke-linecap="round"/></g>
+  <g fill="#F6B8C8"><ellipse cx="500" cy="535" rx="330" ry="315"/></g>
+  <g stroke="none"></g>
+  <g stroke="none"><ellipse cx="385" cy="535" rx="42" ry="56" fill="#2F2927"/><ellipse cx="615" cy="535" rx="42" ry="56" fill="#2F2927"/><circle cx="370" cy="517" r="14" fill="#fff"/><circle cx="600" cy="517" r="14" fill="#fff"/><ellipse cx="300" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="700" cy="650" rx="75" ry="35" fill="#EF8F9F" opacity=".38"/><ellipse cx="500" cy="680" rx="142" ry="105" fill="#E86F9A" opacity=".9"/><path d="M455 640Q500 605 545 640Q535 690 500 700Q465 690 455 640Z" fill="#4A3632"/><path d="M500 700Q500 760 440 755M500 700Q500 760 560 755" fill="none" stroke="#4A3632" stroke-width="18" stroke-linecap="round"/></g>
+</g>
+</svg>
