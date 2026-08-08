@@ -1,0 +1,65 @@
+name: Validate V2 release
+
+on:
+  pull_request:
+    paths:
+      - "README.md"
+      - "index.html"
+      - "assets/**"
+      - "docs/**"
+      - "effects*.js"
+      - "mixed-asset*.js"
+      - "scripts/**"
+      - "previews/**"
+      - "review-artifacts/**"
+      - ".github/workflows/validate-v2-release.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "README.md"
+      - "index.html"
+      - "assets/**"
+      - "docs/**"
+      - "effects*.js"
+      - "mixed-asset*.js"
+      - "scripts/**"
+      - "previews/**"
+      - "review-artifacts/**"
+      - ".github/workflows/validate-v2-release.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check V2 runtime syntax
+        run: |
+          node --check assets/manifest-adapter.js
+          node --check mixed-asset-export.js
+          node --check effects-controller.js
+          node --check effects-export-integration.js
+
+      - name: Validate complete V2 release
+        run: node scripts/validate-release.mjs
+
+      - name: Upload V2 release report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cute-v2-release-validation
+          path: |
+            review-artifacts/release-validation.json
+            review-artifacts/effects-bootstrap-validation.json
+            review-artifacts/effects-integration-validation.json
+          if-no-files-found: error
