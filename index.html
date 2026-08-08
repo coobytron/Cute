@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f6efe4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fffaf7" />
   <meta name="description" content="A deterministic pre-drawn animal character builder with mixed-media layers and seeded finishing effects." />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Cute Face" />
   <title>Cute Face Lab</title>
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon-180.png" />
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192" type="image/png" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="mobile-ios.css" />
 </head>
 <body>
   <div class="page-grain" aria-hidden="true"></div>
@@ -175,7 +184,8 @@
             <label for="nameInput">Character name</label>
             <small>Used in the exported file</small>
           </div>
-          <input class="text-input" id="nameInput" type="text" maxlength="24" value="Mochi Cat" />
+          <input class="text-input" id="nameInput" type="text" maxlength="24" value="Mochi Cat"
+                 autocapitalize="words" autocorrect="off" autocomplete="off" spellcheck="false" enterkeyhint="done" />
         </section>
 
         <section class="control-section">

@@ -64,6 +64,7 @@ For consolidated review, open:
 - stable filenames, font/image readiness, object URL cleanup, and announced export failures
 - responsive layouts at 1600, 1280, 1024, 768, and 390 px
 - stage-first phone layout, mobile Assets / Art direction navigation, touch targets, and horizontal saved variations
+- iOS pass: safe-area layout, WebKit touch corrections, two-finger stage scale and tilt, share-sheet PNG export, keyboard handling, and Add to Home Screen
 - skip link, named regions, keyboard tab behavior, live announcements, reduced motion, forced colors, and hidden-panel focus isolation
 - 384 px and 576 px thermal review output
 
@@ -83,6 +84,7 @@ Primary browser APIs include:
 - `window.CuteEffects`
 - `window.CuteEffectsController`
 - `window.CuteExportEffects`
+- `window.CuteIosExperience`
 
 ## Authored asset system
 
@@ -101,6 +103,7 @@ Authoring and integration documentation:
 - [`docs/HISTORY-SAVES.md`](docs/HISTORY-SAVES.md)
 - [`docs/EXPORT.md`](docs/EXPORT.md)
 - [`docs/RESPONSIVE-A11Y.md`](docs/RESPONSIVE-A11Y.md)
+- [`docs/IOS-EXPERIENCE.md`](docs/IOS-EXPERIENCE.md)
 
 Release documentation:
 
@@ -137,6 +140,13 @@ node scripts/validate-mixed-assets.mjs
 node scripts/validate-effects-bootstrap.mjs
 node scripts/validate-effects-integration.mjs
 node scripts/generate-character-effect-matrix.mjs
+node scripts/validate-ios-experience.mjs
+```
+
+Home-screen icons are generated rather than hand-committed:
+
+```bash
+node scripts/generate-ios-icons.mjs
 ```
 
 Automated validation does not replace live Safari, Chromium, iPhone, VoiceOver, 200% zoom, physical thermal-printer, or human art-direction review. Those gates remain explicit.
@@ -153,6 +163,7 @@ Automated validation does not replace live Safari, Chromium, iPhone, VoiceOver, 
 - Finish and thermal comparison: [`previews/contact-sheets/art-direction-finishes.html`](previews/contact-sheets/art-direction-finishes.html)
 - Export fixture matrix: [`previews/export-fixtures/export-matrix.html`](previews/export-fixtures/export-matrix.html)
 - Responsive viewport review: [`previews/responsive-review.html`](previews/responsive-review.html)
+- iOS device review: [`previews/ios-review.html`](previews/ios-review.html)
 
 The character/effect report records 38 browseable character cases: 36 canonical and expanded complete faces plus two mixed-media references. It generates 494 stable default, full-resolution preset, and mobile-thumbnail cases with seed `260801`.
 

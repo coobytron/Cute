@@ -21,6 +21,7 @@
 | PNG export menu | opaque 1600 px, transparent 1600 px, recipe JSON | export fixture matrix |
 | Compact desktop/tablet | content-driven breakpoints | responsive review 1280/1024/768 |
 | Phone layout | stage-first panel switcher and horizontal saves | responsive review 390 |
+| iPhone and iPad experience | `assets/ios-experience.css`, `ios-experience.js`, `site.webmanifest` | `previews/ios-review.html` + hardware pass |
 | Keyboard and assistive semantics | skip link, named regions, tabs, live announcements, focus isolation | accessibility checklist |
 | Deterministic release QA | aggregate release matrix, validators, machine-readable report | `scripts/validate-release.mjs` |
 

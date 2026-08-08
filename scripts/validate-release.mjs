@@ -18,7 +18,8 @@ const validators = [
   ["responsive-a11y", "scripts/validate-responsive-a11y.mjs"],
   ["mixed-assets", "scripts/validate-mixed-assets.mjs"],
   ["effects-bootstrap", "scripts/validate-effects-bootstrap.mjs"],
-  ["effects-integration", "scripts/validate-effects-integration.mjs"]
+  ["effects-integration", "scripts/validate-effects-integration.mjs"],
+  ["ios-experience", "scripts/validate-ios-experience.mjs"]
 ];
 
 const requiredFiles = [
@@ -31,6 +32,10 @@ const requiredFiles = [
   "previews/mixed-asset-review.html",
   "previews/effects-review.html",
   "previews/contact-sheets/character-effects-matrix.html",
+  "previews/ios-review.html",
+  "docs/IOS-EXPERIENCE.md",
+  "site.webmanifest",
+  "assets/icons/apple-touch-icon-180.png",
   "review-artifacts/mvp-feature-map.json",
   "review-artifacts/character-effects-matrix.json",
   "review-artifacts/effects-bootstrap-validation.json",
