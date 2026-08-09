@@ -115,6 +115,42 @@
     flex: 0 0 1px;
   }
 
+  .saved-heading {
+    display: block !important;
+    margin: 4px var(--ios-rail-gutter) 10px;
+  }
+
+  .saved-heading .panel-kicker {
+    display: none !important;
+  }
+
+  .saved-heading h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #17233c;
+  }
+
+  .saved-grid {
+    scroll-padding-inline: var(--ios-rail-gutter);
+  }
+
+  .saved-card:focus-visible,
+  .save-card:focus-visible,
+  .recipe-card:focus-visible,
+  .part-card:focus-visible,
+  .finish-button:focus-visible,
+  .palette-button:focus-visible {
+    outline: 3px solid rgba(255, 95, 143, 0.45);
+    outline-offset: 3px;
+  }
+
+  .recipe-card.is-active,
+  .part-card.is-active,
+  .finish-button.is-active,
+  .palette-button.is-active {
+    scroll-margin-inline: var(--ios-rail-gutter);
+  }
+
   .controls-panel .button-full {
     bottom: calc(8px + var(--ios-home-clearance));
     margin-top: 12px;
@@ -167,5 +203,28 @@
 
   .part-card {
     flex-basis: 106px;
+  }
+}
+
+@media (max-width: 520px) and (prefers-reduced-motion: reduce) {
+  .recipe-card,
+  .part-card,
+  .finish-button,
+  .palette-button,
+  .saved-card,
+  .save-card,
+  .controls-panel .button-full {
+    transition: none !important;
+  }
+
+  .mode-tabs,
+  .category-tabs,
+  .expression-pills,
+  .recipe-library,
+  .part-grid,
+  .palette-grid,
+  .finish-grid,
+  .saved-grid {
+    scroll-behavior: auto;
   }
 }
