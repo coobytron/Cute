@@ -1,0 +1,171 @@
+@media (max-width: 520px) {
+  :root {
+    --ios-rail-gutter: 16px;
+    --ios-home-clearance: max(18px, env(safe-area-inset-bottom));
+  }
+
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    padding-bottom: calc(82px + var(--ios-home-clearance));
+    overscroll-behavior-x: none;
+  }
+
+  .app-shell {
+    min-height: 100dvh;
+  }
+
+  .app-header {
+    padding-left: var(--ios-rail-gutter);
+    padding-right: var(--ios-rail-gutter);
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-actions .button,
+  .stage-actions .stage-btn,
+  .mode-tab,
+  .category-button,
+  .pill-button,
+  .toggle-label,
+  .text-input,
+  input[type="range"] {
+    min-height: 44px;
+  }
+
+  .stage-column {
+    padding-left: var(--ios-rail-gutter);
+    padding-right: var(--ios-rail-gutter);
+  }
+
+  .stage {
+    max-height: min(52dvh, 430px);
+  }
+
+  .stage-actions {
+    gap: 6px;
+  }
+
+  .library-panel,
+  .controls-panel,
+  .saved-strip {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .library-panel > .panel-heading,
+  .controls-panel > .panel-heading,
+  .controls-panel > .control-section,
+  .controls-panel > .button-full {
+    margin-left: var(--ios-rail-gutter);
+    margin-right: var(--ios-rail-gutter);
+  }
+
+  .mode-tabs,
+  .category-tabs,
+  .expression-pills,
+  .recipe-library,
+  .part-grid,
+  .palette-grid,
+  .finish-grid,
+  .saved-grid {
+    padding-left: var(--ios-rail-gutter);
+    padding-right: var(--ios-rail-gutter);
+    scroll-padding-inline: var(--ios-rail-gutter);
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+  }
+
+  .mode-tabs,
+  .category-tabs,
+  .expression-pills {
+    scroll-snap-type: x proximity;
+  }
+
+  .recipe-library,
+  .part-grid,
+  .palette-grid,
+  .finish-grid,
+  .saved-grid {
+    scroll-snap-type: x mandatory;
+  }
+
+  .recipe-card,
+  .part-card,
+  .palette-button,
+  .finish-button,
+  .saved-card,
+  .save-card {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  .recipe-library::after,
+  .part-grid::after,
+  .palette-grid::after,
+  .finish-grid::after,
+  .saved-grid::after {
+    content: "";
+    flex: 0 0 1px;
+  }
+
+  .controls-panel .button-full {
+    bottom: calc(8px + var(--ios-home-clearance));
+    margin-top: 12px;
+  }
+
+  .ios-keyboard-open .controls-panel .button-full {
+    position: static;
+    box-shadow: none;
+  }
+
+  .ios-keyboard-open body {
+    padding-bottom: var(--ios-home-clearance);
+  }
+
+  .ios-keyboard-open .app-shell {
+    min-height: var(--ios-viewport-height, 100dvh);
+  }
+
+  .text-input:focus {
+    scroll-margin-bottom: 120px;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --ios-rail-gutter: 14px;
+  }
+
+  .app-header {
+    padding-top: calc(10px + env(safe-area-inset-top));
+  }
+
+  h1 {
+    font-size: 29px;
+  }
+
+  .header-actions .button,
+  .stage-actions .stage-btn {
+    padding-inline: 6px;
+    font-size: 10.5px;
+  }
+
+  .stage {
+    border-radius: 26px;
+  }
+
+  .recipe-card {
+    flex-basis: 100px;
+  }
+
+  .part-card {
+    flex-basis: 106px;
+  }
+}
